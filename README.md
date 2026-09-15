@@ -1,18 +1,9 @@
-<div align="center">
-
-# 🚀 Swift Accelerator Program (SAP)
-
-### LAYANAN PENJUALAN TERKELOLA · TIKTOK SHOP BY TOKOPEDIA
-
-**“Done For You” — Kami yang Jalankan, Toko Tetap Milik Anda**
-
-`PROGRAM 2026 · TIKTOK SHOP BY TOKOPEDIA`
-
-[![Daftar Minat](https://img.shields.io/badge/%F0%9F%93%9D%20Daftar%20Minat%20Sekarang-Register%20Your%20Interest-1FB8A6?style=for-the-badge)](https://bytedance.larkoffice.com/share/base/form/shrmycPWyhzDUsFwoZ56OEjVpkD)
-
-🇮🇩 [**Bahasa Indonesia**](#-bahasa-indonesia) &nbsp;·&nbsp; 🇬🇧 [**English**](#-english) &nbsp;·&nbsp; 📊 [**Rate per Kategori / Category Rates**](#-rate-per-kategori--category-rate-table)
-
-</div>
+<h1 align="center">🚀 Swift Accelerator Program (SAP)</h1>
+<h3 align="center">LAYANAN PENJUALAN TERKELOLA · TIKTOK SHOP BY TOKOPEDIA</h3>
+<p align="center"><b>“Done For You” — Kami yang Jalankan, Toko Tetap Milik Anda</b><br>
+<code>PROGRAM 2026 · TIKTOK SHOP BY TOKOPEDIA</code></p>
+<p align="center"><a href="https://bytedance.larkoffice.com/share/base/form/shrmycPWyhzDUsFwoZ56OEjVpkD"><b>📝 Daftar Minat Sekarang / Register Your Interest</b></a></p>
+<p align="center">🇮🇩 <a href="#-bahasa-indonesia"><b>Bahasa Indonesia</b></a> · 🇬🇧 <a href="#-english"><b>English</b></a> · 📊 <a href="#-rate-per-kategori--category-rate-table"><b>Rate per Kategori / Category Rates</b></a></p>
 
 ---
 
@@ -230,11 +221,7 @@ Detail kontak sedang difinalisasi oleh tim. Sementara itu, silakan tinggalkan da
 
 Isi tiga informasi singkat pada formulir resmi kami — **Nama Toko**, **Omset bulanan di platform e-commerce (USD $)**, dan **Nomor WhatsApp**. Tim Account Operations SAP akan menghubungi Anda melalui WhatsApp untuk menjelaskan rate kategori Anda, ekspektasi pertumbuhan, dan langkah onboarding.
 
-<div align="center">
-
-### 👉 [📝 ISI FORMULIR DAFTAR MINAT](https://bytedance.larkoffice.com/share/base/form/shrmycPWyhzDUsFwoZ56OEjVpkD)
-
-</div>
+<h3 align="center">👉 <a href="https://bytedance.larkoffice.com/share/base/form/shrmycPWyhzDUsFwoZ56OEjVpkD">📝 ISI FORMULIR DAFTAR MINAT</a></h3>
 
 🔒 Formulir dikelola langsung oleh tim SAP TikTok Shop. Data Anda hanya digunakan untuk proses konsultasi dan onboarding SAP.
 
@@ -455,11 +442,7 @@ Contact details are being finalised by the team. In the meantime, please leave y
 
 Fill in three short details in our official form — **Shop Name**, **average monthly revenue on e-commerce platforms (USD $)**, and **WhatsApp number**. The SAP Account Operations team will contact you on WhatsApp to walk through your category rate, growth expectations and onboarding steps.
 
-<div align="center">
-
-### 👉 [📝 OPEN THE INTEREST FORM](https://bytedance.larkoffice.com/share/base/form/shrmycPWyhzDUsFwoZ56OEjVpkD)
-
-</div>
+<h3 align="center">👉 <a href="https://bytedance.larkoffice.com/share/base/form/shrmycPWyhzDUsFwoZ56OEjVpkD">📝 OPEN THE INTEREST FORM</a></h3>
 
 🔒 The form is operated directly by the TikTok Shop SAP team. Your details are used only for SAP consultation and onboarding.
 
@@ -1248,13 +1231,7 @@ Fill in three short details in our official form — **Shop Name**, **average mo
 
 ---
 
-<div align="center">
-
-**Swift Accelerator Program (SAP) · TikTok Shop by Tokopedia · Materi Rekrutmen Seller 2026**
-
-<sub>* Rate biaya mengacu pada dokumen resmi SAP 2026 Service Fee. Hak interpretasi akhir program ini dimiliki oleh platform.<br>
-* Fee rates follow the official SAP 2026 Service Fee document. Final interpretation of this program rests with the platform.</sub>
-
-[📝 Daftar Minat / Register Your Interest](https://bytedance.larkoffice.com/share/base/form/shrmycPWyhzDUsFwoZ56OEjVpkD)
-
-</div>
+<p align="center"><b>Swift Accelerator Program (SAP) · TikTok Shop by Tokopedia · Materi Rekrutmen Seller 2026</b></p>
+<p align="center"><sub>* Rate biaya mengacu pada dokumen resmi SAP 2026 Service Fee. Hak interpretasi akhir program ini dimiliki oleh platform.<br>
+* Fee rates follow the official SAP 2026 Service Fee document. Final interpretation of this program rests with the platform.</sub></p>
+<p align="center"><a href="https://bytedance.larkoffice.com/share/base/form/shrmycPWyhzDUsFwoZ56OEjVpkD">📝 Daftar Minat / Register Your Interest</a></p>
