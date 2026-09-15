@@ -1,0 +1,1293 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Swift Accelerator Program (SAP) — TikTok Shop by Tokopedia</title>
+<meta name="description" content="Swift Accelerator Program (SAP) — layanan penjualan terkelola dari TikTok Shop by Tokopedia untuk seller UKM di Indonesia.">
+<style>
+:root{
+  --bg:#000000;
+  --blue:#25F4EE;
+  --blue-deep:#0A8DCC;
+  --blue-glow:#1FB6FF;
+  --pink:#FE2C55;
+  --white:#FFFFFF;
+  --gray:#9AA4B2;
+  --card:#0B0F16;
+  --card-line:rgba(37,244,238,.25);
+  --txt:#D6DEE8;
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{
+  background:var(--bg);
+  font-family:"PingFang SC","Microsoft YaHei","Helvetica Neue",Arial,sans-serif;
+  color:var(--white);
+  display:flex;
+  justify-content:center;
+  padding:40px 16px 60px;
+}
+.poster{
+  width:960px;
+  max-width:100%;
+  position:relative;
+  background:
+    radial-gradient(900px 500px at 85% -5%, rgba(37,244,238,.12), transparent 60%),
+    radial-gradient(700px 500px at 0% 100%, rgba(10,141,204,.18), transparent 55%),
+    var(--bg);
+  border:1px solid rgba(37,244,238,.18);
+  border-radius:28px;
+  overflow:hidden;
+  box-shadow:0 0 60px rgba(37,244,238,.08);
+}
+/* ===== HEADER ===== */
+.header{
+  padding:56px 48px 38px;
+  text-align:center;
+  position:relative;
+  border-bottom:1px solid rgba(255,255,255,.06);
+}
+.logo{position:absolute;top:24px;left:28px;z-index:5;display:flex;align-items:center;}
+.logo img{display:block;height:28px;width:auto;}
+/* language switch */
+.lang{
+  position:absolute;top:22px;right:26px;z-index:6;
+  display:flex;gap:4px;padding:4px;
+  border:1px solid var(--card-line);
+  border-radius:999px;
+  background:rgba(37,244,238,.05);
+  backdrop-filter:blur(6px);
+}
+.lang button{
+  font:inherit;font-size:12px;font-weight:700;letter-spacing:1px;
+  color:var(--gray);background:transparent;border:none;cursor:pointer;
+  padding:6px 14px;border-radius:999px;transition:.25s;
+}
+.lang button:hover{color:var(--white);}
+.lang button.on{background:linear-gradient(92deg,var(--blue),var(--blue-deep));color:#04202b;}
+.badge{
+  display:inline-block;font-size:12.5px;letter-spacing:2px;color:var(--blue);
+  border:1px solid var(--card-line);border-radius:999px;padding:7px 18px;
+  margin-bottom:22px;background:rgba(37,244,238,.05);
+}
+.title{font-size:46px;font-weight:900;line-height:1.2;margin-bottom:10px;}
+.title .rest{
+  background:linear-gradient(92deg,#FFFFFF 0%, var(--blue) 60%, var(--blue-glow) 100%);
+  -webkit-background-clip:text;background-clip:text;color:transparent;
+}
+.subtitle{font-size:17px;font-weight:700;color:var(--white);letter-spacing:3px;margin-bottom:18px;}
+.tagline{
+  display:inline-block;font-size:15px;font-weight:700;color:var(--blue);letter-spacing:1px;
+  margin:0 auto 18px;padding:8px 22px;border:1px solid var(--card-line);border-radius:999px;
+  background:rgba(37,244,238,.06);
+}
+.lead{font-size:14.5px;line-height:1.9;color:var(--gray);max-width:720px;margin:0 auto;}
+.lead b{color:var(--blue);font-weight:700;}
+.hero-cta{display:flex;gap:12px;justify-content:center;margin-top:26px;flex-wrap:wrap;}
+.btn{
+  font:inherit;font-size:14px;font-weight:800;letter-spacing:.5px;cursor:pointer;
+  padding:13px 28px;border-radius:999px;border:1px solid var(--card-line);
+  background:rgba(37,244,238,.06);color:var(--blue);transition:.25s;
+  display:inline-flex;align-items:center;gap:8px;text-decoration:none;
+}
+.btn:hover{background:rgba(37,244,238,.14);transform:translateY(-2px);}
+.btn.primary{
+  background:linear-gradient(92deg,var(--blue),var(--blue-deep));
+  color:#04202b;border-color:transparent;
+  box-shadow:0 8px 26px rgba(37,244,238,.25);
+}
+.btn.primary:hover{box-shadow:0 12px 34px rgba(37,244,238,.4);}
+/* ===== NAV ===== */
+.nav{
+  display:flex;gap:6px;flex-wrap:wrap;justify-content:center;
+  padding:14px 40px;border-bottom:1px solid rgba(255,255,255,.05);
+  background:rgba(0,0,0,.5);position:sticky;top:0;z-index:20;backdrop-filter:blur(10px);
+}
+.nav a{
+  font-size:12.5px;color:var(--gray);text-decoration:none;padding:7px 13px;border-radius:999px;transition:.2s;
+}
+.nav a:hover{color:var(--blue);background:rgba(37,244,238,.08);}
+/* ===== SECTION ===== */
+.section{padding:38px 48px;}
+.section + .section{border-top:1px solid rgba(255,255,255,.05);}
+.sec-head{display:flex;align-items:center;gap:12px;margin-bottom:10px;}
+.sec-head .bar{width:5px;height:24px;border-radius:4px;background:linear-gradient(var(--blue),var(--blue-deep));}
+.sec-head h2{font-size:22px;font-weight:800;letter-spacing:1px;}
+.sec-sub{font-size:13px;color:var(--gray);margin:0 0 22px 17px;line-height:1.7;}
+/* cards grid */
+.grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:16px;}
+.fit{background:var(--card);border:1px solid var(--card-line);border-radius:16px;padding:22px 20px;}
+.fit .ico{font-size:22px;margin-bottom:10px;}
+.fit h4{font-size:14.5px;color:var(--blue);margin-bottom:9px;line-height:1.4;}
+.fit p{font-size:12.5px;color:var(--txt);line-height:1.8;}
+/* generic dark table */
+.tbl-wrap{width:100%;overflow-x:auto;border-radius:12px;border:1px solid rgba(37,244,238,.18);margin-top:16px;}
+table.dt{width:100%;border-collapse:collapse;font-size:12.5px;background:rgba(0,0,0,.35);min-width:520px;}
+table.dt th{
+  background:rgba(37,244,238,.10);color:var(--blue);font-weight:700;text-align:left;
+  padding:11px 13px;font-size:11.5px;letter-spacing:.5px;border-bottom:1px solid rgba(37,244,238,.22);
+  white-space:nowrap;
+}
+table.dt td{
+  padding:11px 13px;color:var(--txt);line-height:1.6;vertical-align:middle;
+  border-bottom:1px solid rgba(255,255,255,.06);border-right:1px solid rgba(255,255,255,.05);
+}
+table.dt td:last-child,table.dt th:last-child{border-right:none;}
+table.dt tr:last-child td{border-bottom:none;}
+table.dt td.k{color:#fff;font-weight:700;white-space:nowrap;}
+table.dt td.c{text-align:center;}
+table.dt td.rate{color:var(--blue);font-weight:800;font-size:14px;text-align:center;white-space:nowrap;}
+table.dt td.dim{color:var(--gray);}
+table.dt tbody tr:hover td{background:rgba(37,244,238,.04);}
+/* roles */
+.roles{display:flex;flex-direction:column;gap:18px;}
+.role{background:var(--card);border:1px solid rgba(255,255,255,.07);border-radius:18px;padding:24px 22px;}
+.role.merchant h3{font-size:17px;color:var(--white);margin-bottom:6px;}
+.role.merchant .desc{font-size:12.5px;color:var(--gray);margin-bottom:16px;line-height:1.6;}
+.role.platform{
+  border-color:var(--card-line);
+  box-shadow:inset 0 0 60px rgba(37,244,238,.06),0 0 30px rgba(37,244,238,.05);
+  background:linear-gradient(135deg,rgba(37,244,238,.05),rgba(10,141,204,.04));
+  padding:26px 26px 22px;
+}
+.role.platform > h3{font-size:20px;color:var(--blue);margin-bottom:18px;}
+.chips{display:flex;flex-wrap:wrap;gap:8px;}
+.chip{
+  font-size:12.5px;padding:7px 12px;border-radius:10px;
+  background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.08);color:var(--txt);
+}
+.svc-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;}
+.svc{background:rgba(0,0,0,.35);border:1px solid rgba(37,244,238,.18);border-radius:14px;padding:16px 16px 14px;}
+.svc h4{font-size:14.5px;color:var(--blue);margin-bottom:10px;display:flex;align-items:center;gap:8px;}
+.svc ul{list-style:none;}
+.svc li{font-size:12.5px;color:var(--txt);line-height:1.75;padding-left:16px;position:relative;}
+.svc li::before{content:"";position:absolute;left:0;top:9px;width:5px;height:5px;border-radius:50%;background:var(--blue);}
+/* callout */
+.callout{
+  font-size:12.5px;color:#BFF6F4;line-height:1.8;
+  background:rgba(37,244,238,.06);border-left:3px solid var(--blue);
+  padding:13px 16px;border-radius:0 10px 10px 0;margin-top:16px;
+}
+.callout b{color:#fff;}
+.note{
+  font-size:11.5px;color:#B4BDC8;line-height:1.8;
+  background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.07);
+  border-radius:12px;padding:14px 18px;margin-top:16px;
+}
+.note h5{font-size:12px;color:var(--blue);font-weight:700;margin-bottom:6px;letter-spacing:.5px;}
+.note li{margin:4px 0 4px 16px;list-style:disc;}
+/* fee */
+.formula{
+  background:linear-gradient(135deg,rgba(37,244,238,.07),rgba(10,141,204,.04));
+  border:1px solid var(--card-line);border-radius:16px;padding:20px 22px;
+  font-size:16px;font-weight:800;line-height:1.7;text-align:center;
+}
+.formula b{color:var(--blue);}
+.formula .op{color:var(--gray);font-weight:400;margin:0 6px;}
+.grid4{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;}
+.tiers{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:16px;}
+/* tier switch (segmented control) */
+.tier-switch{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:14px;}
+.tier-switch button{
+  font:inherit;font-size:12px;font-weight:700;cursor:pointer;
+  background:rgba(0,0,0,.45);color:#B4BDC8;
+  border:1px solid rgba(37,244,238,.20);border-radius:999px;
+  padding:9px 15px;transition:.2s;letter-spacing:.2px;
+}
+.tier-switch button small{display:block;font-size:10.5px;font-weight:600;opacity:.75;margin-top:2px;letter-spacing:0;}
+.tier-switch button:hover{border-color:var(--blue);color:#fff;}
+.tier-switch button.on{
+  background:linear-gradient(135deg,rgba(37,244,238,.20),rgba(10,141,204,.12));
+  border-color:var(--blue);color:#fff;box-shadow:0 0 0 3px rgba(37,244,238,.10);
+}
+.tier{background:var(--card);border:1px solid var(--card-line);border-radius:16px;padding:18px 18px;text-align:center;}
+.tier .lbl{font-size:11.5px;color:var(--blue);font-weight:800;letter-spacing:1.5px;margin-bottom:8px;}
+.tier .val{font-size:15px;color:#fff;font-weight:700;line-height:1.5;}
+.tier .sub{font-size:11.5px;color:var(--gray);margin-top:7px;line-height:1.6;}
+/* fee lookup */
+.lookup{
+  background:var(--card);border:1px solid rgba(255,255,255,.08);border-radius:18px;
+  padding:20px 22px;margin-top:18px;
+}
+.lookup h4{font-size:15px;color:#fff;margin-bottom:4px;}
+.lookup .hint{font-size:12px;color:var(--gray);margin-bottom:16px;line-height:1.6;}
+.controls{display:flex;gap:12px;flex-wrap:wrap;}
+.controls > *{flex:1 1 200px;}
+select,input[type=text],input[type=number],input[type=search]{
+  font:inherit;font-size:13px;width:100%;
+  background:rgba(0,0,0,.5);color:#fff;
+  border:1px solid rgba(37,244,238,.22);border-radius:10px;padding:11px 13px;
+  outline:none;transition:.2s;
+}
+select option{background:#0B0F16;color:#fff;}
+input::placeholder{color:#67707d;}
+select:focus,input:focus{border-color:var(--blue);box-shadow:0 0 0 3px rgba(37,244,238,.12);}
+.result-meta{font-size:12px;color:var(--gray);margin-top:14px;}
+.result-meta b{color:var(--blue);}
+.empty{font-size:12.5px;color:var(--gray);padding:22px;text-align:center;}
+/* fee lookup scroll box — only 5 rows visible, rest scrolls */
+.fee-scroll{max-height:256px;overflow-y:auto;overflow-x:auto;overscroll-behavior:contain;}
+#feeTable thead th{height:46px;padding-top:0;padding-bottom:0;}
+#feeTable tbody td{height:42px;padding-top:0;padding-bottom:0;white-space:nowrap;}
+#feeTable tbody td.empty{height:auto;padding:22px;white-space:normal;}
+.fee-scroll::-webkit-scrollbar{width:9px;height:9px;}
+.fee-scroll::-webkit-scrollbar-track{background:rgba(255,255,255,.04);border-radius:9px;}
+.fee-scroll::-webkit-scrollbar-thumb{background:rgba(37,244,238,.32);border-radius:9px;}
+.fee-scroll::-webkit-scrollbar-thumb:hover{background:rgba(37,244,238,.55);}
+#feeTable thead th{position:sticky;top:0;z-index:3;background:#0D2226;}
+/* 6 columns must fit without horizontal scrolling */
+#feeTable{table-layout:fixed;min-width:0;}
+#feeTable th,#feeTable td{padding-left:10px;padding-right:10px;}
+#feeTable th:nth-child(1),#feeTable td:nth-child(1){width:23%;}
+#feeTable th:nth-child(2),#feeTable td:nth-child(2){width:24%;}
+#feeTable th:nth-child(3),#feeTable td:nth-child(3),
+#feeTable th:nth-child(4),#feeTable td:nth-child(4),
+#feeTable th:nth-child(5),#feeTable td:nth-child(5){width:13%;text-align:center;}
+#feeTable th:nth-child(3),#feeTable td:nth-child(3),
+#feeTable th:nth-child(4),#feeTable td:nth-child(4){width:12%;}
+#feeTable th:nth-child(6),#feeTable td:nth-child(6){width:16%;text-align:center;}
+#feeTable th:nth-child(n+3){text-align:center;}
+#feeTable tbody td:nth-child(1),#feeTable tbody td:nth-child(2){overflow:hidden;text-overflow:ellipsis;}
+#feeTable thead th{white-space:normal;line-height:1.3;font-size:11px;}
+.scroll-hint{
+  font-size:11.5px;color:var(--blue);opacity:.85;margin-top:9px;
+  display:flex;align-items:center;gap:6px;letter-spacing:.2px;
+}
+.scroll-hint::before{content:"⇕";font-size:13px;}
+/* stats */
+.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;}
+.stat{
+  background:var(--card);border:1px solid rgba(255,255,255,.07);border-radius:16px;
+  padding:20px 14px;text-align:center;transition:.3s;
+}
+.stat:hover{border-color:var(--card-line);transform:translateY(-3px);}
+.stat .num{font-size:26px;font-weight:900;color:var(--blue);line-height:1.2;}
+.stat .num small{font-size:13px;font-weight:700;}
+.stat .cap{font-size:11.5px;color:var(--gray);margin-top:8px;line-height:1.55;}
+/* steps */
+.steps{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;}
+.step{background:var(--card);border:1px solid rgba(255,255,255,.07);border-radius:16px;padding:20px 18px;position:relative;}
+.step.last{border-color:var(--card-line);background:linear-gradient(135deg,rgba(37,244,238,.05),rgba(10,141,204,.03));}
+.step .no{
+  font-size:11px;font-weight:800;letter-spacing:1.5px;color:var(--blue);
+  border:1px solid var(--card-line);border-radius:999px;padding:4px 10px;display:inline-block;margin-bottom:12px;
+}
+.step h4{font-size:14px;color:#fff;margin-bottom:10px;line-height:1.4;}
+.step ul{list-style:none;}
+.step li{font-size:12px;color:var(--txt);line-height:1.7;padding-left:14px;position:relative;}
+.step li::before{content:"";position:absolute;left:0;top:8px;width:4px;height:4px;border-radius:50%;background:var(--blue);}
+.step a{color:var(--blue);word-break:break-all;font-size:11.5px;}
+/* faq */
+.faq-item{
+  background:var(--card);border:1px solid rgba(255,255,255,.07);border-radius:14px;
+  margin-bottom:10px;overflow:hidden;
+}
+.faq-q{
+  width:100%;font:inherit;text-align:left;cursor:pointer;
+  background:transparent;border:none;color:#fff;font-size:13.5px;font-weight:700;
+  padding:16px 46px 16px 18px;position:relative;line-height:1.6;
+}
+.faq-q::after{
+  content:"+";position:absolute;right:18px;top:50%;transform:translateY(-50%);
+  color:var(--blue);font-size:20px;font-weight:400;transition:.25s;
+}
+.faq-item.open .faq-q::after{content:"−";}
+.faq-item.open{border-color:var(--card-line);}
+.faq-a{
+  max-height:0;overflow:hidden;transition:max-height .3s ease;
+  font-size:12.5px;color:var(--txt);line-height:1.85;
+}
+.faq-a > div{padding:0 18px 16px;}
+/* contact */
+.contact-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;}
+.contact-card{
+  background:var(--card);border:1px solid var(--card-line);border-radius:18px;
+  padding:24px 20px;text-align:center;box-shadow:inset 0 0 40px rgba(37,244,238,.04);
+}
+.contact-card .ico{font-size:26px;margin-bottom:12px;}
+.contact-card h4{font-size:14px;color:var(--blue);margin-bottom:10px;letter-spacing:.5px;}
+.contact-card .val{font-size:14px;font-weight:700;color:var(--white);word-break:break-word;line-height:1.5;}
+.contact-card .tip{font-size:11.5px;color:var(--gray);margin-top:9px;line-height:1.6;}
+.tbd{
+  display:inline-block;font-size:11px;font-weight:700;letter-spacing:1px;
+  color:#FFD166;background:rgba(255,209,102,.1);border:1px dashed rgba(255,209,102,.45);
+  border-radius:8px;padding:6px 12px;
+}
+/* lead-gen banner */
+.leadgen{
+  background:linear-gradient(135deg,rgba(37,244,238,.1),rgba(254,44,85,.06));
+  border:1px solid var(--card-line);border-radius:20px;padding:30px 28px;text-align:center;
+}
+.leadgen h3{font-size:21px;font-weight:900;margin-bottom:10px;}
+.leadgen p{font-size:13px;color:var(--txt);line-height:1.8;max-width:620px;margin:0 auto 20px;}
+.leadgen .fields{display:flex;gap:8px;justify-content:center;flex-wrap:wrap;margin-bottom:22px;}
+.leadgen .fields span{
+  font-size:11.5px;color:var(--blue);background:rgba(37,244,238,.08);
+  border:1px solid var(--card-line);border-radius:999px;padding:6px 14px;
+}
+.demo-flag{
+  font-size:11px;color:#FFD166;background:rgba(255,209,102,.08);
+  border:1px dashed rgba(255,209,102,.4);border-radius:10px;
+  padding:9px 14px;margin-top:18px;display:inline-block;line-height:1.6;
+}
+/* modal */
+.overlay{
+  position:fixed;inset:0;background:rgba(0,0,0,.78);backdrop-filter:blur(6px);
+  display:none;align-items:center;justify-content:center;z-index:100;padding:20px;
+}
+.overlay.show{display:flex;}
+.modal{
+  width:460px;max-width:100%;max-height:92vh;overflow-y:auto;
+  background:
+    radial-gradient(500px 260px at 100% 0%, rgba(37,244,238,.12), transparent 60%),
+    #05080D;
+  border:1px solid var(--card-line);border-radius:22px;padding:30px 28px;
+  box-shadow:0 24px 80px rgba(0,0,0,.7);position:relative;
+  animation:pop .28s ease;
+}
+@keyframes pop{from{opacity:0;transform:translateY(14px) scale(.97);}to{opacity:1;transform:none;}}
+.modal .x{
+  position:absolute;top:16px;right:18px;background:transparent;border:none;
+  color:var(--gray);font-size:24px;cursor:pointer;line-height:1;transition:.2s;
+}
+.modal .x:hover{color:var(--white);}
+.modal h3{font-size:20px;font-weight:900;margin-bottom:8px;padding-right:26px;}
+.modal .msub{font-size:12.5px;color:var(--gray);line-height:1.7;margin-bottom:22px;}
+.field{margin-bottom:16px;}
+.field label{display:block;font-size:12.5px;font-weight:700;color:var(--txt);margin-bottom:7px;}
+.field label .req{color:var(--pink);margin-left:3px;}
+.field .fhint{font-size:11px;color:#67707d;margin-top:6px;line-height:1.5;}
+.field .err{font-size:11.5px;color:#FF7A93;margin-top:6px;display:none;}
+.field.bad input{border-color:#FF7A93;box-shadow:0 0 0 3px rgba(255,122,147,.12);}
+.field.bad .err{display:block;}
+.prefix{display:flex;align-items:stretch;gap:0;}
+.prefix .tag{
+  display:flex;align-items:center;padding:0 12px;font-size:13px;color:var(--blue);
+  background:rgba(37,244,238,.08);border:1px solid rgba(37,244,238,.22);border-right:none;
+  border-radius:10px 0 0 10px;white-space:nowrap;
+}
+.prefix input{border-radius:0 10px 10px 0;}
+.modal .btn{width:100%;justify-content:center;margin-top:6px;}
+.privacy{font-size:11px;color:#67707d;line-height:1.7;margin-top:14px;text-align:center;}
+/* embedded Lark form */
+.modal.embed{width:820px;padding:26px 24px 20px;}
+.embed-wrap{
+  position:relative;border-radius:14px;overflow:hidden;background:#F6F5F1;
+  border:1px solid rgba(255,255,255,.14);height:min(66vh,600px);
+}
+.embed-wrap iframe{
+  position:absolute;left:0;top:-52px;width:100%;height:calc(100% + 52px);
+  border:0;display:block;background:#F6F5F1;
+}
+.embed-note{
+  position:absolute;inset:0;display:flex;flex-direction:column;gap:12px;
+  align-items:center;justify-content:center;background:#0B1116;
+  color:var(--gray);font-size:12.5px;text-align:center;padding:26px;line-height:1.8;white-space:pre-line;
+}
+.embed-note.hide{display:none;}
+.embed-foot{display:flex;align-items:center;gap:14px;margin-top:14px;flex-wrap:wrap;}
+.embed-foot .privacy{margin:0;text-align:left;flex:1;min-width:220px;}
+.embed-foot .btn{width:auto;margin-top:0;font-size:12.5px;padding:10px 20px;}
+@media(max-width:760px){
+  .modal.embed{padding:20px 14px 16px;}
+  .embed-wrap{height:70vh;}
+  .embed-foot .btn{width:100%;justify-content:center;}
+}
+/* success */
+.done{text-align:center;padding:12px 0 4px;}
+.done .tick{
+  width:64px;height:64px;border-radius:50%;margin:0 auto 18px;
+  background:rgba(37,244,238,.1);border:1px solid var(--card-line);
+  display:flex;align-items:center;justify-content:center;font-size:30px;color:var(--blue);
+}
+.done h3{font-size:19px;margin-bottom:10px;}
+.done p{font-size:12.5px;color:var(--gray);line-height:1.8;margin-bottom:18px;}
+.recap{
+  text-align:left;background:rgba(0,0,0,.4);border:1px solid rgba(37,244,238,.18);
+  border-radius:12px;padding:14px 16px;margin-bottom:18px;
+}
+.recap div{font-size:12px;color:var(--txt);line-height:1.9;display:flex;justify-content:space-between;gap:12px;}
+.recap div span:first-child{color:var(--gray);}
+.recap div span:last-child{color:#fff;font-weight:700;text-align:right;word-break:break-word;}
+/* footer */
+.footer{
+  text-align:center;padding:26px 24px;font-size:11px;color:#5A6472;
+  letter-spacing:.5px;border-top:1px solid rgba(255,255,255,.05);line-height:1.9;
+}
+.footer a{color:#8792a0;}
+@media(max-width:760px){
+  body{padding:16px 10px 40px;}
+  .grid3,.grid2,.grid4,.svc-grid,.tiers,.stats,.steps,.contact-grid{grid-template-columns:1fr;}
+  .stats,.grid4{grid-template-columns:1fr 1fr;}
+  .title{font-size:31px;}
+  .section{padding:28px 20px;}
+  .header{padding:64px 20px 30px;}
+  .lang{top:16px;right:14px;}
+  .logo{top:18px;left:16px;}
+  .logo img{height:22px;}
+  .nav{padding:12px 14px;}
+  .formula{font-size:14px;}
+}
+</style>
+</head>
+<body>
+<div class="poster">
+
+  <!-- ===== HEADER ===== -->
+  <div class="header">
+    <div class="logo"><img src="data:image/png;base64,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" alt="TikTok Shop"></div>
+    <div class="lang">
+      <button data-lang="id" class="on">ID</button>
+      <button data-lang="en">EN</button>
+    </div>
+    <div class="badge" data-t="badge"></div>
+    <div class="title"><span class="rest">Swift Accelerator Program</span></div>
+    <div class="subtitle" data-t="subtitle"></div>
+    <div class="tagline" data-t="tagline"></div>
+    <div class="lead" data-t="lead"></div>
+    <div class="hero-cta">
+      <button class="btn primary" data-open-form data-t="ctaPrimary"></button>
+      <a class="btn" href="#fee" data-t="ctaSecondary"></a>
+    </div>
+  </div>
+
+  <!-- ===== NAV ===== -->
+  <nav class="nav">
+    <a href="#target" data-t="navTarget"></a>
+    <a href="#service" data-t="navService"></a>
+    <a href="#fee" data-t="navFee"></a>
+    <a href="#growth" data-t="navGrowth"></a>
+    <a href="#join" data-t="navJoin"></a>
+    <a href="#faq" data-t="navFaq"></a>
+    <a href="#contact" data-t="navContact"></a>
+    <a href="#register" data-t="navRegister"></a>
+  </nav>
+
+  <!-- ===== 1. TARGET SELLER ===== -->
+  <section class="section" id="target">
+    <div class="sec-head"><div class="bar"></div><h2 data-t="s1Title"></h2></div>
+    <div class="sec-sub" data-t="s1Sub"></div>
+    <div class="grid3" id="profileCards"></div>
+    <div class="tbl-wrap">
+      <table class="dt">
+        <thead><tr><th data-t="s1ThCriteria"></th><th data-t="s1ThDetail"></th></tr></thead>
+        <tbody id="eligibilityBody"></tbody>
+      </table>
+    </div>
+    <div class="callout" data-t="s1Callout"></div>
+  </section>
+
+  <!-- ===== 2. SERVICE ===== -->
+  <section class="section" id="service">
+    <div class="sec-head"><div class="bar"></div><h2 data-t="s2Title"></h2></div>
+    <div class="sec-sub" data-t="s2Sub"></div>
+    <div class="roles">
+      <div class="role merchant">
+        <h3 data-t="s2SellerTitle"></h3>
+        <div class="desc" data-t="s2SellerDesc"></div>
+        <div class="chips" id="sellerChips"></div>
+      </div>
+      <div class="role platform">
+        <h3 data-t="s2SapTitle"></h3>
+        <div class="svc-grid" id="svcGrid"></div>
+      </div>
+    </div>
+    <div class="sec-sub" style="margin:26px 0 0 0;font-weight:700;color:var(--blue);" data-t="s2ResTitle"></div>
+    <div class="tbl-wrap">
+      <table class="dt">
+        <thead><tr>
+          <th data-t="s2ThDomain"></th><th data-t="s2ThResource"></th>
+          <th data-t="s2ThMechanism"></th><th data-t="s2ThLead"></th>
+        </tr></thead>
+        <tbody id="resourceBody"></tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- ===== 3. FEE ===== -->
+  <section class="section" id="fee">
+    <div class="sec-head"><div class="bar"></div><h2 data-t="s3Title"></h2></div>
+    <div class="sec-sub" data-t="s3Sub"></div>
+    <div class="formula">
+      <span data-t="s3FTotal"></span><span class="op">=</span><b data-t="s3FAds"></b><span class="op">+</span><b data-t="s3FAff"></b><span class="op">+</span><b data-t="s3FBundle"></b>
+    </div>
+    <div class="grid4" style="margin-top:16px;" id="feeComponents"></div>
+    <div class="callout" data-t="s3NoUpfront"></div>
+    <div class="sec-sub" style="margin:26px 0 0 0;font-weight:700;color:var(--blue);" data-t="s3TierTitle"></div>
+    <div class="tiers" id="tierCards"></div>
+    <div class="lookup">
+      <h4 data-t="s3LookupTitle"></h4>
+      <div class="hint" data-t="s3LookupHint"></div>
+      <div class="tier-switch" id="tierSwitch"></div>
+      <div class="controls">
+        <select id="catSelect"></select>
+        <input type="search" id="catSearch" data-tp="s3SearchPh">
+      </div>
+      <div class="tbl-wrap fee-scroll" id="feeScroll" style="margin-top:16px;">
+        <table class="dt" id="feeTable">
+          <thead><tr>
+            <th data-t="s3ThL1"></th><th data-t="s3ThL2"></th>
+            <th data-t="s3ThAds" style="text-align:center;"></th>
+            <th data-t="s3ThAff" style="text-align:center;"></th>
+            <th data-t="s3ThBundle" style="text-align:center;"></th>
+            <th data-t="s3ThOneFee" style="text-align:center;"></th>
+          </tr></thead>
+          <tbody id="feeBody"></tbody>
+        </table>
+      </div>
+      <div class="scroll-hint" data-t="s3ScrollHint"></div>
+      <div class="result-meta" id="feeMeta"></div>
+    </div>
+    <div class="note" id="feeNotes"></div>
+  </section>
+
+  <!-- ===== 4. GROWTH ===== -->
+  <section class="section" id="growth">
+    <div class="sec-head"><div class="bar"></div><h2 data-t="s4Title"></h2></div>
+    <div class="sec-sub" data-t="s4Sub"></div>
+    <div class="stats" id="statCards"></div>
+    <div class="sec-sub" style="margin:26px 0 0 0;font-weight:700;color:var(--blue);" data-t="s4StratTitle"></div>
+    <div class="sec-sub" data-t="s4StratSub" style="margin-left:0;"></div>
+    <div class="tbl-wrap" style="margin-top:0;">
+      <table class="dt">
+        <thead><tr>
+          <th data-t="s4ThSeg"></th><th data-t="s4ThVoucher"></th><th data-t="s4ThAds"></th>
+          <th data-t="s4ThCreator"></th><th data-t="s4ThOther"></th>
+        </tr></thead>
+        <tbody id="stratBody"></tbody>
+      </table>
+    </div>
+    <div class="callout" data-t="s4Callout"></div>
+  </section>
+
+  <!-- ===== 5. HOW TO JOIN ===== -->
+  <section class="section" id="join">
+    <div class="sec-head"><div class="bar"></div><h2 data-t="s5Title"></h2></div>
+    <div class="sec-sub" data-t="s5Sub"></div>
+    <div class="steps" id="stepCards"></div>
+  </section>
+
+  <!-- ===== 6. FAQ ===== -->
+  <section class="section" id="faq">
+    <div class="sec-head"><div class="bar"></div><h2 data-t="s6Title"></h2></div>
+    <div class="sec-sub" data-t="s6Sub"></div>
+    <div id="faqList"></div>
+  </section>
+
+  <!-- ===== 7. CONTACT ===== -->
+  <section class="section" id="contact">
+    <div class="sec-head"><div class="bar"></div><h2 data-t="s7Title"></h2></div>
+    <div class="sec-sub" data-t="s7Sub"></div>
+    <div class="contact-grid" id="contactCards"></div>
+  </section>
+
+  <!-- ===== 8. LEAD GEN ===== -->
+  <section class="section" id="register">
+    <div class="sec-head"><div class="bar"></div><h2 data-t="s8Title"></h2></div>
+    <div class="sec-sub" data-t="s8Sub"></div>
+    <div class="leadgen">
+      <h3 data-t="s8CardTitle"></h3>
+      <p data-t="s8CardDesc"></p>
+      <div class="fields">
+        <span data-t="fShop"></span><span data-t="fGmv"></span><span data-t="fWa"></span>
+      </div>
+      <button class="btn primary" data-open-form data-t="s8Btn"></button>
+      <div><span class="demo-flag" data-t="s8Demo"></span></div>
+    </div>
+  </section>
+
+  <div class="footer">
+    <div data-t="footer1"></div>
+    <div data-t="footer2"></div>
+  </div>
+</div>
+
+<!-- ===== LEAD FORM MODAL — embedded Lark (Bitable) form ===== -->
+<div class="overlay" id="overlay">
+  <div class="modal embed" role="dialog" aria-modal="true">
+    <button class="x" id="closeModal" aria-label="Close">&times;</button>
+    <h3 data-t="mTitle"></h3>
+    <div class="msub" data-t="mSub"></div>
+    <div class="embed-wrap">
+      <iframe id="formFrame" title="SAP registration form" src="about:blank"
+              allow="clipboard-write" referrerpolicy="no-referrer-when-downgrade"></iframe>
+      <div class="embed-note" id="embedNote">
+        <span data-t="mLoading"></span>
+        <a class="btn" id="embedFallback" target="_blank" rel="noopener" data-t="mNewTab"></a>
+      </div>
+    </div>
+    <div class="embed-foot">
+      <span class="privacy" data-t="mPrivacy"></span>
+      <a class="btn" id="openFormTab" target="_blank" rel="noopener" data-t="mNewTab"></a>
+    </div>
+  </div>
+</div>
+
+<script>
+/* ============================================================
+   Konten dwibahasa / Bilingual content
+   Sumber / Source:
+   - ID Semi - Swift Accelerator Program (SAP) One Pager
+   - ID半托管介绍 内部运营逻辑 2026.6
+   - Swift Accelerator Program (SAP) 2026 Service Fee (External)
+   ============================================================ */
+var REG_URL = "https://seller-id.tokopedia.com/promotion/program/bundle-group/detail/7579489542516770568?itemId=7553187996700182288&channel=OutReach&track_id=bcc5c8d112d8180af33dea9b6ea87f83";
+
+var I18N = {
+  id: {
+    /* header */
+    badge: "PROGRAM 2026 · TIKTOK SHOP BY TOKOPEDIA",
+    subtitle: "LAYANAN PENJUALAN TERKELOLA",
+    tagline: "“Done For You” — Kami yang Jalankan, Toko Tetap Milik Anda",
+    lead: "<b>Swift Accelerator Program (SAP)</b> adalah layanan penjualan terkelola menyeluruh yang disediakan langsung oleh TikTok Shop by Tokopedia. Tim profesional berisi <b>50+ ahli</b> membantu seller UKM tumbuh lebih cepat melalui strategi penjualan berbasis data, pengelolaan afiliasi, iklan, dan aktivitas promosi — seluruhnya kami operasikan untuk Anda.",
+    ctaPrimary: "📝 Daftar Minat Sekarang",
+    ctaSecondary: "Lihat Struktur Biaya",
+    /* nav */
+    navTarget: "Target Seller",
+    navService: "Layanan Kami",
+    navFee: "Struktur Biaya",
+    navGrowth: "Mesin Pertumbuhan",
+    navJoin: "Cara Bergabung",
+    navFaq: "FAQ",
+    navContact: "Kontak",
+    navRegister: "Daftar Minat",
+    /* 1. target */
+    s1Title: "🎯 Untuk Siapa Program Ini?",
+    s1Sub: "SAP dirancang khusus untuk seller UKM yang menghadapi tantangan dalam mengoptimalkan performa penjualan di TikTok Shop by Tokopedia.",
+    s1ThCriteria: "Kriteria",
+    s1ThDetail: "Ketentuan",
+    s1Callout: "<b>Kepemilikan toko tetap 100% milik Anda.</b> SAP berperan sebagai penyedia layanan penjualan — seller menyerahkan aktivitas penjualan &amp; promosi kepada SAP, tanpa kehilangan kendali atas toko.",
+    profiles: [
+      { ico: "🏭", h: "Punya Kapabilitas Supply Chain", p: "Seller pabrik, rantai pasok yang stabil, dan harga yang kompetitif." },
+      { ico: "🧩", h: "Belum Punya Kapabilitas Operasional TTS", p: "Keterbatasan tim atau belum menemukan know-how yang efektif untuk beroperasi di TikTok Shop." },
+      { ico: "📈", h: "Margin yang Memadai", p: "Margin cukup untuk mendukung biaya layanan pertumbuhan terkelola." }
+    ],
+    eligibility: [
+      ["Seller Tier", "T0 – T4 (definisi baru)"],
+      ["Shop Experience Score (SES)", "SES ≥ 3,5 atau belum memiliki nilai (Null)"],
+      ["Jumlah Produk", "Minimal 1 Product ID"],
+      ["Kategori", "Kategori terbatas dikecualikan (produk virtual, emas/perak, dll.)"]
+    ],
+    /* 2. service */
+    s2Title: "⚙️ Pembagian Peran &amp; Layanan Kami",
+    s2Sub: "Anda fokus pada produk dan pemenuhan pesanan. Kami fokus pada penjualan dan promosi.",
+    s2SellerTitle: "🧾 Seller cukup fokus pada",
+    s2SellerDesc: "Pengelolaan toko dan pemenuhan pesanan — kapabilitas yang sudah Anda miliki.",
+    sellerChips: ["✓ Penetapan Harga Produk", "✓ Informasi Produk", "✓ Layanan Logistik", "✓ Layanan Pelanggan"],
+    s2SapTitle: "🚀 SAP yang mengerjakan",
+    svc: [
+      { h: "📢 Layanan Iklan (Ads Service)", li: [
+        "Dengan otorisasi ROI1/ROI2 dari seller, kami membuat dan mengelola penempatan iklan untuk toko Anda",
+        "Rata-rata Ads TR seller SAP ~6,1%"
+      ]},
+      { h: "👥 Pencocokan Afiliasi (Affiliate Matching)", li: [
+        "Mendorong pertumbuhan video pendek &amp; LIVE afiliasi melalui Mass Reach, Creator Task, dan pencocokan 1-on-1",
+        "Kontribusi GMV afiliasi ~60% dari total"
+      ]},
+      { h: "🎬 Konten AIGC", li: [
+        "Video pendek diproduksi dengan tools internal seperti Lumen &amp; DBMP",
+        "Produksi saat ini ~800 video/hari dengan GPM ~3,0"
+      ]},
+      { h: "🎁 Subsidi &amp; Operasi Campaign", li: [
+        "Subsidi, pendaftaran campaign, dan operasi kanal Shopping Center",
+        "Dari ~280 ribu produk yang dikelola, ~9,5% berhasil terinkubasi dengan skor 5+ — di atas seller top pada tier yang sama"
+      ]}
+    ],
+    s2ResTitle: "▸ Sumber Daya Pertumbuhan yang Kami Kerahkan",
+    s2ThDomain: "Domain",
+    s2ThResource: "Sumber Daya",
+    s2ThMechanism: "Mekanisme &amp; Manfaat",
+    s2ThLead: "Lead Time",
+    resources: [
+      ["TTS Overall", "Voucher Subsidy", "Voucher produk yang dikonfigurasi SAP untuk meningkatkan daya saing harga dan konversi pembelian", "T+2"],
+      ["TTS Overall", "Ads Investment", "GMax, VSA/PSA/LSA Ads untuk mendorong pertumbuhan traffic di seluruh kanal TTS", "T+2"],
+      ["TTS Overall", "Campaign Registration", "Pendaftaran Double Date, Pay Day, dan campaign tematik platform untuk subsidi dan exposure", "Bulanan"],
+      ["Content", "Creator Match-making", "Pitching kreator dan pengelolaan fulfillment untuk traffic serta GMV afiliasi", "T+2 pitching; fulfillment 1–3 minggu"],
+      ["Content", "Affiliate Resources", "Push notification dan notifikasi resmi WhatsApp ke kreator; exposure di Creator App", "T+2"],
+      ["Content", "AIGC Video", "Video yang diproduksi SAP (Lumen &amp; DBMP), diunggah melalui akun kreator yang dikelola SAP — ~800 video/hari, GPM ~3,0", "T+2"],
+      ["ShopTab", "Traffic Boost Quota", "Kuota boost PV internal untuk mendorong traffic di ShopTab Search &amp; Recommendation", "T+2"],
+      ["ShopTab", "Flash Sale Channel", "Pendaftaran ShopTab Flash Sale untuk tambahan traffic dan pertumbuhan GMV", "T+2"]
+    ],
+    /* 3. fee */
+    s3Title: "📋 Struktur Biaya",
+    s3Sub: "Biaya SAP dirangkum menjadi satu angka: <b>“One Fee” Marketing Budget</b> — persentase berjenjang per kategori level 2 dan seller tier, yang terdiri dari tiga komponen transparan di bawah ini.",
+    s3FTotal: "“One Fee” Marketing Budget",
+    s3FAds: "Ads TR",
+    s3FAff: "Affiliate Commission TR",
+    s3FBundle: "Bundle Fee To Config",
+    feeComponents: [
+      { ico: "①", h: "Ads TR", p: "Porsi take rate yang dialokasikan untuk <b>iklan &amp; akuisisi trafik</b>, dieksekusi langsung oleh tim SAP TikTok Shop." },
+      { ico: "②", h: "Affiliate Commission TR", p: "Porsi take rate untuk <b>komisi afiliasi / kreator</b>, ditentukan berdasarkan kategori produk level 2." },
+      { ico: "③", h: "Bundle Fee To Config", p: "Porsi take rate yang dikonfigurasi untuk <b>paket program promosi</b> (Bonus Cashback, Voucher Xtra/XBP, Mega Diskon, subsidi campaign)." },
+      { ico: "=", h: "“One Fee” Marketing Budget", p: "<b>Total anggaran pemasaran</b> = Ads TR + Affiliate Commission TR + Bundle Fee To Config. Satu angka inilah yang menjadi acuan biaya Anda." }
+    ],
+    s3NoUpfront: "<b>Tanpa pembayaran di muka (no upfront payment).</b> Biaya dipotong otomatis dari pendapatan pada setiap transaksi yang berhasil. Penyelesaian dilakukan sistem dan dana langsung masuk ke <b>Shop Wallet</b> Anda.",
+    s3TierTitle: "▸ Tiga Jenjang Rate (berdasarkan Seller Tier)",
+    tiers: [
+      { lbl: "BASIC", val: "Seller Tier<br>T1 – T3", sub: "Jenjang awal untuk seller yang baru mulai tumbuh" },
+      { lbl: "TIER 1", val: "Seller Tier<br>T4 – T5", sub: "Rate menyesuaikan skala toko yang sedang berkembang" },
+      { lbl: "TIER 2", val: "Seller Tier<br>T6 – T9", sub: "Jenjang untuk toko berskala besar" }
+    ],
+    s3LookupTitle: "🔍 Cek Rate Kategori Anda",
+    s3LookupHint: "Pilih jenjang seller tier, lalu pilih kategori level 1 atau ketik nama kategori untuk melihat keempat indikator rate.",
+    tierOpts: [
+      { k: "B", n: "Basic", s: "Seller Tier T1 – T3" },
+      { k: "1", n: "Tier 1", s: "Seller Tier T4 – T5" },
+      { k: "2", n: "Tier 2", s: "Seller Tier T6 – T9" }
+    ],
+    s3SearchPh: "Cari kategori… mis. Skincare",
+    s3ThL1: "Kategori 1",
+    s3ThL2: "Kategori 2",
+    s3ThAds: "Ads TR",
+    s3ThAff: "Affiliate Comm. TR",
+    s3ThBundle: "Bundle Fee To Config",
+    s3ThOneFee: "“One Fee” Budget",
+    s3AllCat: "Semua kategori",
+    s3ScrollHint: "Tabel menampilkan 5 baris — gulir ke bawah di dalam tabel untuk melihat kategori lainnya.",
+    feeMetaTpl: "Menampilkan <b>{n}</b> kategori level 2 pada jenjang <b>{tier}</b>. “One Fee” Marketing Budget = Ads TR + Affiliate Commission TR + Bundle Fee To Config.",
+    feeEmpty: "Kategori tidak ditemukan. Coba kata kunci lain.",
+    feeNotesTitle: "Catatan penting",
+    feeNotes: [
+      "Semua angka adalah <b>take rate (TR)</b> dalam persen, dipotong otomatis dari pendapatan per transaksi berhasil.",
+      "<b>“One Fee” Marketing Budget</b> selalu sama dengan penjumlahan Ads TR + Affiliate Commission TR + Bundle Fee To Config pada kategori dan jenjang yang sama.",
+      "Kategori toko untuk menentukan rate dilihat dari <b>produk terbanyak yang dijual</b> di toko (kategori level 2).",
+      "<b>Seller tier</b> (T1–T9) ditetapkan oleh tim SAP berdasarkan skala toko Anda; tim kami akan mengonfirmasi jenjang Anda saat onboarding.",
+      "Rate mengacu pada dokumen kerja resmi program dan dapat diperbarui oleh platform."
+    ],
+    /* 4. growth */
+    s4Title: "🚀 Mesin Pertumbuhan &amp; Hasil",
+    s4Sub: "SAP menerapkan strategi pertumbuhan berbasis assortment — alokasi sumber daya disesuaikan dengan tahap siklus hidup setiap produk.",
+    stats: [
+      { num: "~60<small>%</small>", cap: "Kontribusi GMV afiliasi" },
+      { num: "~6,1<small>%</small>", cap: "Rata-rata Ads TR seller SAP" },
+      { num: "~800<small>/hari</small>", cap: "Video AIGC diproduksi" },
+      { num: "~3,0", cap: "GPM video AIGC" },
+      { num: "4.900<small>+</small>", cap: "Seller dalam pengelolaan (per Juni 2026)" },
+      { num: "1.164", cap: "Seller berhasil naik tier (kumulatif)" },
+      { num: "~9,5<small>%</small>", cap: "Produk terinkubasi skor 5+ dari ~280rb produk" },
+      { num: "50<small>+</small>", cap: "Tim ahli yang mengoperasikan toko Anda" }
+    ],
+    s4StratTitle: "▸ Alokasi Sumber Daya per Segmen Produk",
+    s4StratSub: "Produk Anda otomatis masuk ke dalam alokasi sumber daya pertumbuhan sesuai kriteria segmentasi di bawah.",
+    s4ThSeg: "Segmen Produk",
+    s4ThVoucher: "Subsidi",
+    s4ThAds: "Iklan",
+    s4ThCreator: "Pencocokan Kreator",
+    s4ThOther: "Sumber Daya Lain",
+    strat: [
+      ["New / Break-0 / Break-5<br><span style='color:#9AA4B2'>(L30D Order 0–5)</span>", "Voucher persentase tinggi", "GMAX", "Belum tersedia", "Affiliate resources, Traffic boost"],
+      ["Potential Product<br><span style='color:#9AA4B2'>(L30D Order ≥ 10 atau GMV ≥ $50)</span>", "Voucher persentase menengah", "GMAX, VSA, LSA (berjenjang sesuai kualitas seller)", "Mass atau 1-on-1 (berjenjang)", "Sumber daya penuh: AIGC, Campaign, Flash Sale, Traffic boost"],
+      ["Hero Product<br><span style='color:#9AA4B2'>(L30D GMV ≥ $1.500)</span>", "Desain voucher berbasis daya saing harga", "GMAX, VSA, LSA (berjenjang sesuai kualitas seller)", "Pencocokan 1-on-1", "Sumber daya penuh: seluruh kanal diaktifkan"]
+    ],
+    s4Callout: "<b>Layanan pasca-onboarding:</b> cold start algoritma 0 → 5 pesanan · strategi subsidi sesuai tahap siklus hidup produk · penempatan iklan via GMV Max · operasi video pendek &amp; LIVE untuk produk potensial dan best-seller · optimasi daya saing harga &amp; produk dan pengelolaan stok.",
+    /* 5. join */
+    s5Title: "🧭 Cara Bergabung",
+    s5Sub: "Tiga langkah pendaftaran, proses validasi dan persetujuan sekitar 3–5 hari kerja.",
+    steps: [
+      { no: "STEP 1", h: "Pendaftaran SAP", li: ["Seller Center → Pemasaran (Marketing) → Program → Swift Accelerator Program (SAP) → Daftar"], link: REG_URL, linkText: "Buka halaman pendaftaran ↗" },
+      { no: "STEP 2", h: "Otorisasi Iklan", li: ["2.1 Otorisasi SAP sebagai advertising partner", "2.2 Otorisasi GMV Max", "*Step 1 harus selesai sebelum Step 2"] },
+      { no: "STEP 3", h: "Persetujuan", li: ["Tim SAP melakukan validasi dan persetujuan (sekitar 3–5 hari kerja)"] },
+      { no: "SETELAH ONBOARD", h: "Layanan Berjalan", li: ["Cold start algoritma: 0 → 5 pesanan", "Strategi subsidi per tahap siklus hidup produk", "Penempatan iklan via GMV Max", "Operasi video pendek &amp; LIVE", "Optimasi harga, produk, dan stok"], last: true }
+    ],
+    /* 6. faq */
+    s6Title: "❓ Pertanyaan yang Sering Diajukan",
+    s6Sub: "Delapan pertanyaan yang paling sering ditanyakan seller sebelum bergabung.",
+    faq: [
+      ["Apakah SAP menjamin penjualan?", "Tidak. SAP tidak menjamin penjualan, namun tim kami terdiri dari profesional TikTok Shop yang berpengalaman mengoptimalkan performa toko dan meningkatkan efisiensi penjualan."],
+      ["Apakah biaya layanan bisa dinegosiasikan?", "Tidak. Biaya layanan bersifat tetap dan tidak dapat dinegosiasikan."],
+      ["Apakah seller bisa memasukkan hanya sebagian produk?", "SAP beroperasi pada <b>level toko</b> — semua produk yang terdaftar mengikuti mekanisme biaya SAP. Seller dapat menyesuaikan harga untuk produk yang marginnya tidak mendukung biaya tersebut."],
+      ["Siapa yang menentukan harga jual?", "Harga jual sepenuhnya ditentukan oleh seller."],
+      ["Setelah bergabung, apakah seller masih bisa mengelola iklan, campaign, atau afiliasi?", "Setelah terdaftar, hal-hal tersebut dioptimalkan oleh SAP berdasarkan data industri dan best practice. Seller tidak disarankan mengubah pengaturan agar tidak menimbulkan masalah yang tidak diinginkan."],
+      ["Apakah seller bisa keluar dari program?", "Ya. Seller dapat keluar kapan saja melalui Seller Center, dengan masa tunggu sekitar <b>14 hari kerja</b>."],
+      ["Bagaimana agar produk saya mendapat lebih banyak sumber daya dari SAP?", "Produk otomatis masuk ke dalam alokasi sumber daya pertumbuhan berdasarkan kriteria segmentasi. Harga yang menarik akan meningkatkan peluang konversi."],
+      ["Bagaimana menyiapkan stok mengingat pertumbuhan kreator afiliasi yang kuat?", "Untuk produk dengan risiko <i>out-of-stock</i>, tim Account Operations akan menghubungi Anda melalui WhatsApp dan panggilan telepon untuk membahas penambahan stok."]
+    ],
+    /* 7. contact */
+    s7Title: "📨 Hubungi Kami",
+    s7Sub: "Detail kontak sedang difinalisasi oleh tim. Sementara itu, silakan tinggalkan data Anda melalui formulir Daftar Minat di bawah.",
+    contacts: [
+      { ico: "✉️", h: "Email Konsultasi", tbd: "TBD — menunggu konfirmasi", tip: "Akan diperbarui setelah alamat email resmi difinalisasi" },
+      { ico: "💬", h: "WhatsApp Business", tbd: "TBD — menunggu konfirmasi", tip: "Akan diperbarui setelah nomor resmi difinalisasi" },
+      { ico: "👥", h: "Komunitas Seller", tbd: "TBD — menunggu konfirmasi", tip: "Tautan/QR grup komunitas akan ditambahkan" }
+    ],
+    /* 8. lead gen */
+    s8Title: "📝 Daftar Minat",
+    s8Sub: "Tinggalkan data toko Anda — tim kami akan menghubungi Anda melalui WhatsApp untuk konsultasi gratis.",
+    s8CardTitle: "Siap mempercepat pertumbuhan toko Anda?",
+    s8CardDesc: "Isi tiga informasi singkat pada formulir resmi kami. Tim Account Operations SAP akan menghubungi Anda melalui WhatsApp untuk menjelaskan rate kategori Anda, ekspektasi pertumbuhan, dan langkah onboarding.",
+    s8Btn: "📝 Isi Formulir Daftar Minat",
+    s8Demo: "🔒 Formulir dikelola langsung oleh tim SAP TikTok Shop. Data Anda hanya digunakan untuk proses konsultasi dan onboarding SAP.",
+    /* form */
+    mTitle: "Formulir Daftar Minat",
+    mSub: "Tiga informasi saja: nama toko, kontak WhatsApp, dan ukuran toko. Tim kami akan menghubungi Anda setelah formulir dikirim.",
+    mLoading: "Memuat formulir pendaftaran…\nJika formulir tidak muncul, buka di tab baru.",
+    mNewTab: "Buka formulir di tab baru ↗",
+    fShop: "Nama Toko",
+    fShopPh: "mis. Toko Maju Jaya",
+    fShopHint: "Nama toko Anda di TikTok Shop by Tokopedia",
+    eShop: "Nama toko wajib diisi (minimal 2 karakter).",
+    fGmv: "Ukuran Toko (GMV harian 30 hari terakhir)",
+    fGmvPh: "mis. 20000",
+    fGmvHint: "Rata-rata omset bulanan di platform e-commerce, dalam USD ($)",
+    eGmv: "Masukkan angka omset yang valid (lebih besar dari 0).",
+    fWa: "Nomor WhatsApp / Telepon",
+    fWaPh: "81234567890",
+    fWaHint: "Tanpa angka 0 di depan — mis. 81234567890",
+    eWa: "Masukkan nomor WhatsApp yang valid (8–13 digit).",
+    mSubmit: "Kirim Data Saya",
+    mPrivacy: "Dengan mengirim formulir ini, Anda setuju tim SAP menghubungi Anda terkait Swift Accelerator Program. Formulir ini dikelola melalui sistem resmi TikTok Shop.",
+    dTitle: "Terima kasih! Data Anda sudah kami terima.",
+    dDesc: "Tim Account Operations SAP akan menghubungi Anda melalui WhatsApp dalam 3–5 hari kerja.",
+    dAgain: "Kirim data toko lain",
+    rShop: "Nama Toko",
+    rGmv: "Omset Bulanan",
+    rWa: "WhatsApp",
+    rTime: "Waktu Kirim",
+    /* footer */
+    footer1: "Swift Accelerator Program (SAP) · TikTok Shop by Tokopedia · Materi Rekrutmen Seller 2026",
+    footer2: "* Rate biaya mengacu pada dokumen resmi SAP 2026 Service Fee. Hak interpretasi akhir program ini dimiliki oleh platform."
+  },
+
+  en: {
+    badge: "2026 PROGRAM · TIKTOK SHOP BY TOKOPEDIA",
+    subtitle: "ALL-IN-ONE MANAGED SALES SERVICE",
+    tagline: "“Done For You” — We Run the Growth, You Keep Full Store Ownership",
+    lead: "<b>Swift Accelerator Program (SAP)</b> is an all-in-one managed sales service provided directly by TikTok Shop by Tokopedia. A professional team of <b>50+ experts</b> helps SME sellers grow their stores faster through data-driven sales strategy, affiliate management, advertising and promotional activities — all operated for you.",
+    ctaPrimary: "📝 Register Your Interest",
+    ctaSecondary: "See Fee Structure",
+    navTarget: "Target Sellers",
+    navService: "Our Services",
+    navFee: "Fee Structure",
+    navGrowth: "Growth Engine",
+    navJoin: "How to Join",
+    navFaq: "FAQ",
+    navContact: "Contact",
+    navRegister: "Register",
+    s1Title: "🎯 Who Is SAP For?",
+    s1Sub: "SAP is designed for SME sellers who face challenges in optimising their sales performance on TikTok Shop by Tokopedia.",
+    s1ThCriteria: "Criteria",
+    s1ThDetail: "Details",
+    s1Callout: "<b>You keep 100% ownership of your store.</b> SAP acts as your sales service provider — you entrust sales &amp; promotion to SAP while retaining full control of the store.",
+    profiles: [
+      { ico: "🏭", h: "Supply Chain Capability", p: "Factory sellers, stable supply chain and competitive pricing." },
+      { ico: "🧩", h: "Lacks TTS Operation Capability", p: "Limited manpower or no effective know-how yet for operating on TikTok Shop." },
+      { ico: "📈", h: "Sufficient Margin", p: "Enough margin to support managed growth service fees." }
+    ],
+    eligibility: [
+      ["Seller Tier", "T0 – T4 (new definition)"],
+      ["Shop Experience Score (SES)", "SES ≥ 3.5 or not yet scored (Null)"],
+      ["Product Requirement", "At least 1 Product ID"],
+      ["Category Restrictions", "Restricted categories excluded (virtual products, gold/silver, etc.)"]
+    ],
+    s2Title: "⚙️ Role Split &amp; What We Deliver",
+    s2Sub: "You focus on products and fulfilment. We focus on sales and promotion.",
+    s2SellerTitle: "🧾 Sellers only handle",
+    s2SellerDesc: "Store management and fulfilment — the capabilities you already have.",
+    sellerChips: ["✓ Product Pricing", "✓ Product Information", "✓ Logistics Services", "✓ Customer Service"],
+    s2SapTitle: "🚀 SAP handles everything else",
+    svc: [
+      { h: "📢 Ads Service", li: [
+        "With ROI1/ROI2 authorisation from sellers, we create and manage ad placements for your store",
+        "Average Ads TR for SAP sellers ~6.1%"
+      ]},
+      { h: "👥 Affiliate Matching", li: [
+        "Drive affiliate short-video &amp; LIVE growth through Mass Reach, Creator Tasks and 1-on-1 matching",
+        "Affiliate GMV accounts for ~60% of total"
+      ]},
+      { h: "🎬 Self-generated AIGC Content", li: [
+        "Short-form video produced with in-house tools such as Lumen &amp; DBMP",
+        "Current output ~800 videos/day with GPM ~3.0"
+      ]},
+      { h: "🎁 Subsidy &amp; Campaign Operations", li: [
+        "Subsidies, campaign sign-ups and Shopping Center channel operations",
+        "Of ~280k products under management, ~9.5% reached incubation with a score of 5+, outperforming top sellers in the same market tier"
+      ]}
+    ],
+    s2ResTitle: "▸ Growth Resources We Deploy",
+    s2ThDomain: "Domain",
+    s2ThResource: "Resource",
+    s2ThMechanism: "Mechanism &amp; Benefits",
+    s2ThLead: "Lead Time",
+    resources: [
+      ["TTS Overall", "Voucher Subsidy", "Product vouchers configured by SAP to improve price competitiveness and purchase conversion", "T+2"],
+      ["TTS Overall", "Ads Investment", "GMax, VSA/PSA/LSA Ads to drive traffic growth across all TTS channels", "T+2"],
+      ["TTS Overall", "Campaign Registration", "Registration for platform Double Date, Pay Day and thematic campaigns for subsidies and exposure", "Monthly"],
+      ["Content", "Creator Match-making", "Creator pitching and fulfilment management for affiliate traffic and GMV", "T+2 pitching; 1–3 weeks fulfilment"],
+      ["Content", "Affiliate Resources", "Push notifications and WhatsApp official notifications to creators; exposure resources on Creator App", "T+2"],
+      ["Content", "AIGC Video", "Videos generated by SAP (via Lumen &amp; DBMP), posted on SAP-maintained creator accounts — ~800 videos/day, GPM ~3.0", "T+2"],
+      ["ShopTab", "Traffic Boost Quota", "Internal PV boost quota to drive traffic in ShopTab Search and Recommendation", "T+2"],
+      ["ShopTab", "Flash Sale Channel", "Registration for ShopTab Flash Sale for extra traffic and GMV growth", "T+2"]
+    ],
+    s3Title: "📋 Fee Structure",
+    s3Sub: "SAP costs are consolidated into a single number: the <b>“One Fee” Marketing Budget</b> — a tiered percentage by L2 category and seller tier, made up of the three transparent components below.",
+    s3FTotal: "“One Fee” Marketing Budget",
+    s3FAds: "Ads TR",
+    s3FAff: "Affiliate Commission TR",
+    s3FBundle: "Bundle Fee To Config",
+    feeComponents: [
+      { ico: "①", h: "Ads TR", p: "The take-rate portion allocated to <b>advertising &amp; traffic acquisition</b>, executed directly by the TikTok Shop SAP team." },
+      { ico: "②", h: "Affiliate Commission TR", p: "The take-rate portion for <b>affiliate / creator commission</b>, set by L2 product category." },
+      { ico: "③", h: "Bundle Fee To Config", p: "The take-rate portion configured for the <b>bundled promotion programs</b> (Bonus Cashback, Voucher Xtra/XBP, Mega Discount, campaign subsidies)." },
+      { ico: "=", h: "“One Fee” Marketing Budget", p: "<b>Total marketing budget</b> = Ads TR + Affiliate Commission TR + Bundle Fee To Config. This single number is your cost reference." }
+    ],
+    s3NoUpfront: "<b>No upfront payment required.</b> Fees are automatically deducted from revenue per successful transaction. Settlement is system-driven and funds land directly in your <b>Shop Wallet</b>.",
+    s3TierTitle: "▸ Three Rate Tiers (based on Seller Tier)",
+    tiers: [
+      { lbl: "BASIC", val: "Seller Tier<br>T1 – T3", sub: "Entry tier for sellers starting to scale" },
+      { lbl: "TIER 1", val: "Seller Tier<br>T4 – T5", sub: "Rates aligned to a growing store scale" },
+      { lbl: "TIER 2", val: "Seller Tier<br>T6 – T9", sub: "Tier for large-scale stores" }
+    ],
+    s3LookupTitle: "🔍 Check Your Category Rate",
+    s3LookupHint: "Pick a seller tier, then select an L1 category or type a category name to see all four rate indicators.",
+    tierOpts: [
+      { k: "B", n: "Basic", s: "Seller Tier T1 – T3" },
+      { k: "1", n: "Tier 1", s: "Seller Tier T4 – T5" },
+      { k: "2", n: "Tier 2", s: "Seller Tier T6 – T9" }
+    ],
+    s3SearchPh: "Search category… e.g. Skincare",
+    s3ThL1: "1st Category",
+    s3ThL2: "2nd Category",
+    s3ThAds: "Ads TR",
+    s3ThAff: "Affiliate Comm. TR",
+    s3ThBundle: "Bundle Fee To Config",
+    s3ThOneFee: "“One Fee” Budget",
+    s3AllCat: "All categories",
+    s3ScrollHint: "Showing 5 rows — scroll inside the table to see more categories.",
+    feeMetaTpl: "Showing <b>{n}</b> L2 categories at the <b>{tier}</b> tier. “One Fee” Marketing Budget = Ads TR + Affiliate Commission TR + Bundle Fee To Config.",
+    feeEmpty: "No category found. Try another keyword.",
+    feeNotesTitle: "Important notes",
+    feeNotes: [
+      "All figures are <b>take rates (TR)</b> in percent, automatically deducted from revenue per successful transaction.",
+      "The <b>“One Fee” Marketing Budget</b> always equals Ads TR + Affiliate Commission TR + Bundle Fee To Config for the same category and tier.",
+      "The store category used to determine the rate is based on the <b>product category with the most products sold</b> in the store (L2 category).",
+      "Your <b>seller tier</b> (T1–T9) is assigned by the SAP team based on your store scale; our team confirms your tier during onboarding.",
+      "Rates follow the program's official working document and may be updated by the platform."
+    ],
+    s4Title: "🚀 Growth Engine &amp; Results",
+    s4Sub: "SAP runs an assortment-centric growth strategy — resources are allocated according to each product's lifecycle stage.",
+    stats: [
+      { num: "~60<small>%</small>", cap: "Affiliate share of GMV" },
+      { num: "~6.1<small>%</small>", cap: "Average Ads TR for SAP sellers" },
+      { num: "~800<small>/day</small>", cap: "AIGC videos produced" },
+      { num: "~3.0", cap: "AIGC video GPM" },
+      { num: "4,900<small>+</small>", cap: "Sellers under management (as of Jun 2026)" },
+      { num: "1,164", cap: "Sellers that moved up a tier (cumulative)" },
+      { num: "~9.5<small>%</small>", cap: "Products incubated at score 5+ out of ~280k" },
+      { num: "50<small>+</small>", cap: "Experts operating your store" }
+    ],
+    s4StratTitle: "▸ Resource Allocation by Product Segment",
+    s4StratSub: "Your products are automatically included in growth resource allocation based on the segmentation criteria below.",
+    s4ThSeg: "Product Segment",
+    s4ThVoucher: "Subsidy",
+    s4ThAds: "Ads",
+    s4ThCreator: "Creator Match-making",
+    s4ThOther: "Other Resources",
+    strat: [
+      ["New / Break-0 / Break-5<br><span style='color:#9AA4B2'>(L30D Order 0–5)</span>", "High % voucher", "GMAX", "Not available", "Affiliate resources, Traffic boost"],
+      ["Potential Product<br><span style='color:#9AA4B2'>(L30D Order ≥ 10 or GMV ≥ $50)</span>", "Mid % voucher", "GMAX, VSA, LSA (tiered by seller quality)", "Mass or 1-on-1 (tiered)", "Full resources: AIGC, Campaign, Flash Sale, Traffic boost"],
+      ["Hero Product<br><span style='color:#9AA4B2'>(L30D GMV ≥ $1,500)</span>", "Price competitiveness driven voucher design", "GMAX, VSA, LSA (tiered by seller quality)", "1-on-1 match-making", "Full resources: all channels activated"]
+    ],
+    s4Callout: "<b>Post-onboarding service:</b> algorithm cold start 0 → 5 orders · subsidy strategies by product lifecycle stage · ad placement via GMV Max · short-video &amp; LIVE operations for potential and best-selling products · price &amp; product competitiveness optimisation and stock management.",
+    s5Title: "🧭 How to Join",
+    s5Sub: "Three registration steps; validation and approval take approximately 3–5 working days.",
+    steps: [
+      { no: "STEP 1", h: "SAP Registration", li: ["Seller Center → Marketing (Pemasaran) → Program → Swift Accelerator Program (SAP) → Register"], link: REG_URL, linkText: "Open registration page ↗" },
+      { no: "STEP 2", h: "Ads Authorization", li: ["2.1 Authorize SAP as advertising partner", "2.2 Authorize GMV Max", "*Step 1 must be completed before Step 2"] },
+      { no: "STEP 3", h: "Approval", li: ["The SAP team conducts validation and approval (approximately 3–5 working days)"] },
+      { no: "POST-ONBOARDING", h: "Service Kicks In", li: ["Algorithm cold start: 0 → 5 orders", "Subsidy strategies by product lifecycle stage", "Ad placement via GMV Max", "Short-video &amp; LIVE operations", "Price, product and stock optimisation"], last: true }
+    ],
+    s6Title: "❓ Frequently Asked Questions",
+    s6Sub: "The eight questions sellers ask most often before joining.",
+    faq: [
+      ["Does SAP guarantee sales?", "No. SAP does not guarantee sales, but the team consists of TikTok Shop professionals with expertise in optimising store performance and improving selling efficiency."],
+      ["Can the service fee be negotiated?", "No. The service fee is fixed and not negotiable."],
+      ["Can sellers include only selected products?", "SAP operates at the <b>shop level</b> — all listed products follow the SAP fee mechanism. Sellers may adjust pricing for products where margins cannot support the fee."],
+      ["Who determines the selling price?", "Selling prices are fully determined by the seller."],
+      ["After joining, can sellers still manage ads, campaigns or affiliates?", "Once enrolled, these are optimised by SAP based on industry data and best practices. Sellers are not advised to modify settings to avoid unintended issues."],
+      ["Can sellers leave the program?", "Yes. Sellers may exit at any time through Seller Center, with an approximate waiting period of <b>14 working days</b>."],
+      ["How can my products get more resources from SAP?", "Products are automatically included in growth resource allocation based on segmentation criteria. Assigning attractive pricing increases the likelihood of conversion."],
+      ["How should I prepare inventory given strong affiliate creator growth?", "For products at <i>out-of-stock</i> risk, the Account Operations team will reach out via WhatsApp and phone call to discuss stock replenishment."]
+    ],
+    s7Title: "📨 Contact Us",
+    s7Sub: "Contact details are being finalised by the team. In the meantime, please leave your details via the Register Your Interest form below.",
+    contacts: [
+      { ico: "✉️", h: "Enquiry Email", tbd: "TBD — pending confirmation", tip: "Will be updated once the official email address is finalised" },
+      { ico: "💬", h: "WhatsApp Business", tbd: "TBD — pending confirmation", tip: "Will be updated once the official number is finalised" },
+      { ico: "👥", h: "Seller Community", tbd: "TBD — pending confirmation", tip: "Community group link / QR code to be added" }
+    ],
+    s8Title: "📝 Register Your Interest",
+    s8Sub: "Leave your store details — our team will reach out on WhatsApp for a free consultation.",
+    s8CardTitle: "Ready to accelerate your store's growth?",
+    s8CardDesc: "Fill in three short details in our official form. The SAP Account Operations team will contact you on WhatsApp to walk through your category rate, growth expectations and onboarding steps.",
+    s8Btn: "📝 Open the Interest Form",
+    s8Demo: "🔒 The form is operated directly by the TikTok Shop SAP team. Your details are used only for SAP consultation and onboarding.",
+    mTitle: "Register Your Interest",
+    mSub: "Just three details: shop name, WhatsApp contact and store size. Our team will reach out once the form is submitted.",
+    mLoading: "Loading the registration form…\nIf it does not appear, open it in a new tab.",
+    mNewTab: "Open the form in a new tab ↗",
+    fShop: "Shop Name",
+    fShopPh: "e.g. Toko Maju Jaya",
+    fShopHint: "Your store name on TikTok Shop by Tokopedia",
+    eShop: "Shop name is required (at least 2 characters).",
+    fGmv: "Store Size (last 30 days daily GMV)",
+    fGmvPh: "e.g. 20000",
+    fGmvHint: "Average monthly revenue on e-commerce platforms, in USD ($)",
+    eGmv: "Please enter a valid revenue figure (greater than 0).",
+    fWa: "WhatsApp / Phone Number",
+    fWaPh: "81234567890",
+    fWaHint: "Without the leading 0 — e.g. 81234567890",
+    eWa: "Please enter a valid WhatsApp number (8–13 digits).",
+    mSubmit: "Submit My Details",
+    mPrivacy: "By submitting this form you agree that the SAP team may contact you regarding the Swift Accelerator Program. The form runs on TikTok Shop's official system.",
+    dTitle: "Thank you! We have received your details.",
+    dDesc: "The SAP Account Operations team will contact you on WhatsApp within 3–5 working days.",
+    dAgain: "Submit another store",
+    rShop: "Shop Name",
+    rGmv: "Monthly Revenue",
+    rWa: "WhatsApp",
+    rTime: "Submitted At",
+    footer1: "Swift Accelerator Program (SAP) · TikTok Shop by Tokopedia · 2026 Seller Recruitment Material",
+    footer2: "* Fee rates follow the official SAP 2026 Service Fee document. Final interpretation of this program rests with the platform."
+  }
+};
+
+var FEE_DATA = [{"l1":"Automotive & Motorcycle","l2":"Motorcycle Parts","id":"809616","r":{"B":[3.0,2.25,5.25,10.5],"1":[3.25,2.25,5.5,11.0],"2":[3.75,2.5,5.5,11.75]}},{"l1":"Automotive & Motorcycle","l2":"Auto Replacement Parts","id":"809488","r":{"B":[3.0,2.0,5.75,10.75],"1":[4.75,2.0,6.0,12.75],"2":[4.75,2.0,6.0,12.75]}},{"l1":"Automotive & Motorcycle","l2":"Car Exterior Accessories","id":"930056","r":{"B":[4.75,2.5,5.25,12.5],"1":[4.75,2.5,5.25,12.5],"2":[4.75,3.0,5.25,13.0]}},{"l1":"Automotive & Motorcycle","l2":"Car Repair Tools","id":"940296","r":{"B":[8.0,2.75,7.0,17.75],"1":[8.75,2.75,7.0,18.5],"2":[8.75,2.75,7.0,18.5]}},{"l1":"Automotive & Motorcycle","l2":"Motorcycle Accessories","id":"940936","r":{"B":[3.25,2.5,6.25,12.0],"1":[4.25,2.5,6.25,13.0],"2":[7.0,3.0,6.5,16.5]}},{"l1":"Automotive & Motorcycle","l2":"Car Interior Accessories","id":"930184","r":{"B":[10.0,3.75,6.75,20.5],"1":[12.75,3.75,6.75,23.25],"2":[12.75,4.75,6.75,24.25]}},{"l1":"Automotive & Motorcycle","l2":"Car Lights","id":"940424","r":{"B":[6.75,3.75,5.75,16.25],"1":[6.75,4.25,5.75,16.75],"2":[6.75,5.0,5.75,17.5]}},{"l1":"Automotive & Motorcycle","l2":"Car Washing & Maintenance","id":"940808","r":{"B":[10.25,4.0,6.5,20.75],"1":[12.0,4.5,6.75,23.25],"2":[18.75,4.75,7.0,30.5]}},{"l1":"Automotive & Motorcycle","l2":"Car Electronics","id":"929928","r":{"B":[5.75,2.75,5.5,14.0],"1":[6.75,3.0,5.5,15.25],"2":[8.25,3.0,5.75,17.0]}},{"l1":"Automotive & Motorcycle","l2":"Motorcycles","id":"847504","r":{"B":[3.0,1.5,5.0,9.5],"1":[3.25,1.5,5.0,9.75],"2":[3.75,1.5,5.0,10.25]}},{"l1":"Automotive & Motorcycle","l2":"Car","id":"2315664","r":{"B":[3.0,0.5,4.75,8.25],"1":[3.25,0.5,4.75,8.5],"2":[3.75,0.5,4.75,9.0]}},{"l1":"Automotive & Motorcycle","l2":"Quads, Motorhomes & Boats","id":"940680","r":{"B":[3.0,0.5,4.75,8.25],"1":[3.25,0.5,4.75,8.5],"2":[3.75,0.5,4.75,9.0]}},{"l1":"Baby & Maternity","l2":"Baby Fashion Accessories","id":"961928","r":{"B":[3.0,3.25,5.75,12.0],"1":[3.0,3.25,5.75,12.0],"2":[3.0,3.25,5.75,12.0]}},{"l1":"Baby & Maternity","l2":"Nursing & Feeding","id":"877832","r":{"B":[5.25,2.75,7.75,15.75],"1":[10.5,3.75,8.0,22.25],"2":[10.5,3.75,8.0,22.25]}},{"l1":"Baby & Maternity","l2":"Baby Travel Gear","id":"877576","r":{"B":[7.75,3.5,7.5,18.75],"1":[7.75,4.0,7.5,19.25],"2":[7.75,4.0,7.5,19.25]}},{"l1":"Baby & Maternity","l2":"Baby Safety","id":"878600","r":{"B":[7.5,4.25,8.0,19.75],"1":[7.5,4.5,8.0,20.0],"2":[7.5,4.5,8.0,20.0]}},{"l1":"Baby & Maternity","l2":"Baby Clothing & Shoes","id":"877320","r":{"B":[4.25,3.75,7.25,15.25],"1":[4.25,3.75,7.5,15.5],"2":[6.0,5.0,7.75,18.75]}},{"l1":"Baby & Maternity","l2":"Formula Milk & Baby Food","id":"879496","r":{"B":[4.0,2.0,6.5,12.5],"1":[6.0,2.5,6.5,15.0],"2":[6.0,2.5,6.5,15.0]}},{"l1":"Baby & Maternity","l2":"Baby Furniture","id":"878216","r":{"B":[4.75,3.5,7.75,16.0],"1":[4.75,3.5,8.0,16.25],"2":[6.25,3.5,8.0,17.75]}},{"l1":"Baby & Maternity","l2":"Maternity Supplies","id":"880008","r":{"B":[9.25,4.25,6.25,19.75],"1":[9.5,4.25,6.25,20.0],"2":[15.0,4.75,6.75,26.5]}},{"l1":"Baby & Maternity","l2":"Baby Toys","id":"878984","r":{"B":[6.0,4.0,8.25,18.25],"1":[7.75,4.5,8.5,20.75],"2":[7.75,4.5,8.5,20.75]}},{"l1":"Baby & Maternity","l2":"Baby Care & Health","id":"879112","r":{"B":[8.5,3.0,8.0,19.5],"1":[12.25,3.75,8.0,24.0],"2":[12.25,3.75,8.0,24.0]}},{"l1":"Baby & Maternity","l2":"Baby Products","id":"602287","r":{"B":[6.25,0.5,5.5,12.25],"1":[7.5,0.75,5.5,13.75],"2":[8.25,0.75,5.5,14.5]}},{"l1":"Baby & Maternity","l2":"Children's Wear/Baby's Wear/Parent-child Wear","id":"602339","r":{"B":[6.25,0.5,5.5,12.25],"1":[7.5,0.75,5.5,13.75],"2":[8.25,0.75,5.5,14.5]}},{"l1":"Baby & Maternity","l2":"Maternity Care Products","id":"602341","r":{"B":[6.25,0.5,5.5,12.25],"1":[7.5,0.75,5.5,13.75],"2":[8.25,0.75,5.5,14.5]}},{"l1":"Beauty & Personal Care","l2":"Hand & Foot Care","id":"849032","r":{"B":[8.75,4.5,5.75,19.0],"1":[8.75,5.25,6.0,20.0],"2":[9.5,5.25,6.0,20.75]}},{"l1":"Beauty & Personal Care","l2":"Fragrance","id":"856208","r":{"B":[8.0,3.75,7.25,19.0],"1":[12.0,4.25,7.25,23.5],"2":[12.0,4.25,7.25,23.5]}},{"l1":"Beauty & Personal Care","l2":"Haircare & Styling","id":"848904","r":{"B":[14.75,4.0,7.0,25.75],"1":[14.75,4.0,7.0,25.75],"2":[21.25,4.0,7.0,32.25]}},{"l1":"Beauty & Personal Care","l2":"Bath & Body Care","id":"849160","r":{"B":[11.5,4.75,7.5,23.75],"1":[13.75,5.25,7.5,26.5],"2":[16.5,5.25,7.5,29.25]}},{"l1":"Beauty & Personal Care","l2":"Makeup","id":"848648","r":{"B":[10.75,4.0,7.25,22.0],"1":[13.0,4.25,7.25,24.5],"2":[16.5,4.25,7.25,28.0]}},{"l1":"Beauty & Personal Care","l2":"Skincare","id":"848776","r":{"B":[10.75,3.75,5.75,20.25],"1":[14.0,4.5,5.75,24.25],"2":[18.0,4.5,5.75,28.25]}},{"l1":"Beauty & Personal Care","l2":"Nasal & Oral Care","id":"849672","r":{"B":[18.0,3.75,5.75,27.5],"1":[20.0,4.25,6.0,30.25],"2":[22.0,4.25,6.0,32.25]}},{"l1":"Beauty & Personal Care","l2":"Personal Care Appliances","id":"849416","r":{"B":[12.0,4.0,5.75,21.75],"1":[14.0,4.0,6.0,24.0],"2":[14.0,4.0,6.0,24.0]}},{"l1":"Beauty & Personal Care","l2":"Feminine Care","id":"849800","r":{"B":[17.0,4.75,5.75,27.5],"1":[22.0,4.75,6.0,32.75],"2":[22.0,5.25,6.0,33.25]}},{"l1":"Beauty & Personal Care","l2":"Eye & Ear Care","id":"849544","r":{"B":[14.5,4.5,6.0,25.0],"1":[18.75,5.0,6.25,30.0],"2":[20.75,5.0,6.25,32.0]}},{"l1":"Beauty & Personal Care","l2":"Men's Care","id":"849288","r":{"B":[12.0,4.5,5.5,22.0],"1":[12.0,4.5,5.5,22.0],"2":[16.5,4.5,5.5,26.5]}},{"l1":"Beauty & Personal Care","l2":"Special Personal Care","id":"981128","r":{"B":[15.5,2.0,5.0,22.5],"1":[15.0,2.0,5.0,22.0],"2":[15.0,2.25,5.0,22.25]}},{"l1":"Beauty & Personal Care","l2":"Nail Care","id":"1086856","r":{"B":[8.0,5.0,7.5,20.5],"1":[10.25,5.0,7.75,23.0],"2":[11.25,5.5,7.75,24.5]}},{"l1":"Beauty & Personal Care","l2":"Personal Care","id":"601451","r":{"B":[10.75,0.75,4.25,15.75],"1":[14.0,0.75,4.25,19.0],"2":[18.0,0.75,4.25,23.0]}},{"l1":"Bookings & Vouchers","l2":"Physical Voucher","id":"888720","r":{"B":[3.0,3.0,3.0,9.0],"1":[3.25,3.25,3.0,9.5],"2":[3.5,3.5,3.0,10.0]}},{"l1":"Bookings & Vouchers","l2":"Automotive","id":"2315920","r":{"B":[6.6,0.75,3.0,10.35],"1":[8.0,1.0,3.0,12.0],"2":[9.75,1.0,3.0,13.75]}},{"l1":"Books, Magazines & Audio","l2":"Children's & Infants' Books","id":"989704","r":{"B":[13.75,5.25,6.5,25.5],"1":[18.0,7.0,6.5,31.5],"2":[20.0,8.0,6.5,34.5]}},{"l1":"Books, Magazines & Audio","l2":"Literature & Art","id":"986760","r":{"B":[6.0,3.25,4.5,13.75],"1":[6.0,3.25,4.5,13.75],"2":[6.0,3.25,4.5,13.75]}},{"l1":"Books, Magazines & Audio","l2":"Humanities & Social Sciences","id":"927112","r":{"B":[14.0,5.0,6.5,25.5],"1":[23.0,6.25,6.5,35.75],"2":[23.0,6.75,6.5,36.25]}},{"l1":"Books, Magazines & Audio","l2":"Economics & Management","id":"989320","r":{"B":[20.0,7.0,4.5,31.5],"1":[21.0,7.75,4.5,33.25],"2":[21.0,7.75,4.5,33.25]}},{"l1":"Books, Magazines & Audio","l2":"Lifestyle & Hobbies","id":"992392","r":{"B":[8.25,4.25,4.5,17.0],"1":[10.0,5.5,4.75,20.25],"2":[15.0,5.5,4.75,25.25]}},{"l1":"Books, Magazines & Audio","l2":"Magazines & Newspapers","id":"985736","r":{"B":[3.0,2.5,4.5,10.0],"1":[5.0,3.75,4.5,13.25],"2":[8.0,3.75,4.5,16.25]}},{"l1":"Books, Magazines & Audio","l2":"Education & Schooling","id":"992904","r":{"B":[7.25,4.25,4.75,16.25],"1":[9.25,6.0,4.75,20.0],"2":[23.25,7.25,5.25,35.75]}},{"l1":"Books, Magazines & Audio","l2":"Science & Technology","id":"990216","r":{"B":[3.75,4.25,4.75,12.75],"1":[7.0,4.25,4.75,16.0],"2":[7.0,5.5,4.75,17.25]}},{"l1":"Books, Magazines & Audio","l2":"Video & Music","id":"997384","r":{"B":[6.6,0.75,4.5,11.85],"1":[8.0,1.0,4.5,13.5],"2":[9.75,1.0,4.5,15.25]}},{"l1":"Collectibles","l2":"Sports Collectibles","id":"937736","r":{"B":[4.5,4.75,5.0,14.25],"1":[10.0,5.5,5.5,21.0],"2":[10.0,7.25,5.5,22.75]}},{"l1":"Collectibles","l2":"Entertainment","id":"953352","r":{"B":[3.0,1.5,4.75,9.25],"1":[4.0,1.75,5.0,10.75],"2":[4.0,2.0,5.0,11.0]}},{"l1":"Collectibles","l2":"Trading Cards & Accessories","id":"810000","r":{"B":[4.75,1.5,4.75,11.0],"1":[4.75,2.75,5.0,12.5],"2":[4.75,2.75,5.0,12.5]}},{"l1":"Collectibles","l2":"Collectible Coins & Money","id":"952712","r":{"B":[3.0,2.25,4.5,9.75],"1":[3.0,2.25,4.5,9.75],"2":[3.0,2.25,4.5,9.75]}},{"l1":"Collectibles","l2":"Cultural Items","id":"809872","r":{"B":[3.0,1.75,4.75,9.5],"1":[3.0,2.5,4.75,10.25],"2":[3.0,2.5,4.75,10.25]}},{"l1":"Computers & Office Equipment","l2":"Desktop & Laptop Components","id":"825352","r":{"B":[10.0,2.75,4.75,17.5],"1":[3.5,3.25,4.5,11.25],"2":[3.5,3.25,4.5,11.25]}},{"l1":"Computers & Office Equipment","l2":"Desktop Computers, Laptops & Tablets","id":"824840","r":{"B":[6.5,1.0,3.75,11.25],"1":[3.5,1.0,3.75,8.25],"2":[3.5,1.0,3.75,8.25]}},{"l1":"Computers & Office Equipment","l2":"Office Stationery & Supplies","id":"831112","r":{"B":[4.25,3.25,4.5,12.0],"1":[5.0,3.25,4.5,12.75],"2":[5.25,3.25,4.5,13.0]}},{"l1":"Computers & Office Equipment","l2":"Network Components","id":"829192","r":{"B":[10.0,2.25,4.0,16.25],"1":[10.0,2.25,4.0,16.25],"2":[10.0,2.25,4.0,16.25]}},{"l1":"Computers & Office Equipment","l2":"Office Equipment","id":"830344","r":{"B":[11.0,1.0,3.75,15.75],"1":[3.0,1.0,3.75,7.75],"2":[3.0,1.5,3.75,8.25]}},{"l1":"Computers & Office Equipment","l2":"Data Storage & Software","id":"828168","r":{"B":[10.0,2.75,4.25,17.0],"1":[6.0,2.75,4.0,12.75],"2":[5.0,3.0,4.0,12.0]}},{"l1":"Computers & Office Equipment","l2":"Computer Accessories","id":"826760","r":{"B":[11.75,3.25,4.25,19.25],"1":[11.75,4.0,4.25,20.0],"2":[8.0,4.25,4.25,16.5]}},{"l1":"Fashion Accessories","l2":"Fashion Watches & Accessories","id":"905480","r":{"B":[7.25,3.25,5.5,16.0],"1":[7.75,3.25,5.75,16.75],"2":[7.75,3.5,5.75,17.0]}},{"l1":"Fashion Accessories","l2":"Costume Jewelry & Accessories","id":"905608","r":{"B":[8.0,3.5,5.5,17.0],"1":[10.5,3.75,5.75,20.0],"2":[13.25,4.75,6.0,24.0]}},{"l1":"Fashion Accessories","l2":"Hair Accessories","id":"905864","r":{"B":[4.5,3.0,5.25,12.75],"1":[8.5,3.5,5.5,17.5],"2":[8.5,3.5,5.5,17.5]}},{"l1":"Fashion Accessories","l2":"Eyewear","id":"905352","r":{"B":[11.25,5.75,5.5,22.5],"1":[11.25,5.75,5.5,22.5],"2":[11.25,5.75,5.5,22.5]}},{"l1":"Fashion Accessories","l2":"Hair Extensions & Wigs","id":"810128","r":{"B":[3.5,3.25,5.0,11.75],"1":[9.75,3.75,5.5,19.0],"2":[9.75,3.75,5.5,19.0]}},{"l1":"Fashion Accessories","l2":"Clothes Accessories","id":"905224","r":{"B":[4.75,3.75,5.25,13.75],"1":[5.5,4.25,5.25,15.0],"2":[6.0,4.75,5.25,16.0]}},{"l1":"Fashion Accessories","l2":"Dressmaking Fabrics","id":"843144","r":{"B":[3.5,2.5,5.5,11.5],"1":[4.25,2.5,5.5,12.25],"2":[4.25,2.5,5.5,12.25]}},{"l1":"Fashion Accessories","l2":"Wedding Accessories","id":"888592","r":{"B":[3.0,2.25,5.0,10.25],"1":[3.0,2.25,5.0,10.25],"2":[3.0,2.25,5.0,10.25]}},{"l1":"Fashion Accessories","l2":"Precious Metal & Gemstones","id":"905736","r":{"B":[3.0,0.75,4.75,8.5],"1":[3.0,0.75,4.75,8.5],"2":[3.0,0.75,4.75,8.5]}},{"l1":"Food & Beverages","l2":"Milk & Dairy","id":"809744","r":{"B":[10.0,3.0,6.0,19.0],"1":[14.75,3.75,6.25,24.75],"2":[14.75,3.75,6.25,24.75]}},{"l1":"Food & Beverages","l2":"Snacks","id":"915336","r":{"B":[7.0,3.5,7.25,17.75],"1":[9.75,3.75,7.5,21.0],"2":[11.0,4.0,7.5,22.5]}},{"l1":"Food & Beverages","l2":"Staples & Cooking Essentials","id":"915080","r":{"B":[7.25,5.5,6.75,19.5],"1":[9.0,5.5,6.75,21.25],"2":[9.0,5.5,6.75,21.25]}},{"l1":"Food & Beverages","l2":"Pantry Food","id":"914952","r":{"B":[8.0,3.5,7.5,19.0],"1":[9.0,3.5,7.75,20.25],"2":[9.5,3.5,7.75,20.75]}},{"l1":"Food & Beverages","l2":"Fresh & Frozen Food","id":"915464","r":{"B":[5.0,3.75,6.75,15.5],"1":[11.5,3.75,6.75,22.0],"2":[11.5,4.0,6.75,22.25]}},{"l1":"Food & Beverages","l2":"Drinks","id":"914824","r":{"B":[11.25,5.5,6.75,23.5],"1":[13.5,5.5,6.75,25.75],"2":[13.5,5.5,6.75,25.75]}},{"l1":"Food & Beverages","l2":"Baking","id":"915208","r":{"B":[4.0,2.5,5.5,12.0],"1":[4.75,3.25,5.75,13.75],"2":[4.75,3.25,5.75,13.75]}},{"l1":"Food & Beverages","l2":"Snack Nuts","id":"700551","r":{"B":[7.0,3.25,4.75,15.0],"1":[9.75,3.5,4.75,18.0],"2":[11.0,3.5,4.75,19.25]}},{"l1":"Food & Beverages","l2":"Condiments and Sauces","id":"700493","r":{"B":[7.25,1.0,4.75,13.0],"1":[9.0,1.0,4.75,14.75],"2":[9.0,1.0,4.75,14.75]}},{"l1":"Furniture","l2":"Indoor Furniture","id":"871048","r":{"B":[5.25,3.25,5.75,14.25],"1":[6.75,3.5,5.75,16.0],"2":[9.5,3.5,5.75,18.75]}},{"l1":"Furniture","l2":"Outdoor Furniture","id":"871176","r":{"B":[5.75,3.5,5.5,14.75],"1":[5.75,4.0,5.5,15.25],"2":[5.75,4.0,5.5,15.25]}},{"l1":"Furniture","l2":"Commercial Furniture","id":"871432","r":{"B":[15.0,2.5,5.75,23.25],"1":[19.75,3.0,6.0,28.75],"2":[19.75,3.0,6.0,28.75]}},{"l1":"Furniture","l2":"Children's Furniture","id":"871304","r":{"B":[3.0,3.25,7.25,13.5],"1":[4.5,3.25,7.5,15.25],"2":[4.5,4.25,7.5,16.25]}},{"l1":"Furniture","l2":"Home Furniture","id":"604454","r":{"B":[3.0,4.0,5.5,12.5],"1":[3.25,4.25,5.5,13.0],"2":[3.5,4.25,5.5,13.25]}},{"l1":"Health","l2":"Nutrition & Wellness","id":"700646","r":{"B":[13.75,5.25,7.5,26.5],"1":[16.75,5.25,7.5,29.5],"2":[23.0,5.25,7.5,35.75]}},{"l1":"Health","l2":"Alternative Medications & Treatments","id":"950792","r":{"B":[14.0,5.0,6.5,25.5],"1":[20.0,5.75,6.75,32.5],"2":[20.0,5.75,6.75,32.5]}},{"l1":"Health","l2":"OTC Medications & Treatments","id":"949384","r":{"B":[7.75,0.5,5.5,13.75],"1":[7.75,0.5,5.5,13.75],"2":[7.75,0.75,5.5,14.0]}},{"l1":"Health","l2":"Medical Supplies","id":"924424","r":{"B":[7.75,2.75,7.5,18.0],"1":[7.75,2.75,7.5,18.0],"2":[7.75,3.0,7.5,18.25]}},{"l1":"Health","l2":"Prescription Medication","id":"2315408","r":{"B":[7.75,0.5,5.5,13.75],"1":[7.75,0.5,5.5,13.75],"2":[7.75,0.75,5.5,14.0]}},{"l1":"Health","l2":"Vaporizer","id":"2315536","r":{"B":[7.75,0.5,5.5,13.75],"1":[7.75,0.5,5.5,13.75],"2":[7.75,0.75,5.5,14.0]}},{"l1":"Health","l2":"Sexual Wellness","id":"924552","r":{"B":[10.0,0.5,5.5,16.0],"1":[10.0,0.5,5.5,16.0],"2":[10.0,0.75,5.5,16.25]}},{"l1":"Home Improvement","l2":"Electrical Equipment & Supplies","id":"872584","r":{"B":[6.25,2.75,5.5,14.5],"1":[6.25,3.0,5.5,14.75],"2":[6.25,3.0,5.5,14.75]}},{"l1":"Home Improvement","l2":"Kitchen Fixtures","id":"872712","r":{"B":[14.0,3.75,5.0,22.75],"1":[14.0,4.5,5.0,23.5],"2":[14.0,4.5,5.0,23.5]}},{"l1":"Home Improvement","l2":"Garden Supplies","id":"873352","r":{"B":[13.25,4.0,5.0,22.25],"1":[14.0,4.25,5.0,23.25],"2":[17.25,5.5,5.25,28.0]}},{"l1":"Home Improvement","l2":"Bathroom Fixtures","id":"873096","r":{"B":[13.0,3.5,4.75,21.25],"1":[15.25,3.5,4.75,23.5],"2":[15.25,3.5,4.75,23.5]}},{"l1":"Home Improvement","l2":"Lights & Lighting","id":"872456","r":{"B":[8.0,4.0,6.0,18.0],"1":[8.0,4.5,6.25,18.75],"2":[8.0,4.75,6.25,19.0]}},{"l1":"Home Improvement","l2":"Building Supplies","id":"872968","r":{"B":[7.25,3.75,5.75,16.75],"1":[7.25,4.25,6.0,17.5],"2":[11.0,4.75,6.25,22.0]}},{"l1":"Home Improvement","l2":"Smart Home Systems","id":"872840","r":{"B":[6.75,2.75,5.0,14.5],"1":[6.75,3.75,5.0,15.5],"2":[6.75,3.75,5.0,15.5]}},{"l1":"Home Improvement","l2":"Solar & Wind Power","id":"808208","r":{"B":[6.0,1.5,4.5,12.0],"1":[6.0,1.75,4.5,12.25],"2":[6.0,1.75,4.5,12.25]}},{"l1":"Home Improvement","l2":"Security & Safety","id":"873224","r":{"B":[6.5,2.25,4.5,13.25],"1":[6.5,3.0,4.75,14.25],"2":[6.5,3.0,4.75,14.25]}},{"l1":"Home Supplies","l2":"Laundry Tools & Accessories","id":"852360","r":{"B":[3.75,1.0,5.5,10.25],"1":[6.0,1.25,5.5,12.75],"2":[6.0,1.25,5.5,12.75]}},{"l1":"Home Supplies","l2":"Bathroom Supplies","id":"851976","r":{"B":[8.25,3.25,5.0,16.5],"1":[8.25,4.0,5.25,17.5],"2":[8.25,4.75,5.25,18.25]}},{"l1":"Home Supplies","l2":"Festive & Party Supplies","id":"852488","r":{"B":[16.0,2.0,4.75,22.75],"1":[10.0,2.0,4.5,16.5],"2":[6.0,3.75,4.5,14.25]}},{"l1":"Home Supplies","l2":"Home Organizers","id":"851848","r":{"B":[7.5,4.0,6.0,17.5],"1":[9.0,4.0,6.25,19.25],"2":[9.0,4.5,6.25,19.75]}},{"l1":"Home Supplies","l2":"Home Care Supplies","id":"852232","r":{"B":[19.0,3.75,5.5,28.25],"1":[21.5,3.75,5.75,31.0],"2":[23.75,3.75,5.75,33.25]}},{"l1":"Home Supplies","l2":"Miscellaneous Home","id":"852616","r":{"B":[8.5,4.25,6.0,18.75],"1":[8.5,4.25,6.0,18.75],"2":[8.5,4.25,6.0,18.75]}},{"l1":"Home Supplies","l2":"Home Decor","id":"852104","r":{"B":[6.5,4.0,4.75,15.25],"1":[6.75,4.0,5.0,15.75],"2":[11.0,4.25,5.25,20.5]}},{"l1":"Home Supplies","l2":"Storage and Daily Care","id":"600593","r":{"B":[8.5,0.75,3.75,13.0],"1":[8.5,0.75,3.75,13.0],"2":[8.5,0.75,3.75,13.0]}},{"l1":"Home Supplies","l2":"Everyday Household Supplies","id":"600486","r":{"B":[8.5,3.5,3.75,15.75],"1":[8.5,3.75,3.75,16.0],"2":[8.5,3.75,3.75,16.0]}},{"l1":"Household Appliances","l2":"Large Home Appliances","id":"845064","r":{"B":[3.75,2.75,4.75,11.25],"1":[3.75,2.75,5.0,11.5],"2":[4.0,2.75,5.0,11.75]}},{"l1":"Household Appliances","l2":"Kitchen Appliances","id":"844168","r":{"B":[6.0,3.25,6.75,16.0],"1":[6.0,3.5,6.75,16.25],"2":[6.0,3.5,6.75,16.25]}},{"l1":"Household Appliances","l2":"Home Appliances","id":"844808","r":{"B":[9.5,3.5,7.25,20.25],"1":[9.5,4.0,7.5,21.0],"2":[9.5,4.0,7.5,21.0]}},{"l1":"Household Appliances","l2":"Commercial Appliances","id":"845320","r":{"B":[3.0,3.0,5.25,11.25],"1":[3.0,3.75,5.5,12.25],"2":[3.0,4.5,5.5,13.0]}},{"l1":"Jewelry Accessories & Derivatives","l2":"Silver","id":"955144","r":{"B":[3.0,2.75,4.0,9.75],"1":[3.0,2.75,4.0,9.75],"2":[3.0,2.75,4.0,9.75]}},{"l1":"Jewelry Accessories & Derivatives","l2":"Pearl","id":"964488","r":{"B":[3.0,1.25,3.0,7.25],"1":[3.0,1.25,3.0,7.25],"2":[3.0,1.25,3.0,7.25]}},{"l1":"Jewelry Accessories & Derivatives","l2":"Platinum, Carat Gold","id":"954888","r":{"B":[3.0,0.5,3.0,6.5],"1":[3.0,0.5,3.0,6.5],"2":[3.0,0.5,3.0,6.5]}},{"l1":"Jewelry Accessories & Derivatives","l2":"Natural Crystal","id":"955400","r":{"B":[3.75,0.5,3.25,7.5],"1":[3.75,0.5,3.25,7.5],"2":[3.75,0.5,3.25,7.5]}},{"l1":"Jewelry Accessories & Derivatives","l2":"Non-natural Crystal","id":"961800","r":{"B":[3.0,0.75,3.0,6.75],"1":[3.0,0.75,3.25,7.0],"2":[3.0,0.75,3.25,7.0]}},{"l1":"Jewelry Accessories & Derivatives","l2":"Gold","id":"955016","r":{"B":[3.75,1.0,3.0,7.75],"1":[3.75,1.0,3.0,7.75],"2":[4.75,1.0,3.25,9.0]}},{"l1":"Jewelry Accessories & Derivatives","l2":"Jade","id":"963848","r":{"B":[3.0,0.5,3.0,6.5],"1":[3.0,0.5,3.0,6.5],"2":[3.0,0.5,3.0,6.5]}},{"l1":"Jewelry Accessories & Derivatives","l2":"Artificial Gemstones","id":"964360","r":{"B":[20.0,1.25,3.0,24.25],"1":[22.0,1.25,3.0,26.25],"2":[22.0,1.25,3.0,26.25]}},{"l1":"Jewelry Accessories & Derivatives","l2":"Ruby, Sapphire & Emerald","id":"964104","r":{"B":[3.0,0.75,3.0,6.75],"1":[3.0,0.75,3.25,7.0],"2":[3.0,0.75,3.25,7.0]}},{"l1":"Jewelry Accessories & Derivatives","l2":"Semiprecious Stones","id":"964232","r":{"B":[5.25,0.5,3.0,8.75],"1":[5.25,0.5,3.0,8.75],"2":[5.25,0.5,3.0,8.75]}},{"l1":"Jewelry Accessories & Derivatives","l2":"Mellite","id":"964744","r":{"B":[3.0,1.0,3.0,7.0],"1":[3.0,1.0,3.0,7.0],"2":[3.0,1.0,3.0,7.0]}},{"l1":"Jewelry Accessories & Derivatives","l2":"Amber","id":"964616","r":{"B":[3.0,1.25,3.5,7.75],"1":[3.0,1.25,3.5,7.75],"2":[3.0,1.25,3.5,7.75]}},{"l1":"Jewelry Accessories & Derivatives","l2":"Diamond","id":"955272","r":{"B":[3.0,3.0,4.0,10.0],"1":[3.0,3.0,4.0,10.0],"2":[3.0,3.0,4.0,10.0]}},{"l1":"Kids' Fashion","l2":"Girls' Clothes","id":"803592","r":{"B":[4.5,4.25,5.5,14.25],"1":[4.5,4.75,5.5,14.75],"2":[4.5,5.25,5.5,15.25]}},{"l1":"Kids' Fashion","l2":"Kids' Fashion Accessories","id":"806792","r":{"B":[3.25,4.0,6.0,13.25],"1":[3.25,4.0,6.0,13.25],"2":[6.25,5.25,6.25,17.75]}},{"l1":"Kids' Fashion","l2":"Boys' Clothes","id":"802312","r":{"B":[4.75,4.0,5.25,14.0],"1":[4.75,4.75,5.5,15.0],"2":[4.75,6.0,5.5,16.25]}},{"l1":"Kids' Fashion","l2":"Girls' Footwear","id":"806024","r":{"B":[4.75,3.0,6.0,13.75],"1":[4.75,3.5,6.0,14.25],"2":[4.75,3.5,6.0,14.25]}},{"l1":"Kids' Fashion","l2":"Boys' Footwear","id":"805128","r":{"B":[5.5,3.0,5.0,13.5],"1":[5.5,3.5,5.25,14.25],"2":[6.75,3.75,5.25,15.75]}},{"l1":"Kitchenware","l2":"Drinkware","id":"859400","r":{"B":[5.5,4.0,6.25,15.75],"1":[6.75,4.25,6.25,17.25],"2":[8.0,5.0,6.25,19.25]}},{"l1":"Kitchenware","l2":"Cookware","id":"859144","r":{"B":[5.5,4.5,8.0,18.0],"1":[8.75,4.75,8.0,21.5],"2":[8.75,4.75,8.0,21.5]}},{"l1":"Kitchenware","l2":"Kitchen Utensils & Gadgets","id":"859528","r":{"B":[9.75,3.75,7.0,20.5],"1":[10.0,3.75,7.0,20.75],"2":[10.0,3.75,7.0,20.75]}},{"l1":"Kitchenware","l2":"Barbecue","id":"858760","r":{"B":[4.25,4.25,6.0,14.5],"1":[4.25,5.5,6.25,16.0],"2":[4.25,5.5,6.25,16.0]}},{"l1":"Kitchenware","l2":"Cutlery & Tableware","id":"859272","r":{"B":[4.25,4.25,6.25,14.75],"1":[5.75,4.5,6.25,16.5],"2":[7.5,4.5,6.25,18.25]}},{"l1":"Kitchenware","l2":"Tea & Coffeeware","id":"858504","r":{"B":[8.5,3.0,6.25,17.75],"1":[8.5,3.0,6.25,17.75],"2":[8.5,3.0,6.25,17.75]}},{"l1":"Kitchenware","l2":"Bakeware","id":"859016","r":{"B":[5.0,3.25,5.25,13.5],"1":[5.0,3.5,5.5,14.0],"2":[5.0,3.5,5.5,14.0]}},{"l1":"Kitchenware","l2":"Bar & Wine Utensils","id":"858888","r":{"B":[6.5,1.75,5.0,13.25],"1":[6.5,1.75,5.0,13.25],"2":[6.5,1.75,5.0,13.25]}},{"l1":"Kitchenware","l2":"Kitchen Knives","id":"858632","r":{"B":[8.25,3.75,5.75,17.75],"1":[10.25,4.5,6.0,20.75],"2":[10.25,4.5,6.0,20.75]}},{"l1":"Kitchenware","l2":"Drinkware for Alcohol","id":"600074","r":{"B":[6.5,0.75,4.75,12.0],"1":[6.5,0.75,4.75,12.0],"2":[6.5,0.75,4.75,12.0]}},{"l1":"Luggage & Bags","l2":"Luggage & Travel Bags","id":"902664","r":{"B":[6.75,3.25,6.5,16.5],"1":[8.0,3.5,6.75,18.25],"2":[8.0,3.5,6.75,18.25]}},{"l1":"Luggage & Bags","l2":"Functional Bags","id":"902792","r":{"B":[4.5,3.75,7.75,16.0],"1":[6.75,4.5,8.0,19.25],"2":[8.75,4.5,8.25,21.5]}},{"l1":"Luggage & Bags","l2":"Men's Bags","id":"902536","r":{"B":[8.25,4.25,6.75,19.25],"1":[11.0,4.75,7.0,22.75],"2":[11.0,5.25,7.0,23.25]}},{"l1":"Luggage & Bags","l2":"Women's Bags","id":"902408","r":{"B":[6.25,4.0,8.5,18.75],"1":[6.5,4.5,8.5,19.5],"2":[6.5,4.5,8.5,19.5]}},{"l1":"Luggage & Bags","l2":"Bag Accessories","id":"902920","r":{"B":[4.5,3.5,6.0,14.0],"1":[6.5,3.5,6.25,16.25],"2":[10.0,4.0,6.5,20.5]}},{"l1":"Menswear & Underwear","l2":"Men's Underwear & Socks","id":"840456","r":{"B":[6.75,3.75,6.5,17.0],"1":[7.75,4.75,6.5,19.0],"2":[10.0,5.5,6.75,22.25]}},{"l1":"Menswear & Underwear","l2":"Men's Tops","id":"839944","r":{"B":[7.5,4.0,6.75,18.25],"1":[7.5,4.5,6.75,18.75],"2":[11.0,4.75,7.0,22.75]}},{"l1":"Menswear & Underwear","l2":"Men's Suits & Sets","id":"840712","r":{"B":[4.25,4.25,5.75,14.25],"1":[4.25,4.5,6.0,14.75],"2":[4.25,6.5,6.0,16.75]}},{"l1":"Menswear & Underwear","l2":"Men's Sleepwear & Loungewear","id":"840584","r":{"B":[3.25,4.75,5.75,13.75],"1":[3.25,4.75,5.75,13.75],"2":[3.25,4.75,5.75,13.75]}},{"l1":"Menswear & Underwear","l2":"Men's Bottoms","id":"840072","r":{"B":[6.75,4.5,7.0,18.25],"1":[6.75,5.25,7.25,19.25],"2":[6.75,6.0,7.25,20.0]}},{"l1":"Menswear & Underwear","l2":"Men's Special Occasion Clothing","id":"840328","r":{"B":[4.5,2.75,6.25,13.5],"1":[4.5,3.5,6.25,14.25],"2":[4.5,3.5,6.25,14.25]}},{"l1":"Modest Fashion","l2":"Hijabs","id":"601304","r":{"B":[6.5,4.0,6.0,16.5],"1":[6.5,4.5,6.0,17.0],"2":[6.5,4.75,6.0,17.25]}},{"l1":"Modest Fashion","l2":"Men's Islamic Clothing","id":"601325","r":{"B":[9.5,4.25,5.75,19.5],"1":[9.5,4.25,6.0,19.75],"2":[9.5,4.25,6.0,19.75]}},{"l1":"Modest Fashion","l2":"Islamic Accessories","id":"601343","r":{"B":[6.0,3.75,5.75,15.5],"1":[6.0,3.75,6.0,15.75],"2":[6.0,4.25,6.0,16.25]}},{"l1":"Modest Fashion","l2":"Prayer Attire & Equipment","id":"601348","r":{"B":[6.75,3.75,6.5,17.0],"1":[6.75,4.25,6.75,17.75],"2":[6.75,4.5,6.75,18.0]}},{"l1":"Modest Fashion","l2":"Women's Islamic Clothing","id":"601310","r":{"B":[4.25,4.25,6.25,14.75],"1":[4.25,4.25,6.5,15.0],"2":[4.25,4.25,6.5,15.0]}},{"l1":"Modest Fashion","l2":"Umroh Equipment","id":"839176","r":{"B":[6.5,2.5,5.5,14.5],"1":[6.5,2.5,5.5,14.5],"2":[6.5,2.5,5.5,14.5]}},{"l1":"Modest Fashion","l2":"Islamic Sportswear","id":"838920","r":{"B":[6.5,5.0,5.5,17.0],"1":[6.5,6.5,5.5,18.5],"2":[9.0,6.5,5.5,21.0]}},{"l1":"Modest Fashion","l2":"Kids' Islamic Clothing","id":"601339","r":{"B":[6.0,4.75,5.75,16.5],"1":[6.0,5.5,5.75,17.25],"2":[6.0,5.5,5.75,17.25]}},{"l1":"Modest Fashion","l2":"Outerwear","id":"601331","r":{"B":[5.0,4.5,5.75,15.25],"1":[5.0,5.25,6.0,16.25],"2":[5.0,5.25,6.0,16.25]}},{"l1":"Pet Supplies","l2":"Fish & Aquatic Supplies","id":"819848","r":{"B":[7.25,3.5,4.0,14.75],"1":[8.5,3.75,4.25,16.5],"2":[8.5,3.75,4.25,16.5]}},{"l1":"Pet Supplies","l2":"Dog & Cat Healthcare","id":"818184","r":{"B":[15.5,4.75,3.75,24.0],"1":[20.0,4.75,3.75,28.5],"2":[20.0,4.75,3.75,28.5]}},{"l1":"Pet Supplies","l2":"Dog & Cat Grooming","id":"816392","r":{"B":[8.0,4.0,3.75,15.75],"1":[11.25,4.0,4.0,19.25],"2":[11.25,4.0,4.0,19.25]}},{"l1":"Pet Supplies","l2":"Reptile & Amphibian Supplies","id":"821000","r":{"B":[3.0,1.0,3.75,7.75],"1":[3.0,1.0,4.0,8.0],"2":[3.0,1.0,4.0,8.0]}},{"l1":"Pet Supplies","l2":"Dog & Cat Litter","id":"815624","r":{"B":[10.0,2.25,4.0,16.25],"1":[15.0,3.25,4.25,22.5],"2":[15.0,3.25,4.25,22.5]}},{"l1":"Pet Supplies","l2":"Dog & Cat Accessories","id":"818696","r":{"B":[4.5,3.5,4.75,12.75],"1":[4.5,3.5,4.75,12.75],"2":[4.5,4.0,4.75,13.25]}},{"l1":"Pet Supplies","l2":"Dog & Cat Furniture","id":"812808","r":{"B":[5.0,3.25,3.75,12.0],"1":[5.25,4.75,3.75,13.75],"2":[5.25,4.75,3.75,13.75]}},{"l1":"Pet Supplies","l2":"Small Animal Supplies","id":"822792","r":{"B":[4.75,3.25,3.75,11.75],"1":[4.75,3.25,4.0,12.0],"2":[4.75,3.25,4.0,12.0]}},{"l1":"Pet Supplies","l2":"Dog & Cat Food","id":"812168","r":{"B":[12.25,2.75,4.0,19.0],"1":[22.25,2.75,4.5,29.5],"2":[22.25,3.5,4.5,30.25]}},{"l1":"Pet Supplies","l2":"Dog & Cat Clothing","id":"813960","r":{"B":[10.0,3.0,4.25,17.25],"1":[11.0,3.0,4.25,18.25],"2":[11.0,3.0,4.25,18.25]}},{"l1":"Pet Supplies","l2":"Farm Animal & Poultry Supplies","id":"1001992","r":{"B":[5.75,3.75,3.75,13.25],"1":[5.75,3.75,3.75,13.25],"2":[10.5,3.75,4.0,18.25]}},{"l1":"Pet Supplies","l2":"Bird Supplies","id":"821896","r":{"B":[5.0,4.75,4.25,14.0],"1":[10.5,6.25,4.5,21.25],"2":[10.5,6.25,4.5,21.25]}},{"l1":"Pet Supplies","l2":"Pet","id":"2315152","r":{"B":[3.0,0.5,3.75,7.25],"1":[3.25,0.5,3.75,7.5],"2":[3.5,0.5,3.75,7.75]}},{"l1":"Phones & Electronics","l2":"Mobile Phone Accessories","id":"909064","r":{"B":[12.25,3.5,4.25,20.0],"1":[12.75,4.25,4.25,21.25],"2":[12.75,4.25,4.25,21.25]}},{"l1":"Phones & Electronics","l2":"Cameras & Photography","id":"909192","r":{"B":[10.5,2.5,4.25,17.25],"1":[10.5,2.75,4.25,17.5],"2":[10.5,2.75,4.25,17.5]}},{"l1":"Phones & Electronics","l2":"Phones & Tablets","id":"995976","r":{"B":[3.0,2.0,4.0,9.0],"1":[3.0,2.0,4.0,9.0],"2":[3.0,2.0,4.0,9.0]}},{"l1":"Phones & Electronics","l2":"Tablet & Computer Accessories","id":"984584","r":{"B":[15.0,3.0,4.25,22.25],"1":[6.5,3.75,4.25,14.5],"2":[6.5,3.75,4.25,14.5]}},{"l1":"Phones & Electronics","l2":"Gaming & Consoles","id":"909448","r":{"B":[6.75,2.75,5.25,14.75],"1":[6.75,2.75,5.25,14.75],"2":[6.75,2.75,5.25,14.75]}},{"l1":"Phones & Electronics","l2":"Audio & Video","id":"909320","r":{"B":[7.25,3.0,4.0,14.25],"1":[9.25,3.5,4.25,17.0],"2":[9.25,4.25,4.25,17.75]}},{"l1":"Phones & Electronics","l2":"Smart & Wearable Devices","id":"909576","r":{"B":[8.75,4.25,5.75,18.75],"1":[8.75,4.75,5.75,19.25],"2":[8.75,4.75,5.75,19.25]}},{"l1":"Phones & Electronics","l2":"Education Devices","id":"909704","r":{"B":[6.5,3.0,3.0,12.5],"1":[11.25,4.25,3.0,18.5],"2":[11.25,4.25,3.0,18.5]}},{"l1":"Phones & Electronics","l2":"Universal Accessories","id":"978952","r":{"B":[8.75,4.25,5.5,18.5],"1":[9.0,4.75,5.5,19.25],"2":[12.5,4.75,5.5,22.75]}},{"l1":"Phones & Electronics","l2":"Video Games/Accessories/Games/Strategy","id":"601955","r":{"B":[6.75,0.75,3.0,10.5],"1":[6.75,0.75,3.0,10.5],"2":[6.75,0.75,3.0,10.5]}},{"l1":"Pre-Owned","l2":"Refurbished Phones & Electronics","id":"857744","r":{"B":[3.0,1.5,3.5,8.0],"1":[3.0,1.5,3.5,8.0],"2":[3.25,1.5,3.75,8.5]}},{"l1":"Shoes","l2":"Men's Shoes","id":"900616","r":{"B":[6.25,3.5,7.25,17.0],"1":[7.0,3.5,7.25,17.75],"2":[7.25,3.5,7.25,18.0]}},{"l1":"Shoes","l2":"Shoe Accessories","id":"900744","r":{"B":[12.75,4.25,6.0,23.0],"1":[12.75,4.25,6.0,23.0],"2":[12.75,4.25,6.0,23.0]}},{"l1":"Shoes","l2":"Women's Shoes","id":"900488","r":{"B":[6.25,4.25,6.75,17.25],"1":[7.0,4.25,7.25,18.5],"2":[8.0,4.25,7.75,20.0]}},{"l1":"Sports & Outdoor","l2":"Camping & Hiking","id":"835464","r":{"B":[6.5,3.0,6.0,15.5],"1":[8.5,3.5,6.0,18.0],"2":[13.25,4.0,6.25,23.5]}},{"l1":"Sports & Outdoor","l2":"Sports Footwear","id":"834696","r":{"B":[5.25,3.0,6.5,14.75],"1":[5.25,3.5,6.5,15.25],"2":[5.25,3.5,6.5,15.25]}},{"l1":"Sports & Outdoor","l2":"Ball Sports","id":"834952","r":{"B":[6.5,1.75,6.0,14.25],"1":[6.5,2.0,6.0,14.5],"2":[6.5,2.5,6.0,15.0]}},{"l1":"Sports & Outdoor","l2":"Fitness","id":"835336","r":{"B":[10.5,4.25,7.0,21.75],"1":[11.25,4.25,7.0,22.5],"2":[11.25,4.25,7.0,22.5]}},{"l1":"Sports & Outdoor","l2":"Sport & Outdoor Clothing","id":"834568","r":{"B":[6.0,4.5,7.25,17.75],"1":[6.0,5.0,7.25,18.25],"2":[13.0,5.5,7.75,26.25]}},{"l1":"Sports & Outdoor","l2":"Water Sports","id":"835080","r":{"B":[6.25,2.0,5.75,14.0],"1":[6.25,3.75,5.75,15.75],"2":[6.25,3.75,5.75,15.75]}},{"l1":"Sports & Outdoor","l2":"Sports & Outdoor Accessories","id":"834824","r":{"B":[6.5,3.5,6.5,16.5],"1":[8.25,3.75,6.75,18.75],"2":[8.25,3.75,6.75,18.75]}},{"l1":"Sports & Outdoor","l2":"Leisure & Outdoor Recreation Equipment","id":"835592","r":{"B":[4.25,3.0,6.0,13.25],"1":[5.0,3.5,6.0,14.5],"2":[7.0,4.25,6.0,17.25]}},{"l1":"Sports & Outdoor","l2":"Fan Shop","id":"936712","r":{"B":[3.0,1.5,5.75,10.25],"1":[3.0,1.5,6.0,10.5],"2":[3.25,1.75,6.0,11.0]}},{"l1":"Sports & Outdoor","l2":"Swimwear, Surfwear & Wetsuits","id":"846224","r":{"B":[9.75,2.5,5.75,18.0],"1":[10.5,2.5,5.75,18.75],"2":[10.5,3.0,5.75,19.25]}},{"l1":"Sports & Outdoor","l2":"Winter Sports","id":"835208","r":{"B":[3.0,2.0,5.5,10.5],"1":[3.25,2.25,5.5,11.0],"2":[3.5,2.5,5.5,11.5]}},{"l1":"Sports & Outdoor","l2":"Sporting Activities/Events","id":"603048","r":{"B":[3.0,0.5,5.5,9.0],"1":[3.25,0.5,5.5,9.25],"2":[3.5,0.5,5.5,9.5]}},{"l1":"Sports & Outdoor","l2":"Table Tennis","id":"603393","r":{"B":[6.5,1.75,5.5,13.75],"1":[8.25,2.0,5.5,15.75],"2":[8.25,2.0,5.5,15.75]}},{"l1":"Sports & Outdoor","l2":"Yoga","id":"603073","r":{"B":[10.5,5.75,5.5,21.75],"1":[11.25,5.75,5.5,22.5],"2":[11.25,5.75,5.5,22.5]}},{"l1":"Textiles & Soft Furnishings","l2":"Fabrics & Sewing Supplies","id":"811016","r":{"B":[3.0,1.5,5.75,10.25],"1":[5.0,1.5,5.75,12.25],"2":[10.0,1.5,6.0,17.5]}},{"l1":"Textiles & Soft Furnishings","l2":"Bedding and Linens","id":"808328","r":{"B":[4.75,3.25,8.25,16.25],"1":[6.5,4.0,8.75,19.25],"2":[7.5,4.5,8.75,20.75]}},{"l1":"Textiles & Soft Furnishings","l2":"Household Textiles","id":"809992","r":{"B":[6.25,3.75,8.5,18.5],"1":[6.25,4.0,8.5,18.75],"2":[7.25,4.0,8.5,19.75]}},{"l1":"Tools & Hardware","l2":"Tool Organizers","id":"872200","r":{"B":[3.0,3.5,5.0,11.5],"1":[10.0,3.5,5.25,18.75],"2":[10.0,3.5,5.25,18.75]}},{"l1":"Tools & Hardware","l2":"Pumps & Plumbing","id":"980488","r":{"B":[4.0,2.25,5.25,11.5],"1":[5.75,2.75,5.25,13.75],"2":[5.75,2.75,5.25,13.75]}},{"l1":"Tools & Hardware","l2":"Garden Tools","id":"871944","r":{"B":[5.25,3.5,5.75,14.5],"1":[6.5,3.5,5.75,15.75],"2":[6.5,3.5,5.75,15.75]}},{"l1":"Tools & Hardware","l2":"Hand Tools","id":"871688","r":{"B":[8.5,2.75,6.5,17.75],"1":[8.5,3.0,6.5,18.0],"2":[12.0,3.0,6.5,21.5]}},{"l1":"Tools & Hardware","l2":"Power Tools","id":"871560","r":{"B":[7.75,3.25,6.5,17.5],"1":[9.25,3.75,6.75,19.75],"2":[9.25,3.75,6.75,19.75]}},{"l1":"Tools & Hardware","l2":"Soldering Equipment","id":"872072","r":{"B":[4.25,2.25,5.75,12.25],"1":[4.25,2.75,6.0,13.0],"2":[4.25,2.75,6.0,13.0]}},{"l1":"Tools & Hardware","l2":"Hardware","id":"872328","r":{"B":[9.0,3.0,5.25,17.25],"1":[12.0,3.0,5.5,20.5],"2":[12.0,3.25,5.5,20.75]}},{"l1":"Tools & Hardware","l2":"Measuring Tools","id":"871816","r":{"B":[7.75,2.75,5.5,16.0],"1":[7.75,3.25,5.75,16.75],"2":[7.75,3.25,5.75,16.75]}},{"l1":"Tools & Hardware","l2":"Industrial Automation","id":"2315280","r":{"B":[3.0,0.5,4.75,8.25],"1":[3.25,0.5,4.75,8.5],"2":[3.5,0.5,4.75,8.75]}},{"l1":"Toys & Hobbies","l2":"Games & Puzzles","id":"860168","r":{"B":[5.0,3.75,5.0,13.75],"1":[9.0,3.75,5.25,18.0],"2":[9.0,3.75,5.25,18.0]}},{"l1":"Toys & Hobbies","l2":"Sports & Outdoor Play","id":"859912","r":{"B":[5.5,2.75,6.75,15.0],"1":[5.75,2.75,7.0,15.5],"2":[5.75,3.0,7.0,15.75]}},{"l1":"Toys & Hobbies","l2":"Dolls & Stuffed Toys","id":"859656","r":{"B":[5.75,2.75,7.0,15.5],"1":[6.0,2.75,7.25,16.0],"2":[6.0,3.75,7.25,17.0]}},{"l1":"Toys & Hobbies","l2":"Musical Instruments & Accessories","id":"860552","r":{"B":[4.0,2.5,5.75,12.25],"1":[5.0,3.0,5.75,13.75],"2":[5.0,3.0,5.75,13.75]}},{"l1":"Toys & Hobbies","l2":"Educational Toys","id":"859784","r":{"B":[7.5,4.0,6.0,17.5],"1":[10.0,4.0,6.25,20.25],"2":[12.0,5.75,6.25,24.0]}},{"l1":"Toys & Hobbies","l2":"Classic & Novelty Toys","id":"860296","r":{"B":[5.75,2.75,7.0,15.5],"1":[9.75,2.75,7.25,19.75],"2":[9.75,3.25,7.25,20.25]}},{"l1":"Toys & Hobbies","l2":"DIY","id":"951560","r":{"B":[5.0,3.5,6.25,14.75],"1":[5.0,3.5,6.5,15.0],"2":[5.0,4.0,6.5,15.5]}},{"l1":"Toys & Hobbies","l2":"Electric & Remote Control Toys","id":"860040","r":{"B":[4.5,4.0,7.0,15.5],"1":[4.5,4.5,7.25,16.25],"2":[4.5,4.5,7.25,16.25]}},{"l1":"Toys & Hobbies","l2":"Plastic Models/Anime/Other Related Products/Cosplay/Board Games","id":"604376","r":{"B":[5.75,4.5,4.75,15.0],"1":[9.75,4.5,4.75,19.0],"2":[9.75,5.5,4.75,20.0]}},{"l1":"Toys & Hobbies","l2":"Musical Instruments","id":"604207","r":{"B":[4.0,0.75,4.75,9.5],"1":[5.0,0.75,4.75,10.5],"2":[5.0,0.75,4.75,10.5]}},{"l1":"Womenswear & Underwear","l2":"Women's Special Clothing","id":"842632","r":{"B":[3.25,3.25,6.25,12.75],"1":[3.5,3.5,6.25,13.25],"2":[3.75,3.75,6.25,13.75]}},{"l1":"Womenswear & Underwear","l2":"Women's Suits & Sets","id":"842760","r":{"B":[3.75,4.25,6.75,14.75],"1":[3.75,5.25,6.75,15.75],"2":[3.75,5.25,6.75,15.75]}},{"l1":"Womenswear & Underwear","l2":"Women's Tops","id":"842248","r":{"B":[4.75,4.75,7.25,16.75],"1":[4.75,5.25,7.25,17.25],"2":[4.75,5.25,7.25,17.25]}},{"l1":"Womenswear & Underwear","l2":"Women's Bottoms","id":"842376","r":{"B":[5.5,5.0,7.5,18.0],"1":[5.5,5.75,7.75,19.0],"2":[5.5,5.75,7.75,19.0]}},{"l1":"Womenswear & Underwear","l2":"Women's Dresses","id":"842504","r":{"B":[4.0,4.25,7.5,15.75],"1":[4.0,4.5,7.5,16.0],"2":[4.0,5.25,7.5,16.75]}},{"l1":"Womenswear & Underwear","l2":"Women's Sleepwear & Loungewear","id":"843016","r":{"B":[4.5,4.0,7.25,15.75],"1":[4.5,4.75,7.25,16.5],"2":[4.5,5.25,7.25,17.0]}},{"l1":"Womenswear & Underwear","l2":"Women's Underwear","id":"842888","r":{"B":[9.25,4.25,7.0,20.5],"1":[9.75,5.25,7.0,22.0],"2":[9.75,5.25,7.0,22.0]}},{"l1":"Womenswear & Underwear","l2":"Underwear and Hosiery","id":"601227","r":{"B":[9.25,4.25,5.5,19.0],"1":[9.75,5.25,5.5,20.5],"2":[9.75,5.25,5.5,20.5]}},{"l1":"Pre-Owned","l2":"Collectible Trading Cards","id":"856976","r":{"B":[3.0,1.5,3.5,8.0],"1":[3.0,1.5,3.5,8.0],"2":[3.25,1.5,3.75,8.5]}},{"l1":"Pre-Owned","l2":"Fashion Accessories","id":"857104","r":{"B":[3.0,1.5,3.5,8.0],"1":[3.0,1.5,3.5,8.0],"2":[3.25,1.5,3.75,8.5]}},{"l1":"Pre-Owned","l2":"Bags","id":"857232","r":{"B":[3.0,1.5,3.5,8.0],"1":[3.0,1.5,3.5,8.0],"2":[3.25,1.5,3.75,8.5]}},{"l1":"Pre-Owned","l2":"Footwear","id":"857360","r":{"B":[3.0,1.5,3.5,8.0],"1":[3.0,1.5,3.5,8.0],"2":[3.25,1.5,3.75,8.5]}},{"l1":"Pre-Owned","l2":"Menswear","id":"857488","r":{"B":[3.0,1.5,3.5,8.0],"1":[3.0,1.5,3.5,8.0],"2":[3.25,1.5,3.75,8.5]}},{"l1":"Pre-Owned","l2":"Womenswear","id":"857616","r":{"B":[3.0,1.5,3.5,8.0],"1":[3.0,1.5,3.5,8.0],"2":[3.25,1.5,3.75,8.5]}},{"l1":"Pre-Owned","l2":"Luggage & Travel","id":"864656","r":{"B":[3.0,1.5,3.5,8.0],"1":[3.0,1.5,3.5,8.0],"2":[3.25,1.5,3.75,8.5]}},{"l1":"Pre-Owned","l2":"Watches","id":"865296","r":{"B":[3.0,1.5,3.5,8.0],"1":[3.0,1.5,3.5,8.0],"2":[3.25,1.5,3.75,8.5]}},{"l1":"Pre-Owned","l2":"Car & Motorcycles","id":"2315792","r":{"B":[3.0,1.5,3.5,8.0],"1":[3.0,1.5,3.5,8.0],"2":[3.25,1.5,3.75,8.5]}},{"l1":"Food & Beverages","l2":"Beer, Wine & Spirits","id":"914696","r":{"B":[11.25,5.5,6.75,23.5],"1":[13.5,5.5,6.75,25.75],"2":[13.5,5.5,6.75,25.75]}},{"l1":"Virtual Products","l2":"Physical Voucher","id":"888720","r":{"B":[3.0,3.0,3.0,9.0],"1":[3.25,3.25,3.0,9.5],"2":[3.5,3.5,3.0,10.0]}},{"l1":"Virtual Products","l2":"Telecommunications","id":"996360","r":{"B":[3.0,3.0,3.0,9.0],"1":[3.25,3.25,3.0,9.5],"2":[3.5,3.5,3.0,10.0]}},{"l1":"Bookings & Vouchers","l2":"Property","id":"2316048","r":{"B":[6.6,0.75,3.0,10.35],"1":[8.0,1.0,3.0,12.0],"2":[9.75,1.0,3.0,13.75]}},{"l1":"Bookings & Vouchers","l2":"Travel & Tickets","id":"2316176","r":{"B":[6.6,0.75,3.0,10.35],"1":[8.0,1.0,3.0,12.0],"2":[9.75,1.0,3.0,13.75]}}];
+</script>
+
+<script>
+(function () {
+  "use strict";
+  var lang = "id";
+  var T = I18N[lang];
+  var $ = function (s, r) { return (r || document).querySelector(s); };
+  var $$ = function (s, r) { return Array.prototype.slice.call((r || document).querySelectorAll(s)); };
+  var pct = function (v) { return (lang === "id" ? String(v).replace(".", ",") : String(v)) + "%"; };
+
+  /* ---------- render ---------- */
+  function renderStatic() {
+    $$("[data-t]").forEach(function (el) {
+      var v = T[el.getAttribute("data-t")];
+      if (v !== undefined) el.innerHTML = v;
+    });
+    $$("[data-tp]").forEach(function (el) {
+      var v = T[el.getAttribute("data-tp")];
+      if (v !== undefined) el.setAttribute("placeholder", v);
+    });
+    document.documentElement.lang = lang;
+  }
+
+  function renderProfiles() {
+    $("#profileCards").innerHTML = T.profiles.map(function (p) {
+      return '<div class="fit"><div class="ico">' + p.ico + '</div><h4>' + p.h + '</h4><p>' + p.p + '</p></div>';
+    }).join("");
+  }
+
+  function renderRows(tbodyId, rows, cls) {
+    $(tbodyId).innerHTML = rows.map(function (r) {
+      return "<tr>" + r.map(function (c, i) {
+        return '<td class="' + (i === 0 ? "k" : (cls || "")) + '">' + c + "</td>";
+      }).join("") + "</tr>";
+    }).join("");
+  }
+
+  function renderService() {
+    $("#sellerChips").innerHTML = T.sellerChips.map(function (c) {
+      return '<span class="chip">' + c + "</span>";
+    }).join("");
+    $("#svcGrid").innerHTML = T.svc.map(function (s) {
+      return '<div class="svc"><h4>' + s.h + "</h4><ul>" +
+        s.li.map(function (l) { return "<li>" + l + "</li>"; }).join("") + "</ul></div>";
+    }).join("");
+    $("#resourceBody").innerHTML = T.resources.map(function (r) {
+      return '<tr><td class="k">' + r[0] + '</td><td class="k" style="color:var(--blue)">' + r[1] +
+        "</td><td>" + r[2] + '</td><td class="c dim">' + r[3] + "</td></tr>";
+    }).join("");
+  }
+
+  function renderFeeStatic() {
+    $("#feeComponents").innerHTML = T.feeComponents.map(function (c) {
+      return '<div class="fit"><div class="ico" style="color:var(--blue);font-weight:900">' + c.ico +
+        '</div><h4>' + c.h + '</h4><p>' + c.p + "</p></div>";
+    }).join("");
+    $("#tierCards").innerHTML = T.tiers.map(function (t) {
+      return '<div class="tier"><div class="lbl">' + t.lbl + '</div><div class="val">' + t.val +
+        '</div><div class="sub">' + t.sub + "</div></div>";
+    }).join("");
+    $("#feeNotes").innerHTML = "<h5>" + T.feeNotesTitle + "</h5><ul>" +
+      T.feeNotes.map(function (n) { return "<li>" + n + "</li>"; }).join("") + "</ul>";
+  }
+
+  /* ---------- fee lookup ---------- */
+  var L1 = [];
+  FEE_DATA.forEach(function (r) { if (L1.indexOf(r.l1) < 0) L1.push(r.l1); });
+  L1.sort();
+  var curTier = "B";
+
+  function renderCatSelect() {
+    var sel = $("#catSelect");
+    var keep = sel.value;
+    sel.innerHTML = '<option value="">' + T.s3AllCat + " (" + L1.length + ")</option>" +
+      L1.map(function (c) { return '<option value="' + c + '">' + c + "</option>"; }).join("");
+    if (keep) sel.value = keep;
+  }
+
+  function renderTierSwitch() {
+    $("#tierSwitch").innerHTML = T.tierOpts.map(function (o) {
+      return '<button type="button" data-tier="' + o.k + '"' + (o.k === curTier ? ' class="on"' : "") +
+        ">" + o.n + "<small>" + o.s + "</small></button>";
+    }).join("");
+  }
+
+  function tierName(k) {
+    for (var i = 0; i < T.tierOpts.length; i++) if (T.tierOpts[i].k === k) return T.tierOpts[i].n;
+    return k;
+  }
+
+  function renderFeeTable() {
+    var cat = $("#catSelect").value;
+    var q = $("#catSearch").value.trim().toLowerCase();
+    var rows = FEE_DATA.filter(function (r) {
+      if (cat && r.l1 !== cat) return false;
+      if (q && (r.l1 + " " + r.l2 + " " + r.id).toLowerCase().indexOf(q) < 0) return false;
+      return true;
+    });
+    if (!rows.length) {
+      $("#feeBody").innerHTML = '<tr><td colspan="6" class="empty">' + T.feeEmpty + "</td></tr>";
+      $("#feeMeta").innerHTML = "";
+      return;
+    }
+    $("#feeBody").innerHTML = rows.map(function (r) {
+      var v = r.r[curTier];
+      return '<tr><td class="dim">' + r.l1 + '</td><td class="k">' + r.l2 +
+        '</td><td class="c dim">' + pct(v[0]) +
+        '</td><td class="c dim">' + pct(v[1]) +
+        '</td><td class="c dim">' + pct(v[2]) +
+        '</td><td class="rate">' + pct(v[3]) + "</td></tr>";
+    }).join("");
+    $("#feeMeta").innerHTML = T.feeMetaTpl.replace("{n}", rows.length).replace("{tier}", tierName(curTier));
+  }
+
+  /* ---------- growth / join / faq / contact ---------- */
+  function renderGrowth() {
+    $("#statCards").innerHTML = T.stats.map(function (s) {
+      return '<div class="stat"><div class="num">' + s.num + '</div><div class="cap">' + s.cap + "</div></div>";
+    }).join("");
+    $("#stratBody").innerHTML = T.strat.map(function (r) {
+      return '<tr><td class="k">' + r[0] + "</td><td>" + r[1] + "</td><td>" + r[2] +
+        "</td><td>" + r[3] + '</td><td class="dim">' + r[4] + "</td></tr>";
+    }).join("");
+  }
+
+  function renderSteps() {
+    $("#stepCards").innerHTML = T.steps.map(function (s) {
+      return '<div class="step' + (s.last ? " last" : "") + '"><div class="no">' + s.no +
+        '</div><h4>' + s.h + "</h4><ul>" +
+        s.li.map(function (l) { return "<li>" + l + "</li>"; }).join("") + "</ul>" +
+        (s.link ? '<div style="margin-top:12px"><a href="' + s.link + '" target="_blank" rel="noopener">' + s.linkText + "</a></div>" : "") +
+        "</div>";
+    }).join("");
+  }
+
+  function renderFaq() {
+    $("#faqList").innerHTML = T.faq.map(function (f, i) {
+      return '<div class="faq-item"><button class="faq-q" data-faq="' + i + '">' + f[0] +
+        '</button><div class="faq-a"><div>' + f[1] + "</div></div></div>";
+    }).join("");
+    $$("[data-faq]").forEach(function (b) {
+      b.addEventListener("click", function () {
+        var item = b.parentNode, a = $(".faq-a", item), open = item.classList.contains("open");
+        $$(".faq-item").forEach(function (it) {
+          it.classList.remove("open");
+          $(".faq-a", it).style.maxHeight = "0px";
+        });
+        if (!open) { item.classList.add("open"); a.style.maxHeight = a.scrollHeight + "px"; }
+      });
+    });
+  }
+
+  function renderContact() {
+    $("#contactCards").innerHTML = T.contacts.map(function (c) {
+      return '<div class="contact-card"><div class="ico">' + c.ico + '</div><h4>' + c.h +
+        '</h4><div class="val"><span class="tbd">' + c.tbd + '</span></div><div class="tip">' + c.tip + "</div></div>";
+    }).join("");
+  }
+
+  function renderAll() {
+    T = I18N[lang];
+    renderStatic();
+    renderProfiles();
+    renderRows("#eligibilityBody", T.eligibility);
+    renderService();
+    renderFeeStatic();
+    renderCatSelect();
+    renderTierSwitch();
+    renderFeeTable();
+    renderGrowth();
+    renderSteps();
+    renderFaq();
+    renderContact();
+  }
+
+  /* ---------- language switch ---------- */
+  $$(".lang button").forEach(function (b) {
+    b.addEventListener("click", function () {
+      lang = b.getAttribute("data-lang");
+      $$(".lang button").forEach(function (x) { x.classList.toggle("on", x === b); });
+      renderAll();
+    });
+  });
+
+  /* ---------- fee lookup events ---------- */
+  $("#catSelect").addEventListener("change", renderFeeTable);
+  $("#catSearch").addEventListener("input", renderFeeTable);
+  $("#tierSwitch").addEventListener("click", function (e) {
+    var b = e.target.closest ? e.target.closest("button[data-tier]") : null;
+    if (!b) return;
+    curTier = b.getAttribute("data-tier");
+    renderTierSwitch();
+    renderFeeTable();
+    $("#feeScroll").scrollTop = 0;
+  });
+
+  /* ---------- lead form modal : embedded Lark form ---------- */
+  var FORM_URL = "https://bytedance.larkoffice.com/share/base/form/shrmycPWyhzDUsFwoZ56OEjVpkD";
+  var overlay = $("#overlay");
+  var frame = $("#formFrame");
+  var note = $("#embedNote");
+  var loaded = false;
+
+  $("#openFormTab").setAttribute("href", FORM_URL);
+  $("#embedFallback").setAttribute("href", FORM_URL);
+
+  frame.addEventListener("load", function () {
+    if (frame.getAttribute("src") === "about:blank") return;
+    /* cross-origin embed: a fired load event means the form is rendering */
+    loaded = true;
+    note.classList.add("hide");
+  });
+
+  function openModal() {
+    overlay.classList.add("show");
+    document.body.style.overflow = "hidden";
+    if (!loaded) {
+      note.classList.remove("hide");
+      if (frame.getAttribute("src") !== FORM_URL) frame.setAttribute("src", FORM_URL);
+    }
+  }
+  function closeModal() {
+    overlay.classList.remove("show");
+    document.body.style.overflow = "";
+  }
+  $$("[data-open-form]").forEach(function (b) { b.addEventListener("click", openModal); });
+  $("#closeModal").addEventListener("click", closeModal);
+  overlay.addEventListener("click", function (e) { if (e.target === overlay) closeModal(); });
+  document.addEventListener("keydown", function (e) { if (e.key === "Escape") closeModal(); });
+
+
+  renderAll();
+})();
+</script>
+</body>
+</html>
