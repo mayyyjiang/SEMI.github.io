@@ -4,6 +4,7 @@
 <code>PROGRAM 2026 · TIKTOK SHOP BY TOKOPEDIA</code></p>
 <p align="center"><a href="https://bytedance.larkoffice.com/share/base/form/shrmycPWyhzDUsFwoZ56OEjVpkD"><b>📝 Daftar Minat Sekarang / Register Your Interest</b></a></p>
 <p align="center">🇮🇩 <a href="#-bahasa-indonesia"><b>Bahasa Indonesia</b></a> · 🇬🇧 <a href="#-english"><b>English</b></a> · 📊 <a href="#-rate-per-kategori--category-rate-table"><b>Rate per Kategori / Category Rates</b></a></p>
+<p align="center"><sub>Halaman interaktif lengkap (dengan asisten tanya-jawab & pencarian rate) ada di <a href="./index.html"><code>index.html</code></a> · Full interactive page with Q&amp;A assistant: <a href="./index.html"><code>index.html</code></a></sub></p>
 
 ---
 

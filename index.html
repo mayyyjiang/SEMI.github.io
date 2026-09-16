@@ -411,6 +411,141 @@ select:focus,input:focus{border-color:var(--blue);box-shadow:0 0 0 3px rgba(37,2
 .recap div{font-size:12px;color:var(--txt);line-height:1.9;display:flex;justify-content:space-between;gap:12px;}
 .recap div span:first-child{color:var(--gray);}
 .recap div span:last-child{color:#fff;font-weight:700;text-align:right;word-break:break-word;}
+/* ===== L1 QA ASSISTANT (pure front-end) ===== */
+.qa-launch{
+  position:fixed;right:22px;bottom:22px;z-index:95;
+  display:flex;align-items:center;gap:9px;cursor:pointer;
+  font:inherit;font-size:13.5px;font-weight:800;letter-spacing:.3px;
+  padding:14px 20px;border:none;border-radius:999px;
+  background:linear-gradient(92deg,var(--blue),var(--blue-deep));color:#04202b;
+  box-shadow:0 10px 32px rgba(37,244,238,.35);transition:.25s;
+}
+.qa-launch:hover{transform:translateY(-2px);box-shadow:0 14px 40px rgba(37,244,238,.5);}
+.qa-launch .dot{
+  width:7px;height:7px;border-radius:50%;background:#0B3B45;
+  box-shadow:0 0 0 3px rgba(11,59,69,.25);animation:qapulse 1.8s infinite;
+}
+@keyframes qapulse{0%,100%{opacity:1;}50%{opacity:.25;}}
+.qa-launch.hidden{display:none;}
+.qa-panel{
+  position:fixed;right:22px;bottom:22px;z-index:96;
+  width:412px;max-width:calc(100vw - 32px);height:min(640px,82vh);
+  display:none;flex-direction:column;overflow:hidden;
+  background:radial-gradient(420px 220px at 100% 0%, rgba(37,244,238,.10), transparent 60%),#05080D;
+  border:1px solid var(--card-line);border-radius:22px;
+  box-shadow:0 24px 80px rgba(0,0,0,.75);
+  animation:pop .26s ease;
+}
+.qa-panel.show{display:flex;}
+.qa-head{
+  padding:16px 18px 14px;border-bottom:1px solid rgba(255,255,255,.07);
+  display:flex;align-items:flex-start;gap:10px;flex:0 0 auto;
+}
+.qa-head .av{
+  width:34px;height:34px;border-radius:11px;flex:0 0 auto;
+  background:linear-gradient(135deg,rgba(37,244,238,.9),rgba(10,141,204,.85));
+  display:flex;align-items:center;justify-content:center;font-size:17px;color:#04202b;
+}
+.qa-head .tx{flex:1;min-width:0;}
+.qa-head h4{font-size:14.5px;color:#fff;line-height:1.4;}
+.qa-head .sub{font-size:10.5px;color:var(--gray);line-height:1.55;margin-top:3px;}
+.qa-head .acts{display:flex;gap:4px;flex:0 0 auto;}
+.qa-head .acts button{
+  background:transparent;border:none;color:var(--gray);cursor:pointer;
+  font-size:16px;line-height:1;padding:4px 6px;border-radius:8px;transition:.2s;
+}
+.qa-head .acts button:hover{color:#fff;background:rgba(255,255,255,.07);}
+.qa-body{
+  flex:1 1 auto;overflow-y:auto;padding:16px 16px 6px;
+  display:flex;flex-direction:column;gap:12px;overscroll-behavior:contain;
+}
+.qa-body::-webkit-scrollbar{width:8px;}
+.qa-body::-webkit-scrollbar-track{background:rgba(255,255,255,.03);}
+.qa-body::-webkit-scrollbar-thumb{background:rgba(37,244,238,.3);border-radius:8px;}
+.qa-msg{display:flex;gap:8px;max-width:100%;}
+.qa-msg.u{justify-content:flex-end;}
+.qa-msg .bub{
+  font-size:12.5px;line-height:1.8;padding:11px 14px;border-radius:14px;max-width:86%;
+  word-break:break-word;
+}
+.qa-msg.b .bub{background:rgba(255,255,255,.045);border:1px solid rgba(255,255,255,.08);color:var(--txt);border-top-left-radius:5px;}
+.qa-msg.u .bub{background:linear-gradient(135deg,rgba(37,244,238,.22),rgba(10,141,204,.16));border:1px solid var(--card-line);color:#fff;border-top-right-radius:5px;font-weight:600;}
+.qa-msg .bub b{color:var(--blue);}
+.qa-msg.u .bub b{color:#fff;}
+.qa-meta{
+  font-size:10px;color:#5F6B7A;letter-spacing:.2px;margin:-6px 0 0 2px;
+  font-family:ui-monospace,SFMono-Regular,Menlo,monospace;display:none;
+}
+.qa-panel.dbg .qa-meta{display:block;}
+.qa-meta b{color:var(--blue-deep);font-weight:700;}
+/* rate answer card */
+.qa-rate{margin-top:9px;border:1px solid rgba(37,244,238,.22);border-radius:12px;overflow:hidden;background:rgba(0,0,0,.4);}
+.qa-rate .rh{
+  font-size:11.5px;color:var(--blue);font-weight:700;padding:9px 12px;
+  background:rgba(37,244,238,.09);border-bottom:1px solid rgba(37,244,238,.18);line-height:1.5;
+}
+.qa-rate .rh small{display:block;color:var(--gray);font-weight:600;font-size:10px;margin-top:2px;}
+.qa-rate table{width:100%;border-collapse:collapse;font-size:11.5px;}
+.qa-rate td{padding:7px 12px;border-bottom:1px solid rgba(255,255,255,.06);color:var(--txt);line-height:1.5;}
+.qa-rate tr:last-child td{border-bottom:none;}
+.qa-rate td:last-child{text-align:right;font-weight:800;color:#fff;white-space:nowrap;}
+.qa-rate tr.one td{background:rgba(37,244,238,.07);}
+.qa-rate tr.one td:last-child{color:var(--blue);font-size:13.5px;}
+.qa-tier{display:flex;gap:6px;flex-wrap:wrap;margin-top:9px;}
+.qa-tier button{
+  font:inherit;font-size:10.5px;font-weight:700;cursor:pointer;padding:6px 11px;border-radius:999px;
+  background:rgba(0,0,0,.45);color:#B4BDC8;border:1px solid rgba(37,244,238,.2);transition:.2s;
+}
+.qa-tier button:hover{border-color:var(--blue);color:#fff;}
+.qa-tier button.on{background:linear-gradient(135deg,rgba(37,244,238,.22),rgba(10,141,204,.12));border-color:var(--blue);color:#fff;}
+/* suggestions + chips */
+.qa-sug{display:flex;flex-direction:column;gap:6px;margin-top:9px;}
+.qa-sug button{
+  font:inherit;font-size:11.5px;text-align:left;cursor:pointer;line-height:1.6;
+  background:rgba(37,244,238,.06);border:1px solid rgba(37,244,238,.2);color:var(--blue);
+  border-radius:10px;padding:8px 12px;transition:.2s;
+}
+.qa-sug button:hover{background:rgba(37,244,238,.14);}
+.qa-chips{
+  flex:0 0 auto;display:flex;gap:6px;flex-wrap:wrap;padding:10px 16px 4px;
+}
+.qa-chips button{
+  font:inherit;font-size:11px;cursor:pointer;padding:7px 12px;border-radius:999px;
+  background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);color:var(--txt);transition:.2s;
+}
+.qa-chips button:hover{border-color:var(--blue);color:var(--blue);background:rgba(37,244,238,.08);}
+.qa-cta{
+  font:inherit;font-size:11.5px;font-weight:800;cursor:pointer;margin-top:10px;
+  background:linear-gradient(92deg,var(--blue),var(--blue-deep));color:#04202b;
+  border:none;border-radius:999px;padding:9px 16px;transition:.2s;
+}
+.qa-cta:hover{transform:translateY(-1px);}
+/* input */
+.qa-foot{flex:0 0 auto;padding:10px 16px 12px;border-top:1px solid rgba(255,255,255,.07);}
+.qa-inrow{display:flex;gap:8px;}
+.qa-inrow input{flex:1;font-size:12.5px;padding:10px 13px;}
+.qa-inrow button{
+  font:inherit;font-size:12px;font-weight:800;cursor:pointer;white-space:nowrap;
+  background:linear-gradient(92deg,var(--blue),var(--blue-deep));color:#04202b;
+  border:none;border-radius:10px;padding:0 16px;transition:.2s;
+}
+.qa-inrow button:hover{box-shadow:0 6px 18px rgba(37,244,238,.3);}
+.qa-note{
+  font-size:9.5px;color:#5A6472;line-height:1.6;margin-top:8px;
+  display:flex;align-items:center;gap:8px;flex-wrap:wrap;
+}
+.qa-note label{display:flex;align-items:center;gap:4px;cursor:pointer;}
+.qa-note input[type=checkbox]{width:auto;accent-color:var(--blue);cursor:pointer;}
+.qa-note .lg{color:#7C879A;}
+.qa-note .cp{
+  background:transparent;border:none;color:var(--blue-deep);cursor:pointer;
+  font:inherit;font-size:9.5px;text-decoration:underline;padding:0;
+}
+.qa-typing .bub{color:var(--gray);font-style:italic;}
+@media(max-width:760px){
+  .qa-panel{right:8px;left:8px;bottom:8px;width:auto;height:86vh;}
+  .qa-launch{right:14px;bottom:14px;padding:12px 17px;font-size:12.5px;}
+}
 /* footer */
 .footer{
   text-align:center;padding:26px 24px;font-size:11px;color:#5A6472;
@@ -461,6 +596,7 @@ select:focus,input:focus{border-color:var(--blue);box-shadow:0 0 0 3px rgba(37,2
     <a href="#growth" data-t="navGrowth"></a>
     <a href="#join" data-t="navJoin"></a>
     <a href="#faq" data-t="navFaq"></a>
+    <a href="javascript:void(0)" id="navQa" data-t="qaNav" style="color:var(--blue);background:rgba(37,244,238,.08);"></a>
     <a href="#contact" data-t="navContact"></a>
     <a href="#register" data-t="navRegister"></a>
   </nav>
@@ -601,6 +737,36 @@ select:focus,input:focus{border-color:var(--blue);box-shadow:0 0 0 3px rgba(37,2
   <div class="footer">
     <div data-t="footer1"></div>
     <div data-t="footer2"></div>
+  </div>
+</div>
+
+<!-- ===== L1 QA ASSISTANT — pure front-end intent matching ===== -->
+<button class="qa-launch" id="qaLaunch">
+  <span class="dot"></span><span data-t="qaLaunch"></span>
+</button>
+<div class="qa-panel" id="qaPanel" role="dialog" aria-modal="false" aria-label="SAP Assistant">
+  <div class="qa-head">
+    <div class="av">🤖</div>
+    <div class="tx">
+      <h4 data-t="qaTitle"></h4>
+      <div class="sub" data-t="qaSub"></div>
+    </div>
+    <div class="acts">
+      <button id="qaReset" title="reset">⟲</button>
+      <button id="qaClose" aria-label="Close">&times;</button>
+    </div>
+  </div>
+  <div class="qa-body" id="qaBody"></div>
+  <div class="qa-chips" id="qaChips"></div>
+  <div class="qa-foot">
+    <div class="qa-inrow">
+      <input type="text" id="qaInput" autocomplete="off" data-tp="qaPh">
+      <button id="qaSend" data-t="qaSend"></button>
+    </div>
+    <div class="qa-note">
+      <label><input type="checkbox" id="qaDbg"><span data-t="qaDebug"></span></label>
+      <span class="lg" id="qaLog"></span>
+    </div>
   </div>
 </div>
 
@@ -1057,6 +1223,343 @@ var FEE_DATA = [{"l1":"Automotive & Motorcycle","l2":"Motorcycle Parts","id":"80
 </script>
 
 <script>
+/* ============================================================
+   L1 前端智能问答 · 知识库与文案（纯前端，无后端、无模型调用）
+   QA knowledge base — intent keywords + curated answers.
+
+   数据来源 / Sources:
+   - ID Semi - Swift Accelerator Program (SAP) One Pager
+   - ID半托管介绍 内部运营逻辑 2026.6
+   - Swift Accelerator Program (SAP) 2026 Service Fee (External)
+   - build/fee_data.json（247 个二级类目 × 3 档 × 4 指标，运行时从 FEE_DATA 读取）
+
+   说明：kw 为意图关键词（同时收录印尼语 / 英语 / 常见口语写法），
+   引擎按「短语命中 + 词元命中」打分，命中分数低于阈值则走兜底。
+   ============================================================ */
+var QA_I18N = {
+  id: {
+    launch: "Tanya SAP",
+    navQa: "Tanya AI",
+    title: "Asisten SAP",
+    sub: "Demo tanya-jawab otomatis · basis pengetahuan: dokumen resmi SAP + rate 247 kategori",
+    greet: "Halo! 👋 Saya asisten SAP. Tanyakan apa saja soal program, syarat, biaya, atau rate kategori Anda.<br>Contoh: <b>“berapa rate untuk skincare?”</b>",
+    ph: "Tulis pertanyaan Anda…",
+    send: "Kirim",
+    typing: "mengetik…",
+    chips: ["Apa itu SAP?", "Siapa yang bisa ikut?", "Rate untuk Skincare", "Ada biaya di muka?", "Cara daftar?", "Bisa keluar dari program?"],
+    reset: "Mulai ulang",
+    maybe: "Mungkin yang Anda maksud:",
+    fallback: "Maaf, saya belum punya jawaban resmi untuk pertanyaan ini. Pertanyaan Anda sudah dicatat agar tim SAP bisa menambahkannya ke basis pengetahuan.",
+    fallbackCta: "Untuk pertanyaan spesifik soal toko Anda, tinggalkan data Anda — tim Account Operations akan menghubungi Anda via WhatsApp.",
+    ctaForm: "📝 Tinggalkan data saya",
+    matchLbl: "intent",
+    confLbl: "keyakinan",
+    noMatchLbl: "tidak ada intent yang cocok",
+    debug: "Tampilkan proses pencocokan",
+    rateHead: "Rate <b>{cat}</b> · jenjang <b>{tier}</b>",
+    rateL1: "Kategori 1",
+    rateAds: "Ads TR",
+    rateAff: "Affiliate Comm. TR",
+    rateBundle: "Bundle Fee To Config",
+    rateOne: "“One Fee” Marketing Budget",
+    rateMulti: "Ditemukan <b>{n}</b> kategori yang cocok — menampilkan {m} teratas:",
+    rateMore: "Masih ada {n} kategori lain yang cocok. Ketik nama kategori lebih spesifik, atau gunakan tabel <b>Cek Rate Kategori Anda</b> di atas.",
+    rateNone: "Saya belum menemukan kategori itu di daftar rate. Coba nama kategori level 2 dalam bahasa Inggris (mis. <b>Skincare</b>, <b>Motorcycle Parts</b>, <b>Women Shoes</b>), atau pakai tabel rate di bagian Struktur Biaya.",
+    rateAskCat: "Rate SAP ditentukan per <b>kategori level 2</b> dan <b>jenjang seller tier</b>. Sebutkan kategori Anda — mis. “rate untuk Skincare” — dan saya akan tampilkan keempat indikatornya.",
+    tierNote: "Jenjang yang dipakai: <b>{tier}</b>. Ganti jenjang:",
+    tierSynced: "Tabel rate di halaman ini ikut berpindah ke jenjang <b>{tier}</b>.",
+    logNote: "{n} pertanyaan belum terjawab tercatat di browser ini (khusus demo).",
+    logCopy: "Salin daftar",
+    logCopied: "Tersalin ✓",
+    disclaimer: "Jawaban otomatis berbasis dokumen resmi program. Untuk keputusan final, konfirmasi dengan tim SAP.",
+    kb: [
+      { k: "what_is_sap",
+        q: "Apa itu SAP?",
+        kw: ["apa itu sap", "sap adalah", "apa itu swift accelerator", "program apa ini", "layanan apa ini", "penjelasan program", "what is sap", "about sap", "semi", "half consignment", "definisi"],
+        a: "<b>Swift Accelerator Program (SAP)</b> adalah layanan penjualan terkelola (<i>managed sales service</i>) langsung dari TikTok Shop by Tokopedia. Tim <b>50+ ahli</b> menjalankan strategi penjualan, iklan, afiliasi, dan promosi untuk toko Anda — sementara <b>kepemilikan toko tetap 100% milik Anda</b>. Prinsipnya: “Done For You”." },
+
+      { k: "who_can_join",
+        q: "Siapa yang bisa ikut program ini?",
+        kw: ["siapa yang bisa", "syarat", "persyaratan", "kriteria", "kualifikasi", "boleh ikut", "eligible", "eligibility", "requirement", "target seller", "cocok untuk siapa", "bisa ikut", "who can join"],
+        a: "Syarat utamanya: <b>Seller Tier T0–T4</b> (definisi baru), <b>SES ≥ 3,5</b> atau belum bernilai (Null), minimal <b>1 Product ID</b>, dan kategori tidak termasuk kategori terbatas (produk virtual, emas/perak, dll.).<br>Profil yang paling cocok: punya kapabilitas <b>supply chain</b>, belum punya kapabilitas operasional TikTok Shop, dan margin cukup untuk mendukung biaya layanan." },
+
+      { k: "ownership",
+        q: "Apakah toko saya diambil alih?",
+        kw: ["kepemilikan", "diambil alih", "milik siapa", "kontrol toko", "kendali", "akun saya", "ownership", "take over", "who owns", "aman"],
+        a: "Tidak. <b>Kepemilikan toko tetap 100% milik Anda.</b> SAP berperan sebagai penyedia layanan penjualan: Anda menyerahkan aktivitas penjualan &amp; promosi kepada tim SAP, tanpa kehilangan kendali atas toko." },
+
+      { k: "services",
+        q: "Apa saja yang dikerjakan SAP?",
+        kw: ["apa yang dikerjakan", "layanan apa saja", "cakupan layanan", "scope", "apa yang saya dapat", "benefit", "manfaat", "what do you do", "services", "iklan", "affiliate", "aigc", "konten", "video"],
+        a: "Empat pilar layanan:<br>• <b>Layanan Iklan</b> — dengan otorisasi ROI1/ROI2 dan GMV Max, tim kami membuat dan mengelola penempatan iklan (rata-rata Ads TR seller SAP ~6,1%).<br>• <b>Pencocokan Afiliasi</b> — Mass Reach, Creator Task, dan pencocokan 1-on-1 (kontribusi GMV afiliasi ~60%).<br>• <b>Konten AIGC</b> — ~800 video/hari, GPM ~3,0.<br>• <b>Campaign &amp; optimasi harga/produk/stok</b> — termasuk cold start algoritma 0 → 5 pesanan." },
+
+      { k: "seller_duty",
+        q: "Apa yang tetap menjadi tugas seller?",
+        kw: ["tugas seller", "tanggung jawab", "apa yang saya kerjakan", "kewajiban", "seller focus", "responsibility", "yang harus saya lakukan"],
+        a: "Anda cukup fokus pada empat hal yang sudah Anda kuasai: <b>penetapan harga produk</b>, <b>informasi produk</b>, <b>layanan logistik</b>, dan <b>layanan pelanggan</b>. Penjualan dan promosi kami yang jalankan." },
+
+      { k: "fee_structure",
+        q: "Bagaimana struktur biayanya?",
+        kw: ["struktur biaya", "komponen biaya", "one fee", "marketing budget", "bagaimana ditagih", "cara hitung biaya", "fee structure", "take rate", "rumus", "terdiri dari"],
+        a: "Model biayanya satu angka: <b>“One Fee” Marketing Budget = Ads TR + Affiliate Commission TR + Bundle Fee To Config</b>. Semua dalam bentuk <b>take rate (%)</b> dan dipotong otomatis dari pendapatan per transaksi berhasil. Besarnya tergantung <b>kategori level 2</b> toko Anda dan <b>jenjang seller tier</b> (Basic / Tier 1 / Tier 2)." },
+
+      { k: "upfront_fee",
+        q: "Apakah ada biaya di muka?",
+        kw: ["biaya di muka", "bayar dulu", "upfront", "deposit", "gratis", "free", "biaya pendaftaran", "registration fee", "bayar bulanan", "langganan", "subscription", "no upfront"],
+        a: "Tidak ada biaya di muka, tidak ada biaya langganan, dan tidak ada biaya pendaftaran. Biaya hanya berbentuk <b>take rate</b> yang dipotong dari transaksi yang berhasil — kalau tidak ada penjualan, tidak ada biaya layanan." },
+
+      { k: "fee_negotiable",
+        q: "Apakah biaya layanan bisa dinegosiasikan?",
+        kw: ["negosiasi", "nego", "bisa nego", "nego biaya", "biayanya", "diskon biaya", "bisa kurang", "turunkan rate", "negotiable", "discount", "murah lagi"],
+        a: "Tidak. <b>Biaya layanan bersifat tetap dan tidak dapat dinegosiasikan.</b> Rate ditentukan oleh kategori dan jenjang seller tier, mengacu pada dokumen resmi SAP 2026 Service Fee." },
+
+      { k: "tier_definition",
+        q: "Apa itu Basic, Tier 1, dan Tier 2?",
+        kw: ["basic tier", "tier 1", "tier 2", "jenjang", "apa itu tier", "seller tier", "t1 t3", "t4 t5", "t6 t9", "level seller", "tier saya"],
+        a: "Tiga jenjang rate berdasarkan Seller Tier:<br>• <b>BASIC</b> — Seller Tier T1–T3 (baru mulai tumbuh)<br>• <b>TIER 1</b> — Seller Tier T4–T5 (sedang berkembang)<br>• <b>TIER 2</b> — Seller Tier T6–T9 (skala besar)<br>Jenjang Anda ditetapkan tim SAP berdasarkan skala toko dan dikonfirmasi saat onboarding." },
+
+      { k: "rate_source",
+        q: "Rate saya dihitung dari kategori mana?",
+        kw: ["kategori mana", "kategori toko", "menentukan kategori", "kategori level 2", "banyak kategori", "campuran kategori", "which category", "produk beragam"],
+        a: "Kategori penentu rate dilihat dari <b>produk terbanyak yang dijual</b> di toko Anda, pada level <b>kategori 2</b>. Kalau toko Anda menjual beberapa kategori, tim SAP akan mengonfirmasi kategori acuan saat onboarding." },
+
+      { k: "how_to_join",
+        q: "Bagaimana cara mendaftar?",
+        kw: ["cara daftar", "cara mendaftar", "cara bergabung", "join", "register", "pendaftaran", "sign up", "mulai dari mana", "langkah", "step", "onboarding", "how to join"],
+        a: "Tiga langkah:<br><b>1.</b> Seller Center → Marketing → Program → Swift Accelerator Program (SAP) → Daftar<br><b>2.</b> Otorisasi iklan: SAP sebagai advertising partner, lalu otorisasi GMV Max (<i>Step 1 harus selesai lebih dulu</i>)<br><b>3.</b> Validasi &amp; persetujuan tim SAP, sekitar <b>3–5 hari kerja</b><br>Belum siap mendaftar? Tinggalkan data Anda dan tim kami akan memandu prosesnya." },
+
+      { k: "approval_time",
+        q: "Berapa lama proses persetujuannya?",
+        kw: ["berapa lama", "lama proses", "waktu approval", "kapan disetujui", "durasi", "how long", "processing time", "hari kerja", "menunggu"],
+        a: "Validasi dan persetujuan memakan waktu sekitar <b>3–5 hari kerja</b> setelah pendaftaran dan otorisasi iklan selesai." },
+
+      { k: "exit",
+        q: "Bisakah saya keluar dari program?",
+        kw: ["keluar", "berhenti", "batal", "cancel", "quit", "exit", "unsubscribe", "stop program", "kontrak", "terikat", "lock"],
+        a: "Ya. Seller dapat keluar <b>kapan saja</b> melalui Seller Center, dengan masa tunggu sekitar <b>14 hari kerja</b>. Tidak ada penalti kontrak." },
+
+      { k: "partial_products",
+        q: "Bisakah hanya sebagian produk yang masuk?",
+        kw: ["sebagian produk", "beberapa produk", "produk tertentu", "pilih produk", "semua produk", "level toko", "shop level", "partial", "selected products", "sku tertentu"],
+        a: "SAP beroperasi pada <b>level toko</b> — semua produk yang terdaftar mengikuti mekanisme biaya SAP. Kalau ada produk yang marginnya tidak mendukung biaya layanan, Anda bisa menyesuaikan harganya." },
+
+      { k: "who_sets_price",
+        q: "Siapa yang menentukan harga jual?",
+        kw: ["siapa menentukan harga", "harga jual", "atur harga", "pricing", "who sets price", "harga ditentukan", "boleh ubah harga"],
+        a: "<b>Harga jual sepenuhnya ditentukan oleh seller.</b> Tim SAP memberi rekomendasi daya saing harga, tetapi keputusan akhir tetap milik Anda." },
+
+      { k: "self_ads",
+        q: "Setelah bergabung, apakah saya masih bisa mengelola iklan sendiri?",
+        kw: ["kelola iklan sendiri", "atur iklan sendiri", "masih bisa iklan", "campaign sendiri", "afiliasi sendiri", "manage ads", "still manage", "ubah pengaturan"],
+        a: "Setelah terdaftar, iklan, campaign, dan afiliasi dioptimalkan oleh tim SAP berdasarkan data industri dan best practice. <b>Seller tidak disarankan mengubah pengaturan</b> agar tidak menimbulkan konflik strategi atau hasil yang tidak diinginkan." },
+
+      { k: "guarantee",
+        q: "Apakah SAP menjamin penjualan?",
+        kw: ["jaminan", "menjamin", "garansi", "pasti naik", "guarantee", "dijamin", "kalau tidak laku", "risiko"],
+        a: "Tidak. <b>SAP tidak menjamin penjualan.</b> Yang kami bawa adalah tim profesional TikTok Shop yang berpengalaman mengoptimalkan performa toko dan efisiensi penjualan, plus akses ke sumber daya pertumbuhan platform." },
+
+      { k: "results",
+        q: "Apa hasil yang sudah dicapai program ini?",
+        kw: ["hasil", "performa", "efek", "bukti", "data", "case", "statistik", "result", "performance", "berapa seller", "naik tier", "tier up", "gpm", "aigc"],
+        a: "Angka program per Juni 2026: <b>4.900+ seller</b> dalam pengelolaan, <b>1.164 seller</b> berhasil naik tier (kumulatif), kontribusi <b>GMV afiliasi ~60%</b>, rata-rata <b>Ads TR ~6,1%</b>, <b>~800 video AIGC/hari</b> dengan <b>GPM ~3,0</b>, dan <b>~9,5%</b> produk terinkubasi mencapai skor 5+ dari ~280 ribu produk." },
+
+      { k: "resource_allocation",
+        q: "Bagaimana produk saya mendapat sumber daya?",
+        kw: ["sumber daya", "alokasi", "voucher", "subsidi", "traffic", "boost", "hero product", "potential product", "resource", "allocation", "lebih banyak dukungan", "flash sale"],
+        a: "Produk otomatis masuk ke segmen alokasi sumber daya:<br>• <b>New / Break-0 / Break-5</b> (L30D order 0–5) — voucher persentase tinggi, GMAX, affiliate resources, traffic boost<br>• <b>Potential</b> (L30D order ≥ 10 atau GMV ≥ $50) — voucher menengah, GMAX/VSA/LSA, pencocokan kreator, AIGC, campaign, flash sale<br>• <b>Hero</b> (L30D GMV ≥ $1.500) — voucher berbasis daya saing harga, seluruh kanal diaktifkan, pencocokan kreator 1-on-1<br>Harga yang kompetitif meningkatkan peluang produk naik segmen." },
+
+      { k: "stock",
+        q: "Bagaimana menyiapkan stok?",
+        kw: ["stok", "stock", "inventory", "kehabisan", "out of stock", "restock", "persediaan", "gudang"],
+        a: "Untuk produk dengan risiko <i>out-of-stock</i>, tim <b>Account Operations</b> akan menghubungi Anda via WhatsApp dan panggilan telepon untuk membahas penambahan stok — terutama saat trafik afiliasi sedang naik." },
+
+      { k: "contact",
+        q: "Bagaimana cara menghubungi tim SAP?",
+        kw: ["kontak", "hubungi", "nomor", "email", "whatsapp", "contact", "cs", "customer service", "bicara dengan orang", "manusia", "agent", "grup"],
+        a: "Detail kontak resmi (email, WhatsApp Business, grup komunitas) sedang difinalisasi tim dan akan ditampilkan di bagian <b>Hubungi Kami</b>. Cara tercepat sekarang: tinggalkan data toko Anda lewat formulir Daftar Minat — tim Account Operations akan menghubungi Anda via WhatsApp." },
+
+      { k: "lead_form",
+        q: "Data apa yang perlu saya isi di formulir?",
+        kw: ["formulir", "form", "daftar minat", "isi data", "data apa", "register interest", "tinggalkan data", "konsultasi"],
+        a: "Hanya tiga informasi: <b>nama toko</b>, <b>rata-rata omset bulanan (USD)</b>, dan <b>nomor WhatsApp</b>. Setelah dikirim, tim Account Operations SAP akan menghubungi Anda untuk menjelaskan rate kategori Anda, ekspektasi pertumbuhan, dan langkah onboarding." },
+
+      { k: "greeting",
+        q: "Halo",
+        kw: ["halo", "hai", "hi", "hello", "pagi", "siang", "sore", "malam", "assalamualaikum", "permisi", "tes", "test"],
+        a: "Halo! Saya asisten <b>SAP (Swift Accelerator Program)</b> di halaman ini. Saya bisa menjawab tentang: <b>apa itu SAP</b>, <b>syarat bergabung</b>, <b>struktur biaya</b>, <b>rate per kategori</b> (ketik nama kategori, mis. “rate skincare”), <b>Seller Tier</b>, <b>cara daftar</b>, dan <b>hasil pertumbuhan seller</b>. Silakan pilih pertanyaan cepat di bawah atau ketik pertanyaan Anda." }
+    ]
+  },
+
+  en: {
+    launch: "Ask SAP",
+    navQa: "Ask AI",
+    title: "SAP Assistant",
+    sub: "Auto-answer demo · knowledge base: official SAP documents + 247-category rate table",
+    greet: "Hi! 👋 I'm the SAP assistant. Ask me anything about the program, eligibility, fees or your category rate.<br>For example: <b>“what is the rate for skincare?”</b>",
+    ph: "Type your question…",
+    send: "Send",
+    typing: "typing…",
+    chips: ["What is SAP?", "Who can join?", "Rate for Skincare", "Any upfront fee?", "How do I join?", "Can I exit?"],
+    reset: "Restart",
+    maybe: "Did you mean:",
+    fallback: "Sorry, I don't have an official answer for that yet. Your question has been logged so the SAP team can add it to the knowledge base.",
+    fallbackCta: "For store-specific questions, leave your details — the Account Operations team will reach out on WhatsApp.",
+    ctaForm: "📝 Leave my details",
+    matchLbl: "intent",
+    confLbl: "confidence",
+    noMatchLbl: "no intent matched",
+    debug: "Show matching process",
+    rateHead: "Rate for <b>{cat}</b> · <b>{tier}</b> band",
+    rateL1: "Category 1",
+    rateAds: "Ads TR",
+    rateAff: "Affiliate Comm. TR",
+    rateBundle: "Bundle Fee To Config",
+    rateOne: "“One Fee” Marketing Budget",
+    rateMulti: "Found <b>{n}</b> matching categories — showing the top {m}:",
+    rateMore: "There are {n} more matching categories. Type a more specific category name, or use the <b>Check Your Category Rate</b> table above.",
+    rateNone: "I couldn't find that category in the rate list. Try the level-2 category name in English (e.g. <b>Skincare</b>, <b>Motorcycle Parts</b>, <b>Women Shoes</b>), or use the rate table in the Fee Structure section.",
+    rateAskCat: "SAP rates are set per <b>level-2 category</b> and <b>seller tier band</b>. Tell me your category — e.g. “rate for Skincare” — and I'll show all four indicators.",
+    tierNote: "Band in use: <b>{tier}</b>. Switch band:",
+    tierSynced: "The rate table on this page has switched to the <b>{tier}</b> band as well.",
+    logNote: "{n} unanswered questions logged in this browser (demo only).",
+    logCopy: "Copy list",
+    logCopied: "Copied ✓",
+    disclaimer: "Automated answers based on official program documents. Please confirm final terms with the SAP team.",
+    kb: [
+      { k: "what_is_sap",
+        q: "What is SAP?",
+        kw: ["what is sap", "about sap", "what is swift accelerator", "which program", "what service", "explain the program", "apa itu sap", "semi", "half consignment", "managed service", "definition"],
+        a: "<b>Swift Accelerator Program (SAP)</b> is an all-in-one managed sales service provided directly by TikTok Shop by Tokopedia. A team of <b>50+ experts</b> runs sales strategy, ads, affiliate and promotional activity for your store — while <b>you keep 100% ownership of the shop</b>. The principle: “Done For You”." },
+
+      { k: "who_can_join",
+        q: "Who can join the program?",
+        kw: ["who can join", "eligibility", "eligible", "requirement", "criteria", "qualify", "am i eligible", "can i join", "can we join", "may i join", "target seller", "who is it for", "syarat", "kriteria"],
+        a: "Core requirements: <b>Seller Tier T0–T4</b> (new definition), <b>SES ≥ 3.5</b> or not yet scored (Null), at least <b>1 Product ID</b>, and the category must not be a restricted one (virtual goods, gold/silver, etc.).<br>Best-fit profile: solid <b>supply-chain capability</b>, limited TikTok Shop operating capability, and margins that can support a managed growth service fee." },
+
+      { k: "ownership",
+        q: "Will my store be taken over?",
+        kw: ["ownership", "take over", "taken over", "takeover", "who owns", "store control", "my account", "is it safe", "lose control", "kepemilikan"],
+        a: "No. <b>You keep 100% ownership of your store.</b> SAP acts as a sales service provider: you hand over selling and promotional execution, without losing control of the shop." },
+
+      { k: "services",
+        q: "What exactly does SAP do?",
+        kw: ["what do you do", "what does sap do", "services", "scope of service", "what do i get", "benefits", "ads", "affiliate", "aigc", "content", "video", "layanan"],
+        a: "Four service pillars:<br>• <b>Ads service</b> — with ROI1/ROI2 and GMV Max authorisation we build and manage ad placements (SAP sellers average ~6.1% Ads TR).<br>• <b>Affiliate matching</b> — Mass Reach, Creator Task and 1-on-1 matching (~60% of GMV comes from affiliate).<br>• <b>AIGC content</b> — ~800 videos/day at ~3.0 GPM.<br>• <b>Campaigns plus price / product / stock optimisation</b> — including algorithm cold start from 0 → 5 orders." },
+
+      { k: "seller_duty",
+        q: "What stays on the seller's side?",
+        kw: ["seller responsibility", "what do i do", "my tasks", "my duties", "seller focus", "responsibility"],
+        a: "You focus on four things you already do well: <b>product pricing</b>, <b>product information</b>, <b>logistics</b> and <b>customer service</b>. Selling and promotion are run by us." },
+
+      { k: "fee_structure",
+        q: "How is the fee structured?",
+        kw: ["fee structure", "how is the fee", "fee components", "one fee", "marketing budget", "how is it charged", "take rate", "formula", "cost structure", "made up of"],
+        a: "It's a single number: <b>“One Fee” Marketing Budget = Ads TR + Affiliate Commission TR + Bundle Fee To Config</b>. All values are <b>take rates (%)</b>, deducted automatically from revenue on each successful transaction. The level depends on your <b>level-2 category</b> and your <b>seller tier band</b> (Basic / Tier 1 / Tier 2)." },
+
+      { k: "upfront_fee",
+        q: "Is there any upfront fee?",
+        kw: ["upfront fee", "pay in advance", "deposit", "free", "registration fee", "monthly fee", "subscription", "hidden cost", "no upfront", "biaya di muka"],
+        a: "No upfront fee, no subscription and no registration fee. The only charge is the <b>take rate</b> deducted from successful transactions — no sales, no service fee." },
+
+      { k: "fee_negotiable",
+        q: "Is the service fee negotiable?",
+        kw: ["negotiable", "negotiate", "discount", "lower rate", "can it be cheaper", "reduce fee", "nego"],
+        a: "No. <b>The service fee is fixed and not negotiable.</b> Rates are determined by category and seller tier band, following the official SAP 2026 Service Fee document." },
+
+      { k: "tier_definition",
+        q: "What are Basic, Tier 1 and Tier 2?",
+        kw: ["basic tier", "tier 1", "tier 2", "band", "what is tier", "seller tier", "t1 t3", "t4 t5", "t6 t9", "my tier", "seller level"],
+        a: "Three rate bands based on Seller Tier:<br>• <b>BASIC</b> — Seller Tier T1–T3 (early growth)<br>• <b>TIER 1</b> — Seller Tier T4–T5 (scaling)<br>• <b>TIER 2</b> — Seller Tier T6–T9 (large scale)<br>Your band is assigned by the SAP team based on store scale and confirmed during onboarding." },
+
+      { k: "rate_source",
+        q: "Which category decides my rate?",
+        kw: ["which category", "store category", "how is category decided", "level 2 category", "multiple categories", "mixed categories", "many categories"],
+        a: "The rate-defining category is taken from the <b>products you sell most</b>, at <b>level-2 category</b> granularity. If your store spans several categories, the SAP team confirms the reference category during onboarding." },
+
+      { k: "how_to_join",
+        q: "How do I join?",
+        kw: ["how to join", "how do i join", "register", "sign up", "apply", "enrol", "enroll", "where to start", "steps", "onboarding", "cara daftar"],
+        a: "Three steps:<br><b>1.</b> Seller Center → Marketing → Program → Swift Accelerator Program (SAP) → Register<br><b>2.</b> Ads authorisation: authorise SAP as advertising partner, then authorise GMV Max (<i>step 1 must be completed first</i>)<br><b>3.</b> SAP team validation &amp; approval, around <b>3–5 working days</b><br>Not ready to register? Leave your details and our team will walk you through it." },
+
+      { k: "approval_time",
+        q: "How long does approval take?",
+        kw: ["how long", "approval time", "processing time", "when approved", "duration", "waiting time", "working days"],
+        a: "Validation and approval take roughly <b>3–5 working days</b> once registration and ads authorisation are complete." },
+
+      { k: "exit",
+        q: "Can I leave the program?",
+        kw: ["exit", "leave", "quit", "cancel", "opt out", "stop the program", "unsubscribe", "contract", "locked in", "penalty"],
+        a: "Yes. Sellers can exit <b>at any time</b> through Seller Center, with a waiting period of about <b>14 working days</b>. There is no contractual penalty." },
+
+      { k: "partial_products",
+        q: "Can I enrol only some products?",
+        kw: ["some products", "selected products", "partial", "certain skus", "all products", "shop level", "only part", "specific products"],
+        a: "SAP operates at <b>shop level</b> — all listed products follow the SAP fee mechanism. For products whose margin cannot support the fee, you can adjust pricing." },
+
+      { k: "who_sets_price",
+        q: "Who sets the selling price?",
+        kw: ["who sets price", "selling price", "pricing control", "can i change price", "price決定", "price decided"],
+        a: "<b>Selling prices are fully determined by the seller.</b> The SAP team advises on price competitiveness, but the final call is yours." },
+
+      { k: "self_ads",
+        q: "Can I still run my own ads after joining?",
+        kw: ["run my own ads", "manage ads myself", "own campaign", "own affiliate", "still manage", "change settings", "control ads"],
+        a: "Once enrolled, ads, campaigns and affiliate activity are optimised by the SAP team based on industry data and best practice. <b>Sellers are advised not to change these settings</b>, to avoid strategy conflicts and unintended results." },
+
+      { k: "guarantee",
+        q: "Does SAP guarantee sales?",
+        kw: ["guarantee", "guaranteed", "promise", "will sales increase", "what if it fails", "risk", "assured growth"],
+        a: "No. <b>SAP does not guarantee sales.</b> What we bring is a team of TikTok Shop professionals experienced in optimising store performance and selling efficiency, plus access to platform growth resources." },
+
+      { k: "results",
+        q: "What results has the program delivered?",
+        kw: ["results", "performance", "proof", "track record", "data", "statistics", "case study", "how many sellers", "tier up", "gpm", "aigc"],
+        a: "Program numbers as of June 2026: <b>4,900+ sellers</b> under management, <b>1,164 sellers</b> moved up a tier (cumulative), <b>~60%</b> of GMV from affiliate, average <b>Ads TR ~6.1%</b>, <b>~800 AIGC videos/day</b> at <b>~3.0 GPM</b>, and <b>~9.5%</b> of ~280k incubated products reaching a score of 5+." },
+
+      { k: "resource_allocation",
+        q: "How do my products get resources?",
+        kw: ["resources", "allocation", "voucher", "subsidy", "traffic", "boost", "hero product", "potential product", "more support", "flash sale", "campaign"],
+        a: "Products automatically fall into resource allocation segments:<br>• <b>New / Break-0 / Break-5</b> (L30D orders 0–5) — high-percentage vouchers, GMAX, affiliate resources, traffic boost<br>• <b>Potential</b> (L30D orders ≥ 10 or GMV ≥ $50) — mid-percentage vouchers, GMAX/VSA/LSA, creator matching, AIGC, campaigns, flash sale<br>• <b>Hero</b> (L30D GMV ≥ $1,500) — competitiveness-based voucher design, all channels enabled, 1-on-1 creator matching<br>Competitive pricing improves the odds of moving up a segment." },
+
+      { k: "stock",
+        q: "How should I prepare inventory?",
+        kw: ["stock", "inventory", "out of stock", "restock", "replenish", "warehouse", "supply"],
+        a: "For products at <i>out-of-stock</i> risk, the <b>Account Operations</b> team contacts you via WhatsApp and phone call to discuss replenishment — especially while affiliate traffic is ramping up." },
+
+      { k: "contact",
+        q: "How do I contact the SAP team?",
+        kw: ["contact", "reach you", "phone", "email", "whatsapp", "customer service", "talk to a human", "agent", "community group", "support"],
+        a: "Official contact details (email, WhatsApp Business, seller community) are being finalised by the team and will appear in the <b>Contact Us</b> section. The fastest route today: leave your store details through the Register Your Interest form — Account Operations will reach out on WhatsApp." },
+
+      { k: "lead_form",
+        q: "What details does the form ask for?",
+        kw: ["form", "register interest", "what details", "what information", "leave details", "consultation", "sign up form"],
+        a: "Just three fields: <b>shop name</b>, <b>average monthly revenue (USD)</b> and <b>WhatsApp number</b>. Once submitted, the SAP Account Operations team will contact you to walk through your category rate, growth expectations and onboarding steps." },
+
+      { k: "greeting",
+        q: "Hello",
+        kw: ["hello", "hi", "hey", "halo", "good morning", "good afternoon", "good evening", "test", "anyone there"],
+        a: "Hi! I'm the <b>SAP (Swift Accelerator Program)</b> assistant on this page. I can answer: <b>what SAP is</b>, <b>eligibility</b>, <b>fee structure</b>, <b>your category rate</b> (just type a category, e.g. “rate for skincare”), <b>Seller Tiers</b>, <b>how to join</b> and <b>seller growth results</b>. Pick a quick question below or type your own." }
+    ]
+  }
+};
+
+/* 费率类问句的触发词（两种语言合并，互不冲突） */
+var QA_RATE_KW = [
+  "rate", "rates", "biaya", "tarif", "fee", "fees", "berapa", "harga layanan", "komisi", "commission",
+  "take rate", "persen", "persentase", "percent", "percentage", "how much", "cost", "charge", "charged",
+  "one fee", "ads tr", "affiliate tr", "bundle fee", "marketing budget", "费率", "多少"
+];
+
+/* 类目匹配时忽略的无意义词 */
+var QA_STOP = [
+  "and", "the", "for", "other", "others", "dan", "untuk", "berapa", "rate", "biaya", "fee", "kategori",
+  "category", "tarif", "my", "saya", "is", "of", "in", "a", "an", "to", "what", "apa", "cek", "check",
+  "produk", "product", "products", "toko", "shop", "store", "accessories", "supplies"
+];
+</script>
+
+<script>
 (function () {
   "use strict";
   var lang = "id";
@@ -1216,6 +1719,10 @@ var FEE_DATA = [{"l1":"Automotive & Motorcycle","l2":"Motorcycle Parts","id":"80
 
   function renderAll() {
     T = I18N[lang];
+    /* 把问答组件的 UI 文案并入 T，交给 data-t / data-tp 统一渲染 */
+    QA = QA_I18N[lang];
+    T.qaLaunch = QA.launch; T.qaNav = QA.navQa; T.qaTitle = QA.title; T.qaSub = QA.sub;
+    T.qaSend = QA.send; T.qaPh = QA.ph; T.qaDebug = QA.debug;
     renderStatic();
     renderProfiles();
     renderRows("#eligibilityBody", T.eligibility);
@@ -1228,6 +1735,8 @@ var FEE_DATA = [{"l1":"Automotive & Motorcycle","l2":"Motorcycle Parts","id":"80
     renderSteps();
     renderFaq();
     renderContact();
+    /* 语言切换时重置对话，避免中英混排 */
+    if (qaBody && qaBody.children.length) qaReset();
   }
 
   /* ---------- language switch ---------- */
@@ -1285,6 +1794,289 @@ var FEE_DATA = [{"l1":"Automotive & Motorcycle","l2":"Motorcycle Parts","id":"80
   overlay.addEventListener("click", function (e) { if (e.target === overlay) closeModal(); });
   document.addEventListener("keydown", function (e) { if (e.key === "Escape") closeModal(); });
 
+
+  /* ==========================================================
+     L1 智能问答（纯前端）
+     流程：归一化 → 意图打分（短语/词元）→ 类目费率识别 → 答案 / 兜底
+     无后端、无模型调用、无用户数据外发
+     ========================================================== */
+  var QA = QA_I18N[lang];
+  var qaPanel = $("#qaPanel"), qaBody = $("#qaBody"), qaInput = $("#qaInput");
+  var LOG_KEY = "sap_qa_unmatched_v1";
+
+  /* ---- 文本归一化 ---- */
+  function norm(s) {
+    return String(s || "").toLowerCase()
+      .replace(/[“”"'’`(),.!?;:/\\|\[\]{}<>*#%+=_-]/g, " ")
+      .replace(/\s+/g, " ").trim();
+  }
+  function tokens(s) {
+    return norm(s).split(" ").filter(function (t) { return t.length > 1; });
+  }
+  /* 极简词干：去掉复数 s，让 bag/bags、shoe/shoes 互相命中 */
+  function stem(t) { return t.length > 3 && t.charAt(t.length - 1) === "s" ? t.slice(0, -1) : t; }
+  /* 整词/整短语命中（避免 "cara" 命中类目 "Car"） */
+  function hasWord(text, name) {
+    return (" " + text + " ").indexOf(" " + name + " ") >= 0;
+  }
+
+  /* ---- 意图打分：短语命中权重高于单词命中 ---- */
+  function scoreEntry(entry, text, toks) {
+    var sc = 0, hits = [];
+    entry.kw.forEach(function (kw) {
+      var k = norm(kw);
+      if (!k) return;
+      var words = k.split(" ");
+      if (words.length > 1) {
+        if (text.indexOf(k) >= 0) { sc += 2.2 + 0.9 * words.length; hits.push(k); }
+      } else if (toks.indexOf(k) >= 0) {
+        sc += 2.5; hits.push(k);
+      } else if (k.length >= 5 && text.indexOf(k) >= 0) {
+        sc += 1.4; hits.push(k);
+      }
+    });
+    /* 问题标题本身的词元重叠，作为弱信号 */
+    var qt = tokens(entry.q), ov = 0;
+    qt.forEach(function (t) { if (toks.indexOf(t) >= 0) ov++; });
+    if (qt.length) sc += 1.2 * (ov / qt.length);
+    return { sc: sc, hits: hits };
+  }
+
+  function rankIntents(q) {
+    var text = norm(q), toks = tokens(q);
+    return QA.kb.map(function (e) {
+      var r = scoreEntry(e, text, toks);
+      return { e: e, sc: r.sc, hits: r.hits };
+    }).sort(function (a, b) { return b.sc - a.sc; });
+  }
+
+  /* ---- 费率意图与类目识别 ---- */
+  function isRateQuestion(q) {
+    var text = norm(q);
+    for (var i = 0; i < QA_RATE_KW.length; i++) {
+      if (text.indexOf(norm(QA_RATE_KW[i])) >= 0) return true;
+    }
+    return false;
+  }
+
+  function findCategories(q) {
+    var text = norm(q);
+    var toks = tokens(q)
+      .filter(function (t) { return QA_STOP.indexOf(t) < 0; })
+      .map(stem);
+    var out = [];
+    FEE_DATA.forEach(function (r) {
+      var l2 = norm(r.l2), l1 = norm(r.l1), s = 0;
+      if (l2 && hasWord(text, l2)) s = 10 + l2.length / 20;                /* 二级类目全名整词命中 */
+      if (l1 && hasWord(text, l1)) s = Math.max(s, 4.6 + l1.length / 40);  /* 一级类目全名整词命中 */
+      var l2t = l2.split(" ")
+        .filter(function (t) { return t.length > 2 && QA_STOP.indexOf(t) < 0; })
+        .map(stem);
+      if (l2t.length) {
+        var hit = 0;
+        l2t.forEach(function (t) { if (toks.indexOf(t) >= 0) hit++; });
+        if (hit) s = Math.max(s, 3 * (hit / l2t.length) + hit);            /* 词元部分命中 */
+      }
+      if (s > 0) out.push({ r: r, s: s });
+    });
+    out.sort(function (a, b) { return b.s - a.s; });
+    return out;
+  }
+
+  /* ---- 渲染 ---- */
+  function bubble(html, who, meta) {
+    var w = document.createElement("div");
+    w.className = "qa-msg " + (who === "u" ? "u" : "b");
+    w.innerHTML = '<div class="bub">' + html + "</div>";
+    qaBody.appendChild(w);
+    if (meta) {
+      var m = document.createElement("div");
+      m.className = "qa-meta";
+      m.innerHTML = meta;
+      qaBody.appendChild(m);
+    }
+    qaBody.scrollTop = qaBody.scrollHeight;
+    return w;
+  }
+
+  function rateCard(row) {
+    var v = row.r[curTier];
+    return '<div class="qa-rate">' +
+      '<div class="rh">' + QA.rateHead.replace("{cat}", row.l2).replace("{tier}", tierName(curTier)) +
+      "<small>" + QA.rateL1 + ": " + row.l1 + " · ID " + row.id + "</small></div><table>" +
+      "<tr><td>" + QA.rateAds + "</td><td>" + pct(v[0]) + "</td></tr>" +
+      "<tr><td>" + QA.rateAff + "</td><td>" + pct(v[1]) + "</td></tr>" +
+      "<tr><td>" + QA.rateBundle + "</td><td>" + pct(v[2]) + "</td></tr>" +
+      '<tr class="one"><td><b>' + QA.rateOne + "</b></td><td>" + pct(v[3]) + "</td></tr>" +
+      "</table></div>";
+  }
+
+  function tierButtons() {
+    return '<div class="qa-tier" data-qa-tier>' + T.tierOpts.map(function (o) {
+      return '<button type="button" data-tier="' + o.k + '"' + (o.k === curTier ? ' class="on"' : "") + ">" + o.n + "</button>";
+    }).join("") + "</div>";
+  }
+
+  function suggestions(list) {
+    return '<div class="qa-sug">' + list.map(function (e) {
+      return '<button type="button" data-ask="' + e.q.replace(/"/g, "&quot;") + '">→ ' + e.q + "</button>";
+    }).join("") + "</div>";
+  }
+
+  /* ---- 未命中问题记录（仅本地，用于补知识库） ---- */
+  function logUnmatched(q) {
+    try {
+      var arr = JSON.parse(localStorage.getItem(LOG_KEY) || "[]");
+      arr.push({ q: q, t: new Date().toISOString(), lang: lang });
+      localStorage.setItem(LOG_KEY, JSON.stringify(arr.slice(-200)));
+    } catch (err) { /* 隐私模式下忽略 */ }
+    renderLogNote();
+  }
+  function readUnmatched() {
+    try { return JSON.parse(localStorage.getItem(LOG_KEY) || "[]"); } catch (err) { return []; }
+  }
+  function renderLogNote() {
+    var arr = readUnmatched(), el = $("#qaLog");
+    if (!arr.length) { el.innerHTML = ""; return; }
+    el.innerHTML = QA.logNote.replace("{n}", arr.length) +
+      ' <button class="cp" id="qaCopyLog">' + QA.logCopy + "</button>";
+    $("#qaCopyLog").addEventListener("click", function () {
+      var tsv = "question\ttime\tlang\n" + arr.map(function (r) {
+        return r.q + "\t" + r.t + "\t" + r.lang;
+      }).join("\n");
+      var ta = document.createElement("textarea");
+      ta.value = tsv; document.body.appendChild(ta); ta.select();
+      try { document.execCommand("copy"); } catch (err) { /* noop */ }
+      document.body.removeChild(ta);
+      this.textContent = QA.logCopied;
+    });
+  }
+
+  /* ---- 核心：回答一个问题 ----
+     判定顺序（越靠前越确定）：
+       1) 有费率关键词 + 认出类目            → 查表回答
+       2) 直接输入了完整的二级类目名          → 查表回答
+       3) 知识库意图得分 ≥ 2.4               → 固定答案
+       4) 宽松认出类目（一级类目名 / 部分词） → 查表回答
+       5) 只有费率关键词、没有类目            → 讲清费率结构并追问类目
+       6) 其他                               → 兜底：记录 + 推荐 + 引导留资
+  */
+  var KB_TH = 2.4;      /* 知识库命中阈值 */
+  var CAT_EXACT = 9.9;  /* 二级类目全名命中的分数下界 */
+  var CAT_LOOSE = 4.4;  /* 宽松类目命中的分数下界 */
+
+  function rateAnswer(cats, tag) {
+    var uniq = [], seen = {};
+    cats.forEach(function (c) {
+      var key = c.r.l1 + "|" + c.r.l2;
+      if (!seen[key]) { seen[key] = 1; uniq.push(c.r); }
+    });
+    var show = uniq.slice(0, 3), html = "";
+    if (uniq.length > 1) html += QA.rateMulti.replace("{n}", uniq.length).replace("{m}", show.length);
+    html += show.map(rateCard).join("");
+    if (uniq.length > show.length) {
+      html += "<div style='margin-top:9px'>" + QA.rateMore.replace("{n}", uniq.length - show.length) + "</div>";
+    }
+    html += "<div style='margin-top:9px'>" + QA.tierNote.replace("{tier}", tierName(curTier)) + "</div>" + tierButtons();
+    bubble(html, "b",
+      QA.matchLbl + ": <b>fee_rate_lookup</b> (" + tag + ") · match: <b>" + show.length + "/" + uniq.length +
+      "</b> · " + QA.confLbl + ": <b>" + Math.min(1, cats[0].s / 10).toFixed(2) + "</b>");
+  }
+
+  function answer(q) {
+    var ranked = rankIntents(q);
+    var top = ranked[0];
+    var cats = findCategories(q);
+    var best = cats.length ? cats[0].s : 0;
+    var rateAsk = isRateQuestion(q);
+
+    if (rateAsk && cats.length) { rateAnswer(cats, "kw+cat"); return; }
+
+    /* 知识库意图优先于「句子里顺带提到类目名」的情况 */
+    if (top.sc >= KB_TH) {
+      bubble(top.e.a, "b",
+        QA.matchLbl + ": <b>" + top.e.k + "</b> · " + QA.confLbl + ": <b>" + Math.min(0.99, top.sc / 7).toFixed(2) +
+        "</b> · kw: " + (top.hits.slice(0, 4).join(", ") || "—"));
+      return;
+    }
+
+    if (best >= CAT_EXACT) { rateAnswer(cats, "exact-cat"); return; }
+    if (best >= CAT_LOOSE) { rateAnswer(cats, "loose-cat"); return; }
+
+    if (rateAsk) {
+      bubble(QA.rateAskCat, "b", QA.matchLbl + ": <b>fee_rate_no_category</b> · " + QA.confLbl + ": <b>0.50</b>");
+      return;
+    }
+
+    /* 兜底：记录问题 + 推荐相近问题 + 引导留资 */
+    logUnmatched(q);
+    var near = ranked.slice(0, 3).filter(function (r) { return r.sc > 0.5; }).map(function (r) { return r.e; });
+    var fb = QA.fallback;
+    if (near.length) fb += "<div style='margin-top:10px'>" + QA.maybe + "</div>" + suggestions(near);
+    fb += "<div style='margin-top:10px'>" + QA.fallbackCta + "</div>" +
+      '<button class="qa-cta" data-open-form>' + QA.ctaForm + "</button>";
+    bubble(fb, "b", QA.noMatchLbl + " · top score: <b>" + top.sc.toFixed(2) + "</b> (threshold " + KB_TH.toFixed(2) + ")");
+  }
+
+  function ask(q) {
+    q = String(q || "").trim();
+    if (!q) return;
+    bubble(q, "u");
+    qaInput.value = "";
+    var typing = bubble(QA.typing, "b");
+    typing.classList.add("qa-typing");
+    setTimeout(function () {
+      qaBody.removeChild(typing);
+      answer(q);
+    }, 320);
+  }
+
+  function qaReset() {
+    QA = QA_I18N[lang];
+    qaBody.innerHTML = "";
+    bubble(QA.greet, "b");
+    $("#qaChips").innerHTML = QA.chips.map(function (c) {
+      return '<button type="button" data-ask="' + c.replace(/"/g, "&quot;") + '">' + c + "</button>";
+    }).join("");
+    renderLogNote();
+  }
+
+  /* ---- 事件 ---- */
+  $("#qaLaunch").addEventListener("click", function () {
+    qaPanel.classList.add("show");
+    $("#qaLaunch").classList.add("hidden");
+    if (!qaBody.children.length) qaReset();
+    setTimeout(function () { qaInput.focus(); }, 60);
+  });
+  $("#navQa").addEventListener("click", function () { $("#qaLaunch").click(); });
+  function qaClose() {
+    qaPanel.classList.remove("show");
+    $("#qaLaunch").classList.remove("hidden");
+  }
+  $("#qaClose").addEventListener("click", qaClose);
+  $("#qaReset").addEventListener("click", qaReset);
+  $("#qaSend").addEventListener("click", function () { ask(qaInput.value); });
+  qaInput.addEventListener("keydown", function (e) { if (e.key === "Enter") ask(qaInput.value); });
+  $("#qaDbg").addEventListener("change", function () { qaPanel.classList.toggle("dbg", this.checked); });
+
+  /* 面板内委托：快捷问句 / 推荐问句 / 档位切换 / 留资 */
+  qaPanel.addEventListener("click", function (e) {
+    var t = e.target;
+    var a = t.closest ? t.closest("[data-ask]") : null;
+    if (a) { ask(a.getAttribute("data-ask")); return; }
+    var tb = t.closest ? t.closest("[data-qa-tier] button[data-tier]") : null;
+    if (tb) {
+      curTier = tb.getAttribute("data-tier");
+      renderTierSwitch();
+      renderFeeTable();
+      $$("[data-qa-tier]").forEach(function (g) {
+        $$("button", g).forEach(function (b) { b.classList.toggle("on", b.getAttribute("data-tier") === curTier); });
+      });
+      bubble(QA.tierSynced.replace("{tier}", tierName(curTier)), "b");
+      return;
+    }
+    if (t.closest && t.closest("[data-open-form]")) openModal();
+  });
 
   renderAll();
 })();
